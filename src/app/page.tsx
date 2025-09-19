@@ -12,6 +12,7 @@ import { servicesData } from '@/data/servicesData';
 
 export default function Home() {
   const lagonService = servicesData.find(s => s.slug === 'piscine-lagon');
+  const bassinsClassiquesService = servicesData.find(s => s.slug === 'bassins-classiques');
   const jacuzziService = servicesData.find(s => s.slug === 'jacuzzi');
   const spasService = servicesData.find(s => s.slug === 'spas');
   const hammamService = servicesData.find(s => s.slug === 'hammam');
@@ -26,6 +27,17 @@ export default function Home() {
           imageUrl={lagonService.heroImage}
           slug={lagonService.slug}
           ctaText={lagonService.ctaText}
+        />
+      )}
+
+{bassinsClassiquesService && (
+        <FeatureSection
+          title={bassinsClassiquesService.title}
+          description={bassinsClassiquesService.shortDescription}
+          imageUrl={bassinsClassiquesService.heroImage}
+          slug={bassinsClassiquesService.slug}
+          ctaText={bassinsClassiquesService.ctaText}
+          layoutRight={true} // Image à droite pour alterner
         />
       )}
 
