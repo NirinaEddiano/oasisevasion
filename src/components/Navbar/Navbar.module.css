@@ -1,0 +1,571 @@
+/* src/components/Navbar/Navbar.module.css */
+
+/* Définition des couleurs du thème */
+:root {
+  --color-white: #FFFFFF;
+  --color-marine-blue: #003366;
+  --color-water-blue: #0077be;
+  --color-mustard-yellow: #FFC72C;
+  --text-color: #333;
+}
+
+.header {
+  width: 100%;
+  padding: 0.5rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: background-color 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.header.transparent {
+  background-color: transparent;
+}
+
+/* Le texte du menu est blanc par défaut quand transparent */
+.header.transparent .menu a {
+  color: var(--color-white);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Ombre pour la lisibilité sur l'image */
+}
+
+.header.transparent .menu a::after {
+  background-color: var(--color-white);
+}
+
+.header.transparent .callButton {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.header.transparent .callButton:hover {
+  background-color: var(--color-white);
+  color: var(--color-water-blue);
+}
+
+/* Style appliqué quand on a scrollé */
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95); /* Fond blanc semi-transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Pour Safari */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header.scrolled .menu a {
+  color: var(--color-marine-blue);
+}
+
+.header.scrolled .menu a:hover {
+  color: var(--color-water-blue);
+}
+
+.header.scrolled .menu a::after {
+  background-color: var(--color-water-blue);
+}
+
+.header.scrolled .callButton:hover {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1350px; /* Un peu plus large pour l'espacement */
+  margin: 0 auto;
+  padding: 0 1.5rem; /* Espace égal sur les bords */
+}
+
+/* --- LOGO --- */
+.logoContainer {
+  display: flex;
+  justify-content: flex-start; /* Aligne le logo à gauche */
+}
+
+.logo {
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+/* --- MENU --- */
+.menu {
+  display: flex;
+  justify-content: center; /* Centre les éléments */
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0 2rem;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--color-marine-blue);
+  font-weight: 400; /* Regular */
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.5px;
+  padding-bottom: 5px;
+  position: relative;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu a:hover {
+  color: var(--color-water-blue);
+}
+
+/* Effet de survol amélioré */
+.menu a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-water-blue);
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* --- BOUTONS --- */
+.actions {
+  display: flex;
+  justify-content: flex-end; /* Aligne les boutons à droite */
+  gap: 1rem;
+}
+
+.button {
+  width: 209px;
+  height: 37px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espace entre l'icône et le texte */
+  padding: 0 10px; /* Padding horizontal */
+  font-size: 13.83px;
+  font-weight: 500; /* Medium */
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quoteButton {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  border-color: var(--color-water-blue);
+}
+
+.quoteButton:hover {
+  background-color: var(--color-marine-blue); /* Jaune un peu plus clair au survol */
+}
+
+.callButton {
+  background-color: transparent;
+  color: var(--color-water-blue);
+  border: 2px solid var(--color-water-blue);
+}
+
+.callButton:hover {
+  background-color: var(--color-marine-blue);
+  color: var(--color-white);
+}
+
+/* Style pour le lien actif */
+.menu a.activeLink {
+  font-weight: 700; /* Plus épais */
+  color: var(--color-water-blue); /* Couleur d'accentuation */
+}
+
+/* L'effet de survol du lien actif est toujours visible pour la page actuelle */
+.menu a.activeLink::after {
+  width: 100%;
+  background-color: var(--color-water-blue);
+}
+
+/* S'assurer que le lien actif reste blanc sur fond transparent */
+.header.transparent .menu a.activeLink {
+  color: var(--color-white);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Ombre pour la lisibilité */
+}
+
+.header.transparent .menu a.activeLink::after {
+  background-color: var(--color-white);
+}
+
+/* S'assurer que le lien actif reste bleu marine sur fond scrollé */
+.header.scrolled .menu a.activeLink {
+  color: var(--color-water-blue);
+  text-shadow: none;
+}
+
+/* Styles pour le sous-menu des services */
+.servicesMenuItem {
+  position: relative; /* Nécessaire pour positionner le dropdown */
+}
+
+.dropdownArrow {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.dropdownArrow.rotated {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%; /* Juste en dessous du lien parent */
+  left: 50%; /* Centre le menu par rapport à "Services" */
+  transform: translateX(-50%); /* Ajustement pour un centrage parfait */
+  background-color: var(--color-water-blue);
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  min-width: 250px; /* Largeur minimale pour les éléments */
+  z-index: 1001; /* Au-dessus de la navbar */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) translateX(-50%); /* Pour l'animation d'apparition */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.header.scrolled .dropdownMenu {
+  background-color: rgb(199, 198, 198);
+}
+
+.servicesMenuItem:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) translateX(-50%);
+}
+
+.dropdownArrow {
+  display: flex;
+  place-self: center;
+}
+
+.dropdownMenu li {
+  padding: 0;
+}
+
+.dropdownMenu a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--color-white); /* Couleur par défaut pour les sous-menus sur fond bleu */
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap; /* Empêche le texte de se casser sur plusieurs lignes */
+}
+
+.header.scrolled .dropdownMenu a {
+  color: var(--color-marine-blue); /* Couleur pour les sous-menus sur fond blanc scrollé */
+}
+
+.dropdownMenu a:hover {
+  background-color: var(--color-marine-blue);
+  color: var(--color-white);
+  border-radius: 0; /* Pas de bordures arrondies pour les items individuels */
+}
+
+.header.scrolled .dropdownMenu a:hover {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+}
+
+
+/* Style spécifique pour le lien actif dans le dropdown */
+.dropdownMenu a.activeDropdownLink {
+  background-color: var(--color-marine-blue);
+  color: var(--color-white);
+  font-weight: 600; /* Plus épais pour l'actif */
+}
+
+.header.scrolled .dropdownMenu a.activeDropdownLink {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+}
+
+/* Ajustements pour les états scrolled et transparent de la navbar */
+
+/* Quand la navbar est transparente (défilement 0) */
+.header.transparent .servicesMenuItem > a { /* Cible le lien parent "Services" */
+  color: var(--color-white);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.header.transparent .servicesMenuItem > a.activeLink {
+  color: var(--color-white);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.header.transparent .servicesMenuItem > a::after {
+  background-color: var(--color-white);
+}
+
+/* Quand la navbar est scrollée */
+.header.scrolled .servicesMenuItem > a {
+  color: var(--color-marine-blue);
+  text-shadow: none;
+}
+
+.header.scrolled .servicesMenuItem > a.activeLink {
+  color: var(--color-water-blue);
+}
+
+.header.scrolled .servicesMenuItem > a::after {
+  background-color: var(--color-water-blue);
+}
+
+/* Pas d'effet de ligne pour le lien parent "Services" si le dropdown est ouvert,
+pour éviter que la ligne ne se superpose au dropdown */
+.servicesMenuItem:hover > a::after {
+  width: 0; /* Désactive la ligne sous "Services" quand le dropdown est actif */
+}
+
+/* S'assurer que les liens du dropdown ne sont pas affectés par les styles du menu principal */
+.dropdownMenu a::after {
+  content: none !important; /* Supprime l'effet de ligne pour les sous-menus */
+}
+
+.activeQuoteButton {
+  border: 1px solid var(--color-water-blue);
+  box-shadow: 0 0 0 2px var(--color-water-blue);
+}
+
+/* --- Burger Menu Styles --- */
+.burgerMenuIcon {
+  display: none; /* Caché par défaut sur desktop */
+  cursor: pointer;
+  color: var(--color-marine-blue); /* Couleur de l'icône burger */
+  z-index: 1002; /* Au-dessus du menu si ouvert */
+  transition: color 0.3s ease;
+}
+
+.header.transparent .burgerMenuIcon {
+  color: var(--color-white); /* Blanc sur fond transparent */
+}
+
+.header.scrolled .burgerMenuIcon {
+  color: var(--color-marine-blue); /* Bleu marine sur fond scrollé */
+}
+
+
+/* Mobile Menu Overlay/Sidebar */
+.menuContainer {
+  display: flex;
+  flex-direction: row; /* Desktop default */
+  align-items: center;
+  gap: 2.5rem;
+}
+
+
+/* Media Queries pour la responsivité */
+@media (max-width: 1024px) {
+  .nav {
+    padding: 0 1rem;
+  }
+
+  .burgerMenuIcon {
+    display: block; /* Affiche l'icône burger */
+  }
+
+  .menuContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(199, 198, 198); /* Fond blanc semi-transparent */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Masqué par défaut */
+    transition: transform 0.4s ease-out;
+    z-index: 999; /* Moins prioritaire que l'icône burger */
+  }
+
+  .menuContainer.menuOpen {
+    transform: translateX(0); /* Affiche le menu */
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 60px; /* Espace pour le logo/titre en haut si besoin */
+  }
+
+  .menu li {
+    width: 100%;
+  }
+
+  .menu a {
+    color: var(--color-marine-blue);
+    font-size: 1.2rem;
+    padding: 15px 0;
+    display: block;
+    width: 100%;
+    text-shadow: none; /* Supprimer l'ombre pour la lisibilité */
+  }
+
+  .menu a:hover {
+    color: var(--color-water-blue);
+    background-color: rgba(0, 119, 190, 0.1); /* Légère couleur de survol */
+  }
+
+  /* Désactiver l'effet de ligne sur mobile */
+  .menu a::after {
+    display: none;
+  }
+
+  .menu a.activeLink {
+    color: var(--color-water-blue);
+    font-weight: 700;
+  }
+
+  /* Dropdown en mode mobile (s'ouvre en dessous) */
+  .servicesMenuItem {
+    width: 100%;
+    position: static; /* Le dropdown est dans le flux normal */
+  }
+
+  .dropdownMenu {
+    position: static; /* Dans le flux du document */
+    transform: translateX(0); /* Supprime la transformation de centrage */
+    width: 100%;
+    min-width: unset;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: rgba(0, 51, 102, 0.9); /* Marine Blue foncé pour les sous-menus */
+    padding: 0;
+    margin-top: 5px;
+    opacity: 1; /* Toujours visible si le parent est ouvert */
+    visibility: visible;
+    display: none; /* Caché par défaut, contrôlé par isMobileServicesOpen/isMobileEquipementsOpen */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, background-color 0.2s ease;
+  }
+
+  .servicesMenuItem:hover .dropdownMenu {
+    /* Désactive le comportement de survol desktop */
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .servicesMenuItem:has(.dropdownMenu:not([style*="display: none"])) .dropdownMenu, /* Pour s'assurer que si JS force display block il reste visible */
+  .servicesMenuItem > a.activeLink + .dropdownMenu {
+    /* Style pour les dropdowns ouverts via JS (click) */
+    max-height: 500px; /* Valeur suffisante pour contenir les éléments */
+    display: block;
+  }
+
+  .dropdownMenu a {
+    padding: 10px 30px; /* Indentation */
+    font-size: 1.1rem;
+    color: var(--color-white);
+  }
+
+  .dropdownMenu a:hover {
+    background-color: var(--color-water-blue); /* Survol sur les sous-menus */
+    color: var(--color-white);
+  }
+
+  .dropdownMenu a.activeDropdownLink {
+    background-color: var(--color-water-blue);
+    font-weight: 600;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 1.5rem 0;
+  }
+
+  .button {
+    width: 80%; /* Rendre les boutons plus larges */
+    max-width: 300px;
+    margin: 0 auto;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Style spécifique pour la couleur des liens du menu burger sur fond blanc */
+.menuOpen .menu a {
+  color: var(--color-marine-blue);
+}
+
+.menuOpen .menu a:hover {
+  color: var(--color-water-blue);
+  background-color: rgba(0, 119, 190, 0.1); /* Légère couleur de survol */
+}
+
+/* S'assurer que les icônes burger/fermeture sont visibles et stylisées */
+.burgerMenuIcon svg {
+  color: var(--color-marine-blue); /* Couleur de l'icône burger en mode normal */
+}
+
+.header.transparent .burgerMenuIcon svg {
+  color: var(--color-white); /* Couleur de l'icône burger en mode transparent */
+}
+
+.header.scrolled .burgerMenuIcon svg {
+  color: var(--color-marine-blue); /* Couleur de l'icône burger en mode scrollé */
+}
+
+
+/* Pour forcer la visibilité des dropdowns mobiles */
+.servicesMenuItem .dropdownMenu {
+    display: none; /* Hide by default */
+}
+
+.servicesMenuItem:not(:hover) .dropdownMenu { /* Ensures desktop hover works */
+    display: none;
+}
+
+/* When mobile dropdown is active, show it */
+.servicesMenuItem .dropdownMenu[style*="display: block"] {
+    display: block !important; /* Force display for mobile open state */
+}
+
+.servicesMenuItem:hover .dropdownMenu {
+    display: block; /* Show on hover for desktop */
+}
+
+/* Ensure the dropdown for services/equipement opens on mobile click */
+@media (max-width: 1024px) {
+    .dropdownMenu {
+        display: none; /* Hide by default on mobile */
+        max-height: 0;
+        transition: max-height 0.4s ease-out, background-color 0.2s ease;
+    }
+    .servicesMenuItem .dropdownMenu[data-active-mobile="true"] {
+        display: block;
+        max-height: 500px; /* Adjust as needed */
+    }
+}

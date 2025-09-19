@@ -1,0 +1,855 @@
+/* src/app/demande-de-devis/page.module.css */
+
+/* Variables de couleur du thème */
+:root {
+  --color-white: #ffffff;
+  --color-water-blue: #0077be; /* Couleur d'accentuation */
+  --color-marine-blue: #003366; /* Couleur principale */
+  --color-grey-light: #f4f7f6;
+  --color-grey-dark: #333;
+  --color-success: #28a745;
+  --color-error: #dc3545;
+}
+
+/* --- Hero Section --- */
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* Hauteur ajustée pour ne pas prendre trop de place */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  text-align: center;
+  overflow: hidden;
+}
+
+.heroImage {
+  object-fit: cover;
+  z-index: 1;
+}
+
+.overlay {
+  background-color: rgba(0, 51, 102, 0.5); /* Overlay bleu marine semi-transparent */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 2; /* S'assurer qu'il est au-dessus de l'image */
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  padding: 0 20px;
+  max-width: 900px;
+  margin-top: 20px; /* Ajoute un petit espace au-dessus si le contenu est très court */
+}
+
+.heroTitle {
+  font-size: 3.2rem; /* Légèrement ajusté */
+  font-weight: 800;
+  margin-bottom: 15px;
+  line-height: 1.1;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.heroDescription {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Quote Form Section --- */
+.quoteFormSection {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 50px;
+  background-color: var(--color-white);
+  border-radius: 20px;
+  box-shadow: 0 15px 45px rgba(0, 71, 122, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Pour le contexte des flèches si besoin */
+}
+
+/* --- Progress Indicator --- */
+.progressIndicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.progressIndicator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #e0e0e0;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.progressBar {
+  flex-grow: 1;
+  height: 4px;
+  background-color: #e0e0e0;
+  position: relative;
+  margin: 0 -25px; /* Pour que la barre passe sous les icônes */
+  z-index: 0;
+}
+
+.progressBarFill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-water-blue);
+  transition: width 0.5s ease-in-out;
+}
+
+.stepIcon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: #888;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center; /* Assurer que le texte est centré */
+}
+
+.stepIcon svg {
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+}
+
+.stepIcon.active {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  box-shadow: 0 8px 20px rgba(0, 119, 190, 0.3); /* Utiliser var(--color-water-blue) */
+  transform: scale(1.05);
+}
+
+.stepIcon.completed {
+  background-color: var(--color-marine-blue);
+  color: var(--color-white);
+  box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3); /* Utiliser var(--color-marine-blue) */
+}
+
+/* --- Form Content --- */
+.formContent {
+  width: 100%;
+  min-height: 400px; /* Hauteur minimale pour éviter les sauts de contenu */
+}
+
+.stepContainer {
+  padding: 20px 0;
+  animation: slideInFromRight 0.5s ease-out forwards;
+}
+
+.stepTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-marine-blue);
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.stepDescription {
+  font-size: 1.1rem;
+  color: var(--color-grey-dark);
+  margin-bottom: 40px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.formGroup {
+  margin-bottom: 25px;
+}
+
+.formLabel {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-marine-blue);
+  margin-bottom: 12px;
+}
+
+.required {
+  color: var(--color-water-blue);
+}
+
+.inputField,
+.selectField,
+.textareaField {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-grey-dark);
+  background-color: var(--color-grey-light);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.inputField::placeholder,
+.textareaField::placeholder {
+  color: #a0a0a0;
+}
+
+.inputField:focus,
+.selectField:focus,
+.textareaField:focus {
+  border-color: var(--color-water-blue);
+  box-shadow: 0 0 0 4px rgba(0, 119, 190, 0.25); /* Utiliser var(--color-water-blue) */
+  background-color: var(--color-white);
+}
+
+.textareaField {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.inputGroupInline {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.inputGroupInline .inputField {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* --- Radio & Checkbox Cards --- */
+/* DEFAULT (Desktop) */
+.radioGrid, .radioGridSmall, .checkboxGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.radioGridSmall {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+
+.radioCard, .checkboxCard {
+  background-color: var(--color-grey-light);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  color: var(--color-grey-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: center; /* Pour centrer le texte dans la carte */
+}
+
+.radioCard:hover, .checkboxCard:hover {
+  border-color: var(--color-water-blue);
+  box-shadow: 0 6px 20px rgba(0, 119, 190, 0.15); /* Utiliser var(--color-water-blue) */
+  transform: translateY(-2px);
+}
+
+/* Styles pour la carte entière quand l'input radio est coché */
+.radioCard input:checked + .radioCardContent {
+  background-color: var(--color-marine-blue);
+  color: var(--color-white);
+  border-color: var(--color-marine-blue);
+  box-shadow: 0 6px 20px rgba(0, 51, 102, 0.25); /* Utiliser var(--color-marine-blue) */
+}
+
+/* Styles pour les éléments individuels à l'intérieur de la carte radio cochée */
+.radioCard input:checked + .radioCardContent svg {
+  color: var(--color-white); /* Icône blanche */
+}
+
+/* Styles pour les checkboxes */
+.checkboxCard {
+  /* Garde les styles de base de .radioCard */
+  flex-direction: row; /* Icône et texte en ligne */
+  gap: 10px; /* Espace entre icône et texte */
+  justify-content: flex-start; /* Aligner à gauche */
+}
+.checkboxCard input[type="checkbox"] {
+    position: absolute; /* Cache l'input natif */
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.checkboxCard input[type="checkbox"] + svg { /* Style pour l'icône à côté de la checkbox */
+    color: var(--color-marine-blue); /* Couleur par défaut */
+    transition: color 0.3s ease;
+}
+.checkboxCard input[type="checkbox"]:checked + svg {
+    color: var(--color-water-blue); /* Couleur d'accentuation quand cochée */
+}
+/* Style pour la card parente quand la checkbox est cochée */
+.checkboxCard input[type="checkbox"]:checked + svg + span { /* S'il y a un span de texte après l'icône */
+    color: var(--color-marine-blue); /* Texte marine */
+}
+.checkboxCard input[type="checkbox"]:checked ~ .checkboxCard { /* Le parent */
+  background-color: var(--color-grey-light); /* Garde le fond, ou un fond légèrement accentué */
+  border-color: var(--color-water-blue); /* Bordure accentuée */
+}
+
+
+.radioCardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+}
+
+.radioCardContent svg {
+  font-size: 2.5rem;
+  color: var(--color-marine-blue);
+  transition: color 0.3s ease;
+}
+
+.radioCardSmall {
+  background-color: var(--color-grey-light);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: var(--color-grey-dark);
+  text-align: center;
+}
+
+.radioCardSmall:hover {
+  border-color: var(--color-water-blue);
+  box-shadow: 0 4px 12px rgba(0, 119, 190, 0.1); /* Utiliser var(--color-water-blue) */
+  transform: translateY(-1px);
+}
+
+/* Styles pour la carte entière quand l'input radio small est coché */
+.radioCardSmall input:checked + .radioCardContentSmall {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  border-color: var(--color-water-blue);
+  box-shadow: 0 4px 12px rgba(0, 119, 190, 0.2); /* Utiliser var(--color-water-blue) */
+}
+
+.radioCardContentSmall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+}
+
+.radioCardSmall svg {
+  font-size: 1.5rem;
+  color: var(--color-marine-blue);
+  transition: color 0.3s ease;
+}
+.radioCardSmall input:checked + .radioCardContentSmall svg {
+  color: var(--color-white);
+}
+
+/* Styles pour les checkboxes simples (acceptTerms) */
+.checkboxContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: var(--color-grey-dark);
+}
+
+.checkboxContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.checkboxContainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkboxContainer input:checked ~ .checkmark {
+  background-color: var(--color-water-blue);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkboxContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkboxContainer .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.termsCheckbox {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.termsLink {
+  color: var(--color-water-blue);
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.termsLink:hover {
+  text-decoration: underline;
+}
+
+/* --- Button Group --- */
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.prevButton, .nextButton, .submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.prevButton {
+  background-color: #f0f0f0;
+  color: var(--color-grey-dark);
+  border: 1px solid #ccc;
+}
+
+.prevButton:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.nextButton {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 119, 190, 0.2);
+}
+
+.nextButton:hover {
+  background-color: var(--color-marine-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+}
+
+.submitButton {
+  background-color: var(--color-marine-blue);
+  color: var(--color-white);
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 51, 102, 0.2);
+}
+
+.submitButton:hover {
+  background-color: var(--color-water-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 119, 190, 0.3);
+}
+
+/* --- Quote CTA Section --- */
+.quoteCtaSection {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  text-align: center;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.quoteCtaImage {
+  object-fit: cover;
+  z-index: 1;
+}
+
+.quoteCtaContent {
+  position: relative;
+  z-index: 3;
+  padding: 0 20px;
+  max-width: 800px;
+}
+
+.quoteCtaTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.quoteCtaButton {
+  display: inline-block;
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  padding: 18px 40px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 119, 190, 0.3);
+}
+
+.quoteCtaButton:hover {
+  background-color: var(--color-marine-blue);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 51, 102, 0.4);
+}
+
+.quoteCtaButton:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(0, 119, 190, 0.2);
+}
+
+/* --- Accessibilité (pour sr-only) --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                           Media Queries for Responsiveness                 */
+/* -------------------------------------------------------------------------- */
+
+/* Tablette (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .heroTitle {
+    font-size: 2.8rem;
+  }
+  .heroDescription {
+    font-size: 1.1rem;
+  }
+
+  .quoteFormSection {
+    margin: 60px auto;
+    padding: 40px;
+  }
+
+  .progressIndicator {
+    width: 90%;
+    margin-bottom: 40px;
+  }
+
+  .stepIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 0.8rem;
+  }
+  .stepIcon svg {
+    font-size: 2rem;
+  }
+
+  .stepTitle {
+    font-size: 2.2rem;
+  }
+  .stepDescription {
+    font-size: 1rem;
+    margin-bottom: 30px; /* Réduire la marge */
+  }
+
+  .formLabel {
+    font-size: 1rem;
+    margin-bottom: 10px; /* Réduire la marge */
+  }
+
+  .inputField,
+  .selectField,
+  .textareaField {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+
+  .inputGroupInline {
+    flex-direction: column; /* Empile les champs de dimensions */
+    gap: 10px;
+  }
+  .inputGroupInline .inputField {
+    min-width: unset;
+  }
+
+  /* Pour les grilles radio et checkbox, on peut garder le grid pour l'instant */
+  .radioGrid, .radioGridSmall, .checkboxGrid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+  .radioCard, .checkboxCard {
+    padding: 15px;
+    font-size: 0.9rem; /* Texte plus petit */
+  }
+  .radioCard svg {
+    font-size: 2rem;
+  }
+  .radioCardSmall {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+  .radioCardSmall svg {
+    font-size: 1.2rem;
+  }
+  .checkboxCard {
+    padding: 12px;
+  }
+  .checkboxContainer {
+    font-size: 1rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column; /* Empile les boutons */
+    gap: 15px;
+  }
+  .prevButton, .nextButton, .submitButton {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+
+  .quoteCtaSection {
+    height: 280px;
+    margin-top: 60px;
+  }
+
+  .quoteCtaTitle {
+    font-size: 2.5rem;
+  }
+
+  .quoteCtaButton {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Mobile (max-width: 767px) - ICI LES CHANGEMENTS CLÉS POUR LES GRILLES RADIO */
+@media (max-width: 767px) {
+  .heroSection {
+    height: 30vh;
+  }
+  .heroTitle {
+    font-size: 2.2rem; /* Plus petit */
+  }
+  .heroDescription {
+    font-size: 0.95rem; /* Plus petit */
+  }
+
+  .quoteFormSection {
+    margin: 40px auto;
+    padding: 30px 15px; /* Padding latéral réduit */
+    border-radius: 15px;
+  }
+
+  .progressIndicator {
+    width: 95%;
+    margin-bottom: 30px;
+  }
+
+  .stepIcon {
+    width: 50px;
+    height: 50px;
+    font-size: 0.75rem;
+  }
+  .stepIcon svg {
+    font-size: 1.6rem;
+  }
+  .stepIcon span {
+      display: none; /* Masque le texte "Étape X" sur les petits écrans pour gagner de la place */
+  }
+
+  .stepTitle {
+    font-size: 1.8rem;
+  }
+  .stepDescription {
+    font-size: 0.9rem;
+    margin-bottom: 25px; /* Réduire la marge */
+  }
+
+  .formLabel {
+    font-size: 0.9rem;
+    margin-bottom: 8px; /* Réduire la marge */
+  }
+
+  .inputField,
+  .selectField,
+  .textareaField {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+
+  /* --- Styles pour le défilement horizontal des cartes de projets (.radioGrid) --- */
+  .radioGrid {
+    display: flex; /* Utilise flexbox */
+    overflow-x: auto; /* Active le défilement horizontal */
+    -webkit-overflow-scrolling: touch; /* Améliore le défilement sur iOS */
+    white-space: nowrap; /* Empêche les cartes de passer à la ligne */
+    padding-bottom: 15px; /* Espace pour la barre de défilement */
+    scrollbar-width: none; /* Cache la barre de défilement pour Firefox */
+    margin-left: -15px; /* Étend le conteneur jusqu'aux bords du quoteFormSection */
+    margin-right: -15px;
+    padding-left: 20px; /* Ajoute un padding interne pour les premières/dernières cartes */
+    padding-right: 20px;
+    gap: 10px; /* Espace entre les cartes */
+  }
+  .radioGrid::-webkit-scrollbar {
+    display: none; /* Cache la barre de défilement pour Webkit */
+  }
+  .radioGrid .radioCard {
+    flex: 0 0 auto; /* Empêche les cartes de rétrécir ou de grandir */
+    width: 120px; /* Largeur fixe pour chaque carte de projet */
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+  .radioGrid .radioCard svg {
+    font-size: 2rem;
+  }
+  /* Fin des styles pour le défilement horizontal */
+
+  /* Pour les autres grilles, gardons-les empilées si c'est plus lisible */
+  .radioGridSmall, .checkboxGrid {
+    grid-template-columns: 1fr; /* Une colonne pour ces grilles */
+    gap: 10px;
+  }
+  .radioCardSmall {
+    padding: 8px;
+  }
+  .radioCardSmall svg {
+    font-size: 1rem;
+  }
+  .checkboxContainer {
+    font-size: 0.9rem;
+    padding-left: 30px;
+  }
+  .checkmark {
+    height: 20px;
+    width: 20px;
+  }
+  .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+  }
+
+  .buttonGroup {
+    gap: 10px;
+  }
+  .prevButton, .nextButton, .submitButton {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+
+  .quoteCtaSection {
+    height: 250px;
+    margin-top: 40px;
+  }
+
+  .quoteCtaTitle {
+    font-size: 2rem;
+  }
+
+  .quoteCtaButton {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,218 @@
+/* Variables CSS (assurez-vous qu'elles sont définies globalement ou importées) */
+:root {
+  --color-white: #FFFFFF;
+  --color-marine-blue: #003366;
+  --color-water-blue: #0077be;
+  /* Ajoutez d'autres couleurs si nécessaire */
+}
+
+.aboutSection {
+  display: flex;
+  align-items: center; /* Centre les éléments verticalement */
+  gap: 4rem; /* Espacement entre les deux colonnes (images et texte) */
+  padding: 8rem 5%; /* Rembourrage autour de la section */
+  background-color: var(--color-white); /* Fond blanc */
+  max-width: 100%; /* Largeur maximale pour le contenu */
+  margin: 0 auto; /* Centre la section sur la page */
+}
+
+/* Partie gauche : Images et infoBoxes */
+.aboutImages {
+  flex: 1; /* Prend une part égale de l'espace disponible */
+  display: flex;
+  gap: 1.5rem; /* Espacement entre les deux groupes d'images/boîtes */
+  align-items: flex-start; /* Aligne les groupes par le haut */
+  position: relative;
+  min-height: 400px; /* Hauteur minimale pour les images */
+}
+
+.aboutImageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 50%; /* Chaque groupe prend la moitié de la largeur du conteneur */
+  align-items: flex-start;
+}
+
+.aboutImageWrapperShifted {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 50%;
+  margin-top: 100px; /* Décale ce groupe vers le bas */
+  align-items: flex-start;
+}
+
+.aboutImage {
+  width: 100%;
+  height: auto; /* Ajuste la hauteur automatiquement */
+  border-radius: 10px;
+  object-fit: cover; /* Recadre l'image pour couvrir la zone */
+  display: block;
+}
+
+.infoBox {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-water-blue); /* Bordure fine */
+  border-left: 5px solid var(--color-water-blue); /* Accentuation de la bordure gauche */
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 4px 15px rgba(0, 71, 122, 0.08);
+  color: var(--color-marine-blue);
+  font-weight: 600;
+  font-size: 0.95rem;
+  width: 100%; /* Prend toute la largeur de son groupe */
+  max-width: 250px; /* Empêche la boîte de devenir trop large sur les grands écrans */
+}
+
+.infoBox svg {
+  color: var(--color-water-blue); /* Couleur de l'icône */
+  min-width: 20px; /* Assure que l'icône ne se contracte pas */
+}
+
+/* Partie droite : Texte et Boutons */
+.aboutContent {
+  flex: 1; /* Prend une part égale de l'espace disponible sur desktop */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Aligne le contenu à gauche sur desktop */
+}
+
+.aboutTitle {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--color-marine-blue);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.aboutTitle .highlight {
+  color: var(--color-water-blue);
+}
+
+.aboutDescription {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 2.5rem;
+}
+
+.aboutActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  width: auto;
+  height: 43px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 18px; /* Augmenté pour un meilleur look */
+  font-size: 14.83px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.primaryButton {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  border-color: var(--color-water-blue);
+}
+
+.primaryButton:hover {
+  background-color: var(--color-marine-blue);
+  border-color: var(--color-marine-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                           Media Queries (Responsive)                       */
+/* -------------------------------------------------------------------------- */
+
+/* Tablette (ex: 768px à 992px) */
+@media (max-width: 992px) {
+  .aboutSection {
+    flex-direction: column; /* Empile les colonnes */
+    gap: 2.5rem;
+    padding: 5rem 5%;
+  }
+
+  .aboutImages {
+    /* Masquer la section des images */
+    display: none;
+    visibility: hidden;
+  }
+
+  .aboutContent {
+    flex: none; /* Ne prend plus une part égale, mais s'adapte */
+    width: 100%; /* Prend toute la largeur disponible */
+    text-align: center; /* Centre le texte */
+    align-items: center; /* Centre les éléments */
+  }
+
+  .aboutTitle {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .aboutDescription {
+    font-size: 1.05rem;
+    max-width: 700px; /* Limite la largeur pour une meilleure lisibilité */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+  }
+
+  .aboutActions {
+    justify-content: center; /* Centre les boutons */
+  }
+}
+
+/* Mobile (ex: < 768px) */
+@media (max-width: 767px) {
+  .aboutSection {
+    padding: 4rem 1rem; /* Padding plus réduit pour mobile */
+    gap: 2rem;
+  }
+
+  /* La section .aboutImages est déjà masquée par la query tablette */
+
+  
+
+  .aboutTitle {
+    font-size: 2rem; /* Taille de titre réduite */
+    margin-bottom: 0.8rem;
+  }
+
+  .aboutDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .aboutActions {
+    flex-direction: column; /* Empile les boutons verticalement */
+    gap: 0.8rem;
+    width: 50%; /* Prend toute la largeur */
+  }
+
+  .button {
+    width: 90%; /* Boutons plus larges */
+    max-width: 300px; /* Limite la largeur des boutons */
+    margin: 0 auto; /* Centre les boutons */
+    height: 45px;
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,89 @@
+/* src/components/RealisationHero/RealisationHero.module.css */
+
+.heroSection {
+    position: relative;
+    width: 100%;
+    height: 45vh; /* Hauteur pas trop longue pour les pages internes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .heroImage {
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  .overlay {
+    background-color: rgba(0, 51, 102, 0.5); /* Overlay bleu marine semi-transparent */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 2;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 3;
+    margin-top: 40px;
+    padding: 0 20px;
+    max-width: 900px;
+  }
+  
+  .title {
+    font-size: 3.5rem; /* Ajusté pour être visible mais pas écrasant */
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Media Queries pour la réactivité */
+  @media (max-width: 768px) {
+    .heroSection {
+        padding-top: 50px;
+       
+      height: 60vh;
+    }
+    .title {
+      font-size: 2.5rem;
+    }
+    .description {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .heroSection {
+      height: 25vh;
+    }
+    .title {
+      font-size: 2rem;
+    }
+    .description {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Couleurs du thème */
+  :root {
+    --color-white: #ffffff;
+    --color-water-blue: #00bcd4;
+    --color-marine-blue: #00477a;
+  }

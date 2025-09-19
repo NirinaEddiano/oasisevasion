@@ -1,0 +1,290 @@
+/* src/app/equipement/EquipmentCategoryPage.module.css */
+
+.equipmentCategoryPage {
+  padding-top: var(--navbar-height);
+  color: var(--color-marine-blue); /* Texte par défaut en bleu marine */
+}
+
+/* --- Hero Section --- */
+.heroSection {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-repeat: no-repeat; /* Gardons ces propriétés de fond pour une bonne mise en page */
+  background-position: center center;
+  background-size: cover;
+  color: var(--color-white); /* Texte du hero en blanc */
+  padding: 4rem 1rem;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 51, 102, 0.5); /* Overlay basé sur color-marine-blue avec opacité */
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.heroTitle {
+  font-size: var(--font-size-h1);
+  margin-bottom: 1rem;
+  color: var(--color-water-blue); /* Titre du hero en bleu eau vif */
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heroDescription {
+  font-size: var(--font-size-large);
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Equipment Detail Section --- */
+.equipmentDetailSection {
+  padding: 4rem 0;
+  background-color: var(--color-white); /* Fond blanc pour la section de détail */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.equipmentItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rem;
+  gap: 3rem;
+}
+
+.equipmentItem:last-child {
+  margin-bottom: 0;
+}
+
+/* Alternating layout */
+.layoutLeft .equipmentTextContent { order: 1; }
+.layoutLeft .equipmentImageContainer { order: 2; }
+
+.layoutRight .equipmentTextContent { order: 2; }
+.layoutRight .equipmentImageContainer { order: 1; }
+
+.equipmentTextContent {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: var(--color-white); /* Fond blanc */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.equipmentImageContainer {
+  position: relative;
+  flex: 1;
+  min-height: 350px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.equipmentImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.equipmentItemTitle {
+  font-size: var(--font-size-h2);
+  color: var(--color-marine-blue); /* Titre de l'équipement en bleu marine */
+  margin-bottom: 1rem;
+}
+
+.equipmentItemDescription {
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  color: var(--color-marine-blue); /* Description en bleu marine */
+  margin-bottom: 1.5rem;
+}
+
+.quoteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-water-blue); /* Bouton en bleu eau vif */
+  color: var(--color-white);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.quoteButton:hover {
+  background-color: var(--color-marine-blue); /* Bouton au survol en bleu marine */
+}
+
+/* --- Carousel Section --- */
+.carouselSection {
+  padding: 4rem 0;
+  background-color: var(--color-white); /* Fond du carousel en bleu marine */
+  color: var(--color-marine-blue); /* Texte du carousel en blanc */
+  text-align: center;
+}
+
+.carouselTitle {
+  font-size: var(--font-size-h2);
+  color: var(--color-water-blue); /* Titre du carousel en bleu eau vif */
+  margin-bottom: 2.5rem;
+}
+
+.carouselContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.carouselCard {
+  background-color: var(--color-white); /* Fond des cartes en blanc */
+  color: var(--color-marine-blue); /* Texte des cartes en bleu marine */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carouselCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.carouselImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin-bottom: 1.5rem;
+}
+
+.carouselCardImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.carouselCardTitle {
+  font-size: var(--font-size-medium);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  color: var(--color-marine-blue); /* Titre de la carte en bleu marine */
+}
+
+.carouselButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-water-blue); /* Bouton en bleu eau vif */
+  color: var(--color-white);
+  padding: 0.7rem 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.carouselButton:hover {
+  background-color: var(--color-marine-blue); /* Bouton au survol en bleu marine */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+  .equipmentItem {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .layoutRight .equipmentTextContent,
+  .layoutRight .equipmentImageContainer {
+    order: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: var(--font-size-h2);
+  }
+  .heroContent {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    max-width: 800px;
+  }
+  .heroDescription {
+    font-size: var(--font-size-base);
+  }
+  .equipmentItemTitle {
+    font-size: var(--font-size-h3);
+  }
+  .equipmentImageContainer {
+    height: 300px;
+    padding: 160px;
+  }
+  .carouselTitle {
+    font-size: var(--font-size-h3);
+  }
+  .carouselCard {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    min-height: 250px;
+    padding: 2rem 1rem;
+  }
+  .heroTitle {
+    font-size: var(--font-size-h3);
+  }
+  .equipmentDetailSection,
+  .carouselSection {
+    padding: 2rem 0;
+  }
+  .equipmentItem {
+    margin-bottom: 2rem;
+  }
+ 
+  .quoteButton, .carouselButton {
+    padding: 0.6rem 1rem;
+    font-size: var(--font-size-small);
+  }
+  .carouselCard {
+    padding-bottom: 1rem;
+  }
+  .carouselImageWrapper {
+    height: 150px;
+  }
+  .carouselCardTitle {
+    font-size: var(--font-size-base);
+  }
+}

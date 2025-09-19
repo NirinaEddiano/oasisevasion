@@ -1,0 +1,120 @@
+/* src/components/ServicePage/ServiceCTA.module.css */
+
+.ctaSection {
+    position: relative;
+    width: 100%;
+    padding: 8rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    overflow: hidden;
+}
+
+.ctaBackground {
+    object-fit: cover;
+    z-index: 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 51, 102, 0.7); /* Marine blue transparent */
+    z-index: 1;
+}
+
+.ctaContent {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.ctaTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.ctaSubtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 35px;
+    background-color: var(--color-mustard-yellow);
+    color: var(--color-marine-blue);
+    border: 2px solid var(--color-mustard-yellow);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ctaButton:hover {
+    background-color: var(--color-white);
+    border-color: var(--color-white);
+    color: var(--color-marine-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .ctaSection {
+        padding: 6rem 3%;
+    }
+    .ctaTitle {
+        font-size: 2.5rem;
+    }
+    .ctaSubtitle {
+        font-size: 1.1rem;
+    }
+    .ctaButton {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ctaSection {
+        padding: 5rem 3%;
+    }
+    .ctaTitle {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    .ctaSubtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    .ctaButton {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .ctaSection {
+        padding: 4rem 3%;
+    }
+    .ctaTitle {
+        font-size: 1.8rem;
+    }
+    .ctaSubtitle {
+        font-size: 0.95rem;
+    }
+}

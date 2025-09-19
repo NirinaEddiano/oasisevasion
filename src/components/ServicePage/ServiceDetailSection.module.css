@@ -1,0 +1,197 @@
+/* src/components/ServicePage/ServiceDetailSection.module.css */
+
+.detailSection {
+    padding: 6rem 0;
+    background-color: #f8f8f8; /* Légèrement différent pour démarquer les sections */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+}
+
+.imageLeft .textColumn {
+    order: 2; /* Change l'ordre pour les images à gauche */
+}
+.imageLeft .imagesColumn {
+    order: 1;
+}
+
+.textColumn {
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 2.5rem;
+}
+
+.imagesColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 70%; /* Ratio pour les images */
+    max-width: 550px; /* Limite la largeur de l'ensemble */
+    height: auto;
+}
+
+.image1, .image2 {
+    position: absolute;
+    width: 80%; /* Pour permettre le chevauchement */
+    height: 80%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 71, 122, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image1 {
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.image2 {
+    bottom: 0;
+    right: 0;
+    z-index: 2; /* Au-dessus de l'image 1 */
+    transform: translate(25%, 25%); /* Décale de 25% de sa propre largeur/hauteur */
+}
+
+/* Animation au survol */
+.imageWrapper:hover .image1 {
+    transform: translate(-10px, -10px) rotate(-2deg);
+    box-shadow: 0 15px 40px rgba(0, 71, 122, 0.3);
+}
+.imageWrapper:hover .image2 {
+    transform: translate(calc(25% + 10px), calc(25% + 10px)) rotate(2deg);
+    box-shadow: 0 15px 40px rgba(0, 71, 122, 0.3);
+}
+
+
+.quoteButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background-color: var(--color-water-blue);
+    color: var(--color-white);
+    border: 2px solid var(--color-water-blue);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.quoteButton:hover {
+    background-color: var(--color-marine-blue);
+    border-color: var(--color-marine-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .imageLeft .textColumn, .imageLeft .imagesColumn {
+        order: unset; /* Réinitialise l'ordre pour les petits écrans */
+    }
+    .textColumn {
+        text-align: center;
+    }
+    .subtitle {
+        font-size: 2rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+    .imageWrapper {
+        width: 80%; /* Réduit la largeur du wrapper pour les images */
+        margin: 0 auto;
+        padding-bottom: 85%;
+    }
+    .image1, .image2 {
+        width: 90%;
+        height: 90%;
+    }
+    .image2 {
+        transform: translate(15%, 15%); /* Ajuste le chevauchement pour mobile */
+    }
+    .imageWrapper:hover .image1 {
+        transform: translate(-5px, -5px) rotate(-1deg);
+    }
+    .imageWrapper:hover .image2 {
+        transform: translate(calc(15% + 5px), calc(15% + 5px)) rotate(1deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .detailSection {
+        padding: 4rem 0;
+    }
+    .container {
+        padding: 0 15px;
+    }
+    .subtitle {
+        font-size: 1.8rem;
+    }
+    .imagesColumn {
+        display: none;
+    }
+    
+    .imageWrapper {
+        position: relative;
+        width: 50%;
+        max-width: 400px; /* Limite la largeur de l'ensemble */
+        height: auto;
+    }
+    .image1, .image2 {
+       display: none;
+    }
+    .quoteButton {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    .imageWrapper {
+        padding-bottom: 100%; /* Plus carré sur petit écran */
+    }
+}
+
+@media (max-width: 576px) {
+    .subtitle {
+        font-size: 1.6rem;
+    }
+    .description {
+        font-size: 0.95rem;
+    }
+    .imageWrapper {
+        width: 90%;
+    }
+}

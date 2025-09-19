@@ -1,0 +1,156 @@
+/* src/app/globals.css */
+
+@import "tailwindcss";
+
+:root {
+  --color-white: #ffffff;
+  --color-water-blue: #00bcd4; /* Exemple d'un bleu eau vif */
+  --color-marine-blue: #00477a; /* Exemple d'un bleu marine profond */
+  /* ... autres variables ... */
+   /* Ajustez à la hauteur réelle de votre navbar */
+
+  --font-size-h1: 2.8rem;
+  --font-size-h2: 2.2rem;
+  --font-size-h3: 1.8rem;
+  --font-size-large: 1.2rem;
+  --font-size-medium: 1.1rem;
+  --font-size-base: 1rem;
+  --font-size-small: 0.9rem;
+}
+
+
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  overflow-x:hidden;
+  width: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Styles globaux pour le carrousel de réalisations */
+.global-realisations-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 5%; /* Rembourrage pour les bords du carrousel */
+  gap: 2rem; /* Espacement entre les cartes */
+  scrollbar-width: none; /* Cache la barre de défilement pour Firefox */
+  -ms-overflow-style: none; /* Cache la barre de défilement pour IE/Edge */
+}
+
+.global-realisations-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.realisation-content-wrapper {
+  display: flex;
+  max-width: 1400px; /* Largeur maximale du conteneur principal */
+  margin: 40px auto; /* Espacement autour et centrage */
+  gap: 30px; /* Espacement entre les colonnes */
+  padding: 0 20px; /* Padding sur les côtés */
+}
+
+.realisation-main-content {
+  flex: 3; /* Prend 75% de la largeur (3/4) */
+  min-width: 0; /* Important pour que le contenu scrollable se comporte bien */
+  overflow-y: auto; /* Défilement vertical indépendant */
+  max-height: calc(100vh - 100px); /* Hauteur limitée pour activer le scroll, ajuste selon la navbar/footer */
+  position: sticky; /* Pour le maintenir en place pendant le scroll du parent */
+  top: 80px; /* Ajuste en fonction de la hauteur de ta navbar */
+  padding-right: 20px; /* Pour éviter que le contenu ne touche la sidebar si elle est fixée */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--color-water-blue) #f1f1f1; /* Firefox */
+}
+
+/* Styles pour le scrollbar webkit */
+.realisation-main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.realisation-main-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.realisation-main-content::-webkit-scrollbar-thumb {
+  background: var(--color-water-blue);
+  border-radius: 10px;
+}
+
+.realisation-main-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-marine-blue);
+}
+
+
+.realisation-sidebar-content {
+  flex: 1; /* Prend 25% de la largeur (1/4) */
+  min-width: 0; /* Important pour que le contenu scrollable se comporte bien */
+  overflow-y: auto; /* Défilement vertical indépendant */
+  max-height: calc(100vh - 100px); /* Hauteur limitée pour activer le scroll, ajuste selon la navbar/footer */
+  position: sticky; /* Pour le maintenir en place pendant le scroll du parent */
+  top: 80px; /* Ajuste en fonction de la hauteur de ta navbar */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--color-marine-blue) #f1f1f1; /* Firefox */
+}
+
+/* Styles pour le scrollbar webkit */
+.realisation-sidebar-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.realisation-sidebar-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.realisation-sidebar-content::-webkit-scrollbar-thumb {
+  background: var(--color-marine-blue);
+  border-radius: 10px;
+}
+
+.realisation-sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-water-blue);
+}
+
+@media (max-width: 1024px) {
+  .realisation-content-wrapper {
+    flex-direction: column; /* Colonne unique pour les tablettes et mobiles */
+    margin: 20px auto;
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .realisation-main-content,
+  .realisation-sidebar-content {
+    flex: none; /* Désactive le flex pour la colonne unique */
+    width: 100%; /* Prend toute la largeur */
+    max-height: none; /* Permet le scroll de la page entière */
+    overflow-y: visible; /* Le contenu est visible, le scroll est géré par le body */
+    position: static; /* Supprime le sticky pour le scroll global */
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  html ,body{
+    overflow-x:hidden ;
+  }
+}
+
+/* Ajoutez ici d'autres styles globaux si nécessaire */

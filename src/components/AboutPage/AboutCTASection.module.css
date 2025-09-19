@@ -1,0 +1,121 @@
+/* components/AboutPage/AboutCTASection.module.css */
+
+.aboutCtaSection {
+    background-color: var(--color-marine-blue); /* Couleur de fond plus foncée */
+    color: var(--color-white);
+    padding: 8rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-image: url('/images/cta-about-bg.jpg'); /* Image de fond subtile */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .aboutCtaSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 51, 102, 0.75); /* Overlay bleu marine pour lisibilité */
+    z-index: 1;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .highlight {
+    color: var(--color-water-blue); /* Couleur vive pour l'accentuation */
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+  }
+  
+  .ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.2rem 3rem;
+    background-color: var(--color-water-blue); /* Bouton bleu eau */
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 119, 190, 0.3);
+  }
+  
+  .ctaButton:hover {
+    background-color: var(--color-marine-blue); /* Changer au bleu marine au survol */
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 119, 190, 0.4);
+  }
+  
+  /* Media Queries */
+  @media (max-width: 992px) {
+    .title {
+      font-size: 2.5rem;
+    }
+    .description {
+      font-size: 1.1rem;
+    }
+    .ctaButton {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .aboutCtaSection {
+      padding: 6rem 0;
+    }
+    .title {
+      font-size: 2rem;
+    }
+    .description {
+      font-size: 1rem;
+    }
+    .ctaButton {
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .aboutCtaSection {
+      padding: 4rem 0;
+    }
+    .title {
+      font-size: 1.8rem;
+    }
+    .description {
+      font-size: 0.9rem;
+    }
+    .ctaButton {
+      width: 90%;
+      font-size: 0.9rem;
+      padding: 0.8rem 1.5rem;
+    }
+  }

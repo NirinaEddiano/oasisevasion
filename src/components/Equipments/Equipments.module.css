@@ -1,0 +1,357 @@
+/* Equipments.module.css */
+
+.equipmentsSection {
+    margin-top: -150px;
+    background-color: var(--color-white);
+    padding: 8rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Conteneur du titre et description de la section */
+  .equipmentsTitleContainer {
+    margin-bottom: 5rem;
+    padding: 0 5%;
+  }
+  
+  .sectionTitle {
+    font-size: 2.8rem; /* Taille ajustée pour la cohérence */
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    margin-bottom: 1rem;
+  }
+  
+  .sectionTitle .highlight {
+    color: var(--color-water-blue);
+  }
+  
+  .sectionDescription {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #555;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Conteneur principal pour la grille des cartes d'équipement */
+  .equipmentsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur desktop */
+    gap: 2.5rem; /* Espacement entre les cartes */
+    max-width: 1200px; /* Largeur maximale pour la grille */
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  
+  /* Style de chaque carte d'équipement individuelle */
+  .equipmentCard {
+    background-color: var(--color-white);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 71, 122, 0.08); /* Ombre douce */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Pour que toutes les cartes aient la même hauteur */
+    text-align: left; /* Contenu textuel aligné à gauche */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative; /* Pour des éléments additionnels si besoin */
+  }
+  
+  .equipmentCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0, 71, 122, 0.15);
+  }
+  
+  /* Zone image d'en-tête de la carte */
+  .cardImageHeader {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Hauteur fixe pour l'image d'en-tête */
+    overflow: hidden;
+    border-radius: 15px 15px 0 0; /* Arrondi seulement en haut */
+  }
+
+  .aboutActions {
+    margin-top: 2rem;
+  }
+
+  .button {
+    width: 120px;
+    height: 43px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espace entre l'icône et le texte */
+    padding: 0 10px; /* Padding horizontal */
+    place-self: center;
+    font-size: 14.83px;
+    font-weight: 500; /* Medium */
+  
+    cursor: pointer;
+    border: 2px solid transparent; 
+    transition: all 0.3s ease;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  
+  .primaryButton {
+    background-color: var(--color-water-blue);
+    color: var(--color-white);
+    border-color: var(--color-water-blue);
+  }
+  
+  .primaryButton:hover {
+    background-color: var(--color-marine-blue);
+    border-color: var(--color-marine-blue);
+    transform: translateY(-3px);
+  }
+  
+  
+  .cardImage {
+    object-fit: cover;
+    filter: brightness(0.95); /* Image bien visible, presque pleine luminosité */
+    transition: filter 0.4s ease, transform 0.4s ease;
+  }
+  
+  .equipmentCard:hover .cardImage {
+    filter: brightness(1.05); /* S'illumine légèrement au survol */
+    transform: scale(1.05); /* Léger zoom sur l'image */
+  }
+  
+  /* Bloc de couleur solide avec l'icône, sous l'image */
+  .cardIconBlock {
+    background-color: var(--color-water-blue); /* Couleur primaire du bloc icône */
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Espacement entre l'icône et un potentiel texte dans le bloc */
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Séparateur subtil */
+    transition: background-color 0.4s ease;
+  }
+  
+  .equipmentCard:hover .cardIconBlock {
+    background-color: var(--color-marine-blue); /* Changement de couleur au survol */
+  }
+  
+  .cardIcon {
+    font-size: 2.5rem; /* Grande icône, mais pas démesurée */
+    flex-shrink: 0; /* Empêche l'icône de rétrécir */
+  }
+  
+  /* Contenu textuel de la carte */
+  .cardContent {
+    padding: 1.8rem 1.5rem; /* Rembourrage interne */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .cardTitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  
+  .cardDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+    flex-grow: 1;
+  }
+  
+  /* NOUVEAU STYLE pour le bouton "Découvrir toutes nos solutions" (intégré à la grille) */
+  .discoverGridButton {
+    background-color: var(--color-marine-blue); /* Couleur plus profonde pour se démarquer */
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 71, 122, 0.1);
+    height: 100%; /* Prend la même hauteur que les autres cartes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color:  var(--color-white);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+    padding: 2.5rem;
+    gap: 1.5rem;
+    background: linear-gradient(to bottom, rgba(0, 71, 122, 0.5), rgba(0, 71, 122, 0.75)), url('/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+  }
+
+  
+  .discoverGridButton:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0, 71, 122, 0.15);
+    background-color: var(--color-water-blue); /* Changement de couleur au survol */
+  }
+  
+  .discoverGridButtonIcon {
+    font-size: 4rem;
+    
+  }
+  
+  .discoverGridButtonText {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  /* --- Media Queries pour la responsivité --- */
+  @media (max-width: 1200px) {
+    .sectionTitle {
+      font-size: 2.5rem;
+    }
+    .sectionDescription {
+      font-size: 1rem;
+    }
+    .equipmentsGrid {
+      grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur les écrans moyens */
+    }
+    .equipmentCard, .discoverGridButton {
+      height: auto; /* La hauteur s'adapte au contenu */
+    }
+    .cardImageHeader {
+      height: 150px;
+    }
+    .cardIcon {
+      font-size: 2.2rem;
+    }
+    .cardContent {
+      padding: 1.5rem;
+    }
+    .cardTitle {
+      font-size: 1.3rem;
+    }
+    .cardDescription {
+      font-size: 0.85rem;
+    }
+    .discoverGridButtonIcon {
+      font-size: 3.5rem;
+    }
+    .discoverGridButtonText {
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .equipmentsTitleContainer {
+      margin-bottom: 3rem;
+    }
+    .sectionTitle {
+      font-size: 2.2rem;
+    }
+    .sectionDescription {
+      font-size: 0.95rem;
+    }
+    .equipmentsGrid {
+      grid-template-columns: 1fr; /* Une colonne sur les petits écrans */
+      max-width: 500px;
+    }
+    .equipmentCard, .discoverGridButton {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .cardImageHeader {
+      height: 130px;
+    }
+    .cardIcon {
+      font-size: 2rem;
+    }
+    .cardContent {
+      padding: 1.2rem;
+    }
+    .cardTitle {
+      font-size: 1.2rem;
+    }
+    .cardDescription {
+      font-size: 0.8rem;
+    }
+    .discoverGridButtonIcon {
+      font-size: 3rem;
+    }
+    .discoverGridButtonText {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .equipmentsSection {
+      padding: 6rem 0;
+    }
+    .equipmentsTitleContainer {
+      padding: 0 3%;
+    }
+    .sectionTitle {
+      font-size: 1.8rem;
+    }
+    .sectionDescription {
+      font-size: 0.85rem;
+    }
+    .equipmentsGrid {
+      gap: 1.5rem;
+      margin: 0 auto 3rem auto;
+      padding: 20px;
+    }
+    .cardImageHeader {
+      height: 110px;
+    }
+    .cardIcon {
+      font-size: 1.8rem;
+    }
+    .cardContent {
+      padding: 1rem;
+    }
+    .cardTitle {
+      font-size: 1.1rem;
+    }
+    .cardDescription {
+      font-size: 0.75rem;
+    }
+    .discoverGridButtonIcon {
+      font-size: 2.5rem;
+    }
+    .discoverGridButtonText {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .equipmentsSection {
+      padding: 4rem 0;
+    }
+    .sectionTitle {
+      font-size: 1.5rem;
+    }
+    .sectionDescription {
+      font-size: 0.8rem;
+    }
+    .cardImageHeader {
+      height: 90px;
+    }
+    .cardIcon {
+      font-size: 1.5rem;
+    }
+    .cardContent {
+      padding: 0.8rem;
+    }
+    .cardTitle {
+      font-size: 1rem;
+    }
+    .cardDescription {
+      font-size: 0.7rem;
+    }
+    .discoverGridButtonIcon {
+      font-size: 2rem;
+    }
+    .discoverGridButtonText {
+      font-size: 1rem;
+    }
+  }

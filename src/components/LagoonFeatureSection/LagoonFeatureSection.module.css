@@ -1,0 +1,181 @@
+/* src/components/LagoonFeatureSection/LagoonFeatureSection.module.css */
+
+.lagoonFeatureSection {
+    position: relative;
+    width: 100%;
+    height: 600px; /* Grande hauteur pour mettre en avant */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligner le contenu à gauche */
+    color: var(--color-white);
+    text-align: left;
+    overflow: hidden;/* Espace après cette section */
+  }
+  
+  .lagoonFeatureImageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  .lagoonFeatureImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .lagoonFeatureSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0, 71, 122, 0.8), rgba(0, 71, 122, 0.4) 50%, transparent 100%); /* Overlay dégradé */
+    z-index: 1;
+  }
+  
+  .lagoonFeatureContent {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    padding-left: 5%; /* Aligner avec le padding général du site */
+    padding-right: 1rem;
+  }
+  
+  .lagoonFeatureTitle {
+    font-size: var(--font-size-h1);
+    color: var(--color-water-blue);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  }
+  
+  .lagoonFeatureDescription {
+    font-size: var(--font-size-large);
+    line-height: 1.7;
+    color: var(--color-white);
+    margin-bottom: 2.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .lagoonFeatureActions {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem; /* Plus grand pour l'emphase */
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .primaryButton {
+    background-color: var(--color-water-blue);
+    color: var(--color-white);
+    border: 2px solid var(--color-water-blue);
+  }
+  
+  .primaryButton:hover {
+    background-color: var(--color-marine-blue);
+    border-color: var(--color-marine-blue);
+    transform: translateY(-3px);
+  }
+  
+  .secondaryButton {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 2px solid var(--color-white);
+  }
+  
+  .secondaryButton:hover {
+    background-color: var(--color-water-blue);
+    border-color: var(--color-water-blue);
+    transform: translateY(-3px);
+  }
+  
+  
+  /* Responsive adjustments for LagoonFeatureSection */
+  @media (max-width: 1024px) {
+    .lagoonFeatureSection {
+      height: 500px;
+      justify-content: center; /* Centrer le contenu sur les écrans moyens */
+      text-align: center;
+    }
+    .lagoonFeatureSection::before {
+      background: linear-gradient(to bottom, rgba(0, 71, 122, 0.7), rgba(0, 71, 122, 0.4)); /* Dégradé vertical */
+    }
+    .lagoonFeatureContent {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      max-width: 700px;
+    }
+    .lagoonFeatureActions {
+      justify-content: center;
+    }
+    
+  }
+
+  @media (max-width: 788px) {
+    .lagoonFeatureActions{
+      width:400px;
+      place-self: center;
+    }
+    .button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width:300px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .lagoonFeatureSection {
+      height: 400px;
+    }
+    .lagoonFeatureTitle {
+      font-size: var(--font-size-h2);
+    }
+    .lagoonFeatureDescription {
+      font-size: var(--font-size-base);
+    }
+    .lagoonFeatureActions{
+      width:200px;
+      place-self: center;
+    }
+    .button {
+      width:100px;
+      padding: 0.7rem 0.8rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .lagoonFeatureSection {
+      height: 350px;
+    }
+    .lagoonFeatureTitle {
+      font-size: var(--font-size-h3);
+    }
+    .lagoonFeatureDescription {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .lagoonFeatureActions {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .button {
+      width: 100%;
+      justify-content: center;
+    }
+  }

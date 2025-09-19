@@ -1,0 +1,126 @@
+/* src/components/RealisationsGrid/RealisationsGrid.module.css */
+
+.realisationsGridSection {
+    padding: 60px 20px;
+    background-color: var(--color-white); /* Ou une couleur de fond légère */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 colonnes pour desktop */
+    gap: 40px;
+    justify-items: center;
+  }
+  
+  .realisationCard {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Assure que la carte prend toute la largeur de sa colonne */
+    max-width: 380px; /* Limite la largeur maximale pour les très grands écrans */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .realisationCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 65%; /* Ratio 16:9 pour l'image (hauteur/largeur) */
+    overflow: hidden;
+  }
+  
+  .cardImage {
+    object-fit: cover;
+  }
+  
+  .cardContent {
+    padding: 25px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Permet au contenu de prendre l'espace restant */
+  }
+  
+  .cardTitle {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    margin-bottom: 10px;
+  }
+  
+  .cardText {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Permet au texte de prendre l'espace et pousse le bouton vers le bas */
+  }
+  
+  .viewButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--color-water-blue);
+    color: var(--color-white);
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    align-self: flex-start; /* Align the button to the start of the flex container */
+  }
+  
+  .viewButton:hover {
+    background-color: var(--color-marine-blue);
+    transform: translateY(-2px);
+  }
+  
+  .buttonIcon {
+    margin-left: 5px;
+  }
+  
+  /* Media Queries pour la réactivité */
+  @media (max-width: 1024px) {
+    .gridContainer {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 2 colonnes pour tablette */
+      gap: 30px;
+    }
+    .cardTitle {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .realisationsGridSection {
+      padding:  25px;
+    }
+    .gridContainer {
+      grid-template-columns: 1fr; /* 1 colonne pour mobile */
+      gap: 25px;
+    }
+    .realisationCard {
+      max-width: 450px; /* Plus large pour le mode mobile */
+    }
+    .cardTitle {
+      font-size: 1.3rem;
+    }
+    .cardText {
+      font-size: 0.95rem;
+    }
+  }
+  
+  /* Couleurs du thème */
+  :root {
+    --color-white: #ffffff;
+    --color-water-blue: #00bcd4;
+    --color-marine-blue: #00477a;
+  }

@@ -1,0 +1,82 @@
+/* components/AboutPage/AboutHeroSection.module.css */
+
+.heroAboutSection {
+    position: relative;
+    width: 100%;
+    min-height: 55vh; /* 55% de la hauteur de la vue */
+    background-image: url('/images/about-hero-bg.jpg'); /* Image de fond suggérée */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    /* padding-top: 80px; <-- SUPPRIMEZ CECI car il est géré globalement par le main tag */
+  }
+  
+  .overlay {
+    background-color: rgba(0, 51, 102, 0.5); /* Overlay bleu marine semi-transparent */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  }
+  
+  .description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    max-width: 800px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Media Queries */
+  @media (max-width: 992px) {
+    .heroAboutSection {
+      min-height: 45vh;
+    }
+    .title {
+      font-size: 2.8rem;
+    }
+    .description {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .heroAboutSection {
+      min-height: 40vh;
+    }
+    .title {
+      font-size: 2.2rem;
+    }
+    .description {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .heroAboutSection {
+      min-height: 35vh;
+    }
+    .title {
+      font-size: 1.8rem;
+    }
+    .description {
+      font-size: 0.9rem;
+    }
+  }

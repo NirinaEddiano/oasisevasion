@@ -1,0 +1,316 @@
+.hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Aligne le contenu principal et les cartes verticalement */
+  justify-content: center; /* Centre le contenu verticalement */
+  padding: 0 5%;
+  color: var(--color-white);
+
+  /* Configuration de l'image de fond */
+  background-image: url('/hero-background.jpg'); /* MODIFIEZ CECI */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Effet de parallaxe simple */
+}
+
+/* Superposition de couleur pour la lisibilité */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 71, 122, 0.6); /* Bleu semi-transparent */
+  z-index: 1;
+}
+
+/* Contenu principal (textes et boutons) */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 70%;
+}
+
+.preTitle {
+  font-size: 17px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8); /* Texte blanc légèrement transparent */
+  margin-bottom: 1rem;
+}
+
+.mainTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+.mainTitle .highlight {
+  color: var(--color-water-blue);
+  /* Un léger contour peut être moins visible sur des petits écrans, à tester */
+  -webkit-text-stroke: 1px #fff;
+  text-stroke: 1px #fff;
+}
+
+.description {
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+/* Animations d'apparition */
+.animatedIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Boutons de la section Hero --- */
+.actions {
+  display: flex;
+  gap: 1rem;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.6s, transform 0.8s ease-out 0.6s;
+}
+
+.button {
+  width: 209px;
+  height: 37px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 10px;
+  font-size: 13.83px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.quoteButton {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  border-color: var(--color-water-blue);
+}
+
+.quoteButton:hover {
+  background-color: var(--color-marine-blue);
+  border-color: var(--color-marine-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.callButton {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.callButton:hover {
+  background-color: var(--color-white);
+  color: var(--color-marine-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Grille des services en bas (Desktop seulement) --- */
+.servicesGrid {
+  position: absolute;
+  bottom: -9rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+  gap: 1.5rem;
+  z-index: 3;
+  padding-bottom: 2rem;
+}
+
+
+
+
+.serviceCard {
+  background: rgba(255, 255, 255 ); /* Fond transparent */
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 5px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.highlightedCard {
+  background: var(--color-water-blue); /* Fond bleu pour la carte mise en avant */
+  border-color: var(--color-water-blue);
+  color: var(--color-white);
+}
+
+.highlightedCard .cardIcon {
+  color: var(--color-white); /* Icône blanche pour la carte mise en avant */
+}
+
+.highlightedCard .cardText h3,
+.highlightedCard .cardText p {
+  color: var(--color-white); /* Texte blanc pour la carte mise en avant */
+}
+
+.highlightedCard:hover {
+  background-color: var(--color-marine-blue); /* Marine Blue au survol */
+  border-color: var(--color-marine-blue);
+  transform: translateY(-10px);
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+.cardIcon {
+  place-self: center;
+  color: var(--color-water-blue); /* Couleur des icônes par défaut */
+  flex-shrink: 0; /* Empêche l'icône de rétrécir */
+}
+
+.cardText h3 {
+  font-weight: 600;
+  font-size: 1.05rem; /* Légèrement ajusté */
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--color-marine-blue); /* Couleur du titre par défaut */
+}
+
+.cardText p {
+  font-size: 0.88rem; /* Légèrement ajusté */
+  line-height: 1.5;
+  color: rgba(0, 51, 102, 0.8); /* Bleu marine semi-transparent pour le texte */
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                           Media Queries (Responsive)                       */
+/* -------------------------------------------------------------------------- */
+
+/* Tablette (ex: 768px à 1024px) */
+@media (max-width: 1024px) {
+  .hero {
+    align-items: center; /* Centre le contenu horizontalement */
+    text-align: center; /* Centre le texte */
+    padding: 0 3%; /* Ajuste le padding */
+  }
+
+  .content {
+    max-width: 90%; /* Prend plus de largeur */
+  }
+
+  .preTitle {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .mainTitle {
+    font-size: 2.8rem; /* Plus petit pour les tablettes */
+    margin-bottom: 1.2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    max-width: 80%; /* Pour éviter une ligne trop longue */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .actions {
+    justify-content: center; /* Centre les boutons */
+    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne */
+  }
+
+  .button {
+    width: 180px; /* Plus petit pour les tablettes */
+    height: 40px;
+    font-size: 13px;
+    margin: 0.5rem 0; /* Ajoute un peu de marge si les boutons wrap */
+  }
+
+  .servicesGrid {
+    /* Masquer la grille des services pour les tablettes */
+    display: none;
+    visibility: hidden;
+  }
+}
+
+/* Mobile (ex: < 768px) */
+@media (max-width: 767px) {
+  .hero {
+    height: 100vh; /* Garde la pleine hauteur */
+    padding: 0 1rem; /* Padding encore plus réduit */
+    justify-content: center; /* Aligne le contenu vers le bas */
+    padding-top: 5vh;
+    padding-bottom: 5vh; /* Espace du bas pour ne pas coller */
+  }
+
+  .content {
+    max-width: 100%;
+    margin-bottom: 1rem; /* Espace entre le contenu et le bas de la section */
+  }
+
+  .preTitle {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .mainTitle {
+    font-size: 2rem; /* Encore plus petit pour les mobiles */
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    max-width: 90%;
+    margin-bottom: 1rem;
+  }
+
+  .actions {
+    flex-direction: column; /* Boutons empilés verticalement */
+    gap: 0.8rem;
+    width: 100%; /* Prend toute la largeur disponible */
+  }
+
+  .button {
+    width: 90%; /* Les boutons prennent presque toute la largeur */
+    max-width: 280px; /* Limite la taille des boutons sur des écrans très larges */
+    height: 45px;
+    font-size: 14px;
+    padding: 0 15px;
+    margin: 0 auto; /* Centre les boutons */
+  }
+
+  .servicesGrid {
+    /* S'assurer que la grille est masquée */
+    display: none;
+    visibility: hidden;
+  }
+}

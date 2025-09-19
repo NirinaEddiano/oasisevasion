@@ -1,0 +1,359 @@
+/* src/components/ServicePage/ServiceConstructionDetails.module.css */
+
+/* Variables de thème (assurez-vous qu'elles sont définies globalement ou importées) */
+:root {
+    --color-white: #FFFFFF;
+    --color-marine-blue: #003366;
+    --color-water-blue: #0077be;
+    --color-grey-light: #f4f7f6; /* Pour le fond de section */
+    --text-color: #333;
+  }
+  
+  .constructionDetailsSection {
+    padding: 6rem 5%; /* Padding général de la section */
+    background-color: var(--color-grey-light); /* Fond clair pour la section */
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .sectionHeadline {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .sectionHeadline .highlight {
+    color: var(--color-water-blue); /* Couleur d'accentuation pour les mots clés */
+  }
+  
+  .sectionIntro {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  
+  /* --- Section des Étapes de Construction --- */
+  .stepsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 colonnes flexibles sur desktop */
+    gap: 3rem; /* Espacement entre les cartes */
+    margin-bottom: 5rem;
+  }
+  
+  .stepCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .stepCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+  
+  .stepNumber {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-water-blue);
+    background-color: rgba(0, 119, 190, 0.1); /* Fond semi-transparent pour le numéro */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0; /* Empêche le numéro de rétrécir */
+  }
+  
+  .stepContent {
+    flex-grow: 1; /* Permet au contenu de prendre l'espace disponible */
+  }
+  
+  .stepTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    margin-bottom: 1rem;
+  }
+  
+  .stepDescription {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  .stepImageWrapper {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Hauteur fixe pour les images d'étape */
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  .stepImage {
+    object-fit: cover;
+    filter: brightness(0.95);
+  }
+  
+  /* --- Section des Équipements Utilisés --- */
+  .equipmentContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 4 colonnes sur desktop */
+    gap: 2rem;
+    margin-bottom: 5rem;
+  }
+  
+  .equipmentCard {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .equipmentCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .equipmentImageWrapper {
+    position: relative;
+    width: 100px; /* Taille fixe pour l'image d'équipement */
+    height: 100px;
+    border-radius: 50%; /* Image circulaire */
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background-color: var(--color-grey-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-water-blue); /* Bordure d'accentuation */
+  }
+  
+  .equipmentImage {
+    object-fit: contain; /* Assure que toute l'image est visible */
+  }
+  
+  .equipmentName {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    margin-bottom: 0.5rem;
+  }
+  
+  .equipmentDescription {
+    font-size: 0.9rem;
+    color: var(--text-color, #777);
+    line-height: 1.5;
+  }
+  
+  /* --- Section Galerie des Résultats --- */
+  .resultGallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 colonnes flexibles */
+    gap: 1.5rem;
+  }
+  
+  .galleryImageWrapper {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Hauteur fixe pour les images de la galerie */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .galleryImageWrapper:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .galleryImage {
+    object-fit: cover;
+    filter: brightness(0.98);
+  }
+  
+  /* -------------------------------------------------------------------------- */
+  /*                           Media Queries (Responsive)                       */
+  /* -------------------------------------------------------------------------- */
+  
+  /* Tablette (max-width: 1024px) */
+  @media (max-width: 1024px) {
+    .constructionDetailsSection {
+      padding: 4rem 3%; /* Padding réduit */
+    }
+  
+    .sectionHeadline {
+      font-size: 2.2rem; /* Taille de titre réduite */
+      margin-bottom: 1rem;
+    }
+  
+    .sectionIntro {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+  
+    /* Étapes de Construction */
+    .stepsContainer {
+      grid-template-columns: 1fr; /* Une seule colonne, les étapes s'empilent */
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+  
+    .stepNumber {
+      font-size: 2rem;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+  
+    .stepTitle {
+      font-size: 1.3rem;
+    }
+  
+    .stepDescription {
+      font-size: 0.95rem;
+    }
+  
+    .stepImageWrapper {
+      height: 200px;
+    }
+  
+    /* Équipements Utilisés */
+    .equipmentContainer {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 2-3 colonnes */
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .equipmentCard {
+      padding: 1rem;
+    }
+    .equipmentImageWrapper {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0.8rem;
+    }
+    .equipmentName {
+      font-size: 1.1rem;
+    }
+    .equipmentDescription {
+      font-size: 0.85rem;
+    }
+  
+    /* Galerie des Résultats */
+    .resultGallery {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 2 colonnes */
+      gap: 1rem;
+    }
+    .galleryImageWrapper {
+      height: 250px;
+    }
+  }
+  
+  /* Mobile (max-width: 767px) */
+  @media (max-width: 767px) {
+    .constructionDetailsSection {
+      padding: 3rem 1rem; /* Padding plus compact */
+    }
+  
+    .sectionHeadline {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+  
+    .sectionIntro {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    /* Étapes de Construction (déjà en 1 colonne) */
+    .stepsContainer {
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+  
+    .stepCard {
+      padding: 1.5rem;
+    }
+  
+    .stepNumber {
+      font-size: 1.8rem;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+  
+    .stepTitle {
+      font-size: 1.2rem;
+    }
+  
+    .stepDescription {
+      font-size: 0.85rem;
+    }
+  
+    .stepImageWrapper {
+      height: 180px;
+    }
+  
+    /* Équipements Utilisés */
+    .equipmentContainer {
+      grid-template-columns: 1fr; /* Une seule colonne, les cartes s'empilent */
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .equipmentCard {
+      flex-direction: row; /* Image et texte côte à côte */
+      justify-content: flex-start; /* Aligner à gauche */
+      text-align: left;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .equipmentImageWrapper {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 0; /* Pas de marge en bas si en ligne */
+      flex-shrink: 0;
+    }
+    .equipmentName {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem; /* Marge entre nom et description */
+    }
+    .equipmentDescription {
+      font-size: 0.8rem;
+      flex-grow: 1; /* Permet à la description de prendre l'espace restant */
+    }
+  
+    /* Galerie des Résultats (déjà en 1 colonne) */
+    .resultGallery {
+      grid-template-columns: 1fr; /* Une seule colonne */
+      gap: 0.8rem;
+    }
+    .galleryImageWrapper {
+      height: 200px;
+    }
+  }

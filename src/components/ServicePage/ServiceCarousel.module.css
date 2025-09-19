@@ -1,0 +1,172 @@
+/* src/components/ServicePage/ServiceCarousel.module.css */
+
+.carouselSection {
+    margin-top: -100px;
+    padding: 6rem 5%;
+    background-color: #f0f4f8; /* Arrière-plan distinct */
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    margin-bottom: 1rem;
+}
+
+.sectionDescription {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+}
+
+.carouselGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carouselCard {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 71, 122, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.carouselCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 71, 122, 0.15);
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Hauteur fixe pour l'image */
+    flex-shrink: 0;
+}
+
+.cardImage {
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.cardIcon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0, 71, 122, 0.15);
+    z-index: 2;
+}
+
+.cardIcon svg {
+    color: var(--color-water-blue);
+}
+
+.cardContent {
+    padding: 1.8rem;
+    text-align: left;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-marine-blue);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.cardDescription {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.accessButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background-color: var(--color-water-blue);
+    color: var(--color-white);
+    border: 2px solid var(--color-water-blue);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    align-self: flex-start; /* Aligner à gauche dans la colonne */
+}
+
+.accessButton:hover {
+    background-color: var(--color-marine-blue);
+    border-color: var(--color-marine-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .sectionTitle {
+        font-size: 2.2rem;
+    }
+    .sectionDescription {
+        font-size: 1rem;
+    }
+    .carouselGrid {
+        gap: 2rem;
+    }
+    .cardTitle {
+        font-size: 1.4rem;
+    }
+    .cardDescription {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .carouselSection {
+        padding: 4rem 3%;
+    }
+    .sectionTitle {
+        font-size: 1.8rem;
+    }
+    .sectionDescription {
+        font-size: 0.95rem;
+    }
+    .imageWrapper {
+        height: 180px;
+    }
+    .carouselGrid{
+        padding: 20px;
+    }
+    .cardContent {
+        padding: 1.5rem;
+    }
+    .cardTitle {
+        font-size: 1.2rem;
+    }
+    .accessButton {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+}

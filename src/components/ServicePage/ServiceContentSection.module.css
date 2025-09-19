@@ -1,0 +1,125 @@
+/* src/components/ServicePage/ServiceContentSection.module.css */
+
+.contentSection {
+    padding: 6rem 0;
+    background-color: var(--color-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.imageRight .textColumn {
+    order: 2; /* Change l'ordre pour l'image à droite */
+}
+.imageRight .imageColumn {
+    order: 1;
+}
+
+.textColumn {
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 2.5rem;
+}
+
+.imageColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainImage {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 71, 122, 0.15);
+}
+
+.quoteButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background-color: var(--color-water-blue);
+    color: var(--color-white);
+    border: 2px solid var(--color-water-blue);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.quoteButton:hover {
+    background-color: var(--color-marine-blue);
+    border-color: var(--color-marine-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .imageRight .textColumn, .imageRight .imageColumn {
+        order: unset; /* Réinitialise l'ordre pour les petits écrans */
+    }
+    .textColumn {
+        text-align: center;
+    }
+    .subtitle {
+        font-size: 2rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contentSection {
+        padding: 4rem 0;
+    }
+    .container {
+        padding: 0 15px;
+    }
+    .subtitle {
+        font-size: 1.8rem;
+    }
+    .quoteButton {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .subtitle {
+        font-size: 1.6rem;
+    }
+    .description {
+        font-size: 0.95rem;
+    }
+}

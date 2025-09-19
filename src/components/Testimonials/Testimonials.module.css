@@ -1,0 +1,275 @@
+/* Testimonials.module.css */
+
+.testimonialsSection {
+  margin-top: -150px;
+  background-color: var(--color-white);
+  padding: 8rem 0;
+  text-align: center;
+  overflow: hidden; /* Cache les cartes qui sortent du flux */
+}
+
+.testimonialsTitleContainer {
+  margin-bottom: 2rem;
+  padding: 0 5%;
+}
+
+.sectionTitle {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--color-marine-blue);
+  margin-bottom: 1rem;
+}
+
+.sectionTitle .highlight {
+  color: var(--color-water-blue);
+}
+
+.sectionDescription {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #555;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Conteneur des témoignages avec effet de transparence */
+.testimonialsWrapper {
+  position: relative;
+  overflow: hidden; /* Cache les débordements des cartes */
+  padding: 1rem 0; /* Padding vertical pour le carrousel */
+}
+
+/* Overlays pour l'effet de transparence */
+.testimonialsWrapper::before,
+.testimonialsWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10%; /* Largeur de l'effet de transparence */
+  z-index: 2;
+  pointer-events: none; /* Permet d'interagir avec les cartes derrière */
+}
+
+.testimonialsWrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-white), rgba(255, 255, 255, 0));
+}
+
+.testimonialsWrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-white), rgba(255, 255, 255, 0));
+}
+
+
+/* Animations de défilement */
+@keyframes scrollLeftSlow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); /* Défile de la moitié pour le contenu dupliqué */ }
+}
+
+/* Conteneur de la rangée de témoignages défilante */
+.testimonialsRow {
+  display: flex;
+  width: max-content; /* Permet au conteneur de prendre la largeur de tous ses enfants */
+  animation: scrollLeftSlow 120s linear infinite; /* Vitesse du défilement, augmenté à 120s */
+  padding: 1rem 5%; /* Rembourrage pour les bords du carrousel */
+  gap: 2rem; /* Espacement entre les cartes */
+}
+
+.testimonialsRow:hover {
+  animation-play-state: paused; /* Met en pause l'animation au survol */
+}
+
+.testimonialCard {
+  flex-shrink: 0; /* Empêche la carte de rétrécir */
+  width: 360px; /* Largeur fixe de chaque carte de témoignage */
+  min-height: 280px; /* Hauteur minimale pour les cartes */
+  background-color: var(--color-white);
+  border: 1px solid rgba(0, 71, 122, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 71, 122, 0.05);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonialCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 71, 122, 0.1);
+}
+
+.stars {
+  color: #ffc107; /* Couleur jaune pour les étoiles */
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: flex; /* Alignement horizontal des étoiles */
+  gap: 0.2rem; /* Espacement entre les étoiles */
+}
+
+.reviewText {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  flex-grow: 1; /* Permet au texte de prendre l'espace */
+  margin-bottom: 1.5rem;
+}
+
+.reviewerInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reviewerAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-water-blue); /* Couleur de fond pour les initiales */
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.reviewerDetails h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-marine-blue);
+  margin: 0;
+}
+
+.reviewerDetails p {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 0;
+}
+
+/* Bouton "Voir tous les avis" */
+.allTestimonialsButton {
+  margin-top: 5rem;
+  padding: 1.1rem 3.5rem;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--color-water-blue);
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 71, 122, 0.2);
+}
+
+.allTestimonialsButton:hover {
+  background-color: var(--color-marine-blue);
+  border-color: var(--color-marine-blue);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 71, 122, 0.3);
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .testimonialsRow {
+    animation-duration: 90s; /* Accélérer sur les petits écrans */
+    gap: 1.5rem;
+  }
+  .testimonialCard {
+    width: 320px;
+    min-height: 260px;
+  }
+  .reviewText {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+  .sectionDescription {
+    font-size: 1rem;
+  }
+  .testimonialsRow {
+    animation-duration: 70s; /* Encore plus rapide */
+  }
+  .testimonialCard {
+    width: 280px;
+    min-height: 240px;
+    padding: 1.5rem;
+  }
+  .allTestimonialsButton {
+    max-width: 300px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonialsSection {
+    padding: 6rem 0;
+    margin-top: 0px;
+  }
+  .testimonialsTitleContainer {
+    padding: 0 3%;
+  }
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+  .sectionDescription {
+    font-size: 0.9rem;
+  }
+  .testimonialsRow {
+    animation-duration: 50s; /* Très rapide sur mobile */
+    gap: 1rem;
+  }
+  .testimonialCard {
+    width: 250px;
+    min-height: 220px;
+    padding: 1.2rem;
+  }
+  .stars {
+    font-size: 1rem;
+  }
+  .reviewText {
+    font-size: 0.85rem;
+  }
+  .reviewerAvatar {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .reviewerDetails h4 {
+    font-size: 0.9rem;
+  }
+  .reviewerDetails p {
+    font-size: 0.75rem;
+  }
+  .allTestimonialsButton {
+    max-width: 250px;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .testimonialsSection {
+    padding: 4rem 0;
+  }
+  .testimonialsTitleContainer {
+    margin-bottom: 3rem;
+  }
+  .testimonialCard {
+    width: 220px;
+    min-height: 200px;
+  }
+}

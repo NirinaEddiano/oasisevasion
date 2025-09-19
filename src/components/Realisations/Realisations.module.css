@@ -1,0 +1,326 @@
+/* Realisations.module.css */
+
+.realisationsSection {
+  margin-top: -120px;
+  background-color: var(--color-white);
+  padding: 8rem 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.realisationsTitleContainer {
+  margin-bottom: 4rem;
+  padding: 0 5%;
+}
+
+.sectionTitle {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--color-marine-blue);
+  margin-bottom: 1rem;
+}
+
+.sectionTitle .highlight {
+  color: var(--color-water-blue);
+}
+
+.sectionDescription {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #555;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Conteneur pour le Swiper et les flèches */
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  padding: 0 150px; /* Ajustez le padding pour laisser de la place aux flèches sur les côtés si besoin */
+  box-sizing: border-box;
+}
+
+/* Styles pour le Swiper */
+.realisationsSwiper {
+  padding-bottom: 2rem; /* Espace pour la pagination si utilisée, ou juste pour l'esthétique */
+  /* Les styles de largeur et hauteur sont principalement gérés par les slides et Swiper */
+}
+
+.realisationCard {
+  width: 100%; /* La carte prendra la largeur définie par SwiperSlide */
+  height: 450px; /* Hauteur fixe, ajustez au besoin */
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 71, 122, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex; /* Pour centrer le contenu si nécessaire */
+  align-items: center; /* Pour centrer verticalement */
+  justify-content: center; /* Pour centrer horizontalement */
+}
+
+.realisationCard:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 55px rgba(0, 71, 122, 0.25);
+}
+
+.cardImage {
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.realisationCard:hover .cardImage {
+  filter: brightness(1.05);
+  transform: scale(1.05);
+}
+
+.cardLinkOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Aligné en bas */
+  background: linear-gradient(to top, rgba(0, 71, 122, 0.8) 0%, rgba(0, 188, 212, 0) 100%); /* Gradient de bas en haut */
+  
+  transition: opacity 0.3s ease;
+  z-index: 2; /* Au-dessus de l'image */
+  text-decoration: none; /* Enlève le soulignement par défaut */
+  color: var(--color-white); /* Couleur du texte sur l'overlay */
+}
+
+.realisationCard:hover .cardLinkOverlay {
+  opacity: 1;
+}
+
+
+
+/* L'icône de l'œil était déjà là, assure-toi qu'elle est bien positionnée */
+.eyeIcon {
+  margin-top: auto; /* Pousse l'icône de l'œil vers le bas de l'overlay */
+  font-size: 2.5rem; /* Taille de l'œil */
+  color: var(--color-white);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.cardLinkOverlay:hover .eyeIcon {
+  opacity: 1;
+}
+
+.cardTextOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  padding: 1.5rem;
+  color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cardSubtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 0.3rem;
+}
+
+.eyeIcon {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 7px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.realisationCard:hover .eyeIcon {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Styles pour les flèches de navigation Swiper personnalisées */
+.swiperButtonPrev,
+.swiperButtonNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  color: white; /* Ou une autre couleur de votre choix */
+  background-color:var(--color-marine-blue);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.swiperButtonPrev {
+  left: 50px; /* Positionne la flèche gauche */
+}
+
+.swiperButtonNext {
+  /* MODIFICATION ICI: Positionner la flèche à l'intérieur du padding de 70px */
+  right: 50px; /* Par exemple, 20px du bord du .carouselContainer */
+}
+
+
+.swiperButtonPrev:hover,
+.swiperButtonNext:hover {
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Cacher les flèches par défaut de Swiper si elles sont encore visibles */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
+/* Bouton "Voir toutes les réalisations" */
+.allRealisationsButton {
+  margin-top: 5rem;
+  width: 269;
+  height: 37px;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--color-water-blue);
+  background-color: var(--color-water-blue);
+  color: var(--color-white);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 71, 122, 0.2);
+}
+
+.allRealisationsButton:hover {
+  background-color: var(--color-marine-blue);
+  border-color: var(--color-marine-blue);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 71, 122, 0.3);
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .realisationCard {
+    height: 420px;
+  }
+  .cardTitle {
+    font-size: 1.15rem;
+  }
+  .swiperButtonPrev { left: 1%; }
+  .swiperButtonNext { right: 1%; }
+}
+
+@media (max-width: 992px) {
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+  .sectionDescription {
+    font-size: 1rem;
+  }
+  .realisationCard {
+    height: 380px;
+  }
+  .allRealisationsButton {
+    max-width: 300px;
+    font-size: 1rem;
+  }
+  .swiperButtonPrev,
+  .swiperButtonNext {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .realisationsSection{
+    margin-top: 0px;
+  }
+  .realisationsTitleContainer {
+    padding: 0 3%;
+  }
+  .carouselContainer {
+    width: 100%;
+    padding: 0 20px; /* Ajustez le padding pour laisser de la place aux flèches sur les côtés si besoin */
+    box-sizing: border-box;
+  }
+  .sectionTitle {
+    
+    font-size: 1.8rem;
+  }
+  .sectionDescription {
+    font-size: 0.9rem;
+  }
+  .realisationCard {
+    height: 350px;
+  }
+  .cardTextOverlay {
+    padding: 1rem;
+  }
+  .cardTitle {
+    font-size: 1.05rem;
+  }
+  .cardSubtitle {
+    font-size: 0.8rem;
+  }
+  .eyeIcon {
+    font-size: 1.2rem;
+    padding: 0.4rem;
+  }
+  .allRealisationsButton {
+    max-width: 250px;
+    height: 50px;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.9rem;
+  }
+  
+}
+
+@media (max-width: 576px) {
+  .realisationsSection {
+    padding: 4rem 0;
+  }
+  .realisationsTitleContainer {
+    margin-bottom: 3rem;
+  }
+  .realisationCard {
+    height: 300px;
+  }
+  .cardTitle {
+    font-size: 0.95rem;
+  }
+  .cardSubtitle {
+    font-size: 0.75rem;
+  }
+  .eyeIcon {
+    font-size: 1rem;
+    padding: 0.3rem;
+  }
+}

@@ -1,0 +1,547 @@
+/* src/app/contact/page.module.css */
+
+/* Variables de couleur du thème déjà définies dans globals.css ou ici pour isolation */
+:root {
+    --color-white: #ffffff;
+    --color-water-blue: #00bcd4;
+    --color-marine-blue: #00477a;
+    --color-grey-light: #f4f7f6;
+    --color-grey-dark: #333;
+  }
+  
+  /* --- Hero Section --- */
+  .heroSection {
+    position: relative;
+    width: 100%;
+    height: 40vh; /* Hauteur pas trop longue */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .heroImage {
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* Le background est défini dynamiquement dans le composant React via style */
+  }
+  
+  .heroContent {
+    position: relative;
+    z-index: 3;
+    padding: 0 20px;
+    max-width: 900px;
+  }
+  
+  .heroTitle {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .overlay {
+    background-color: rgba(0, 51, 102, 0.5); /* Overlay bleu marine semi-transparent */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .heroDescription {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* --- Main Contact Section (Form + Info) --- */
+  .mainContactSection {
+    display: flex;
+    gap: 40px; /* Espacement entre le formulaire et les infos */
+    max-width: 1300px;
+    margin: 80px auto;
+    padding: 0 40px;
+    flex-wrap: wrap;
+    align-items: stretch; /* IMPORTANT : Les enfants (formContainer, infoContainer) auront la même hauteur */
+  }
+  
+  .formContainer {
+    flex: 1; /* Prend 50% de l'espace disponible (avec l'autre flex:1) */
+    min-width: 0; /* Permet au flex item de rétrécir si nécessaire */
+    background-color: var(--color-white);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 71, 122, 0.1);
+    animation: fadeInForm 0.8s ease-out forwards;
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  
+  .formTitle {
+    font-size: 2rem;
+    color: var(--color-marine-blue);
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  .formIntroText {
+    font-size: 1rem;
+    color: var(--color-grey-dark);
+    margin-bottom: 35px;
+    line-height: 1.6;
+  }
+  
+  .contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .inputField,
+  .textareaField {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--color-grey-dark);
+    background-color: var(--color-grey-light);
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .inputField::placeholder,
+  .textareaField::placeholder {
+    color: #a0a0a0;
+  }
+  
+  .inputField:focus,
+  .textareaField:focus {
+    border-color: var(--color-water-blue);
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+    background-color: var(--color-white);
+  }
+  
+  .textareaField {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .submitButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--color-marine-blue);
+    color: var(--color-white);
+    padding: 18px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 71, 122, 0.2);
+  }
+  
+  .submitButton:hover {
+    background-color: var(--color-water-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+  }
+  
+  .submitButton:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0, 71, 122, 0.15);
+  }
+  
+  .infoContainer {
+    flex: 1; /* Prend 50% de l'espace disponible (avec l'autre flex:1) */
+    min-width: 0; /* Permet au flex item de rétrécir si nécessaire */
+    display: flex; /* IMPORTANT : Fait de infoContainer un conteneur flex interne */
+    flex-direction: column; /* Ses enfants s'empilent verticalement */
+    gap: 30px; /* Espacement entre le texte d'intro, la grille de cartes et la carte */
+    animation: fadeInInfo 1s ease-out forwards;
+    animation-delay: 0.2s;
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  
+  .infoIntroText {
+    font-size: 1rem;
+    color: var(--color-grey-dark);
+    line-height: 1.7;
+    /* La marge inférieure est maintenant gérée par le 'gap' du parent infoContainer */
+  }
+  
+  .contactCardsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes égales pour les cartes */
+    gap: 20px; /* Espacement entre les cartes */
+  }
+  
+  .contactCard {
+    background-color: var(--color-white);
+    padding: 20px 15px; /* Padding réduit pour des cartes plus petites */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); /* Ombre ajustée */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contactCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 71, 122, 0.1);
+  }
+  
+  .contactIcon {
+    color: var(--color-water-blue);
+    margin-bottom: 10px; /* Marge réduite */
+    font-size: 3rem; /* Taille de l'icône ajustée */
+  }
+  
+  .contactCardTitle {
+    font-size: 1.25rem; /* Taille du titre ajustée */
+    font-weight: 600;
+    color: var(--color-marine-blue);
+    margin-bottom: 8px; /* Marge réduite */
+  }
+  
+  .contactCardText {
+    font-size: 0.95rem; /* Taille du texte ajustée */
+    color: var(--color-grey-dark);
+    line-height: 1.4;
+  }
+  
+  .contactCardText a {
+    color: var(--color-grey-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .contactCardText a:hover {
+    color: var(--color-water-blue);
+    text-decoration: underline;
+  }
+  
+  .mapContainer {
+    width: 100%;
+    /* Retirer la hauteur fixe ici pour permettre à flex-grow de fonctionner */
+    flex-grow: 1; /* Prend l'espace vertical restant dans infoContainer */
+    min-height: 200px; /* Assure une hauteur minimale pour la carte */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* S'assurer que l'iframe remplit toute la hauteur disponible de son parent */
+  .mapContainer iframe {
+    width: 100%;
+    height: 100%; /* Indispensable pour que la carte prenne la hauteur de .mapContainer */
+  }
+  
+  
+  /* --- Quote CTA Section --- */
+  .quoteCtaSection {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    text-align: center;
+    overflow: hidden;
+    margin-top: 80px;
+  }
+  
+  .quoteCtaImage {
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  .quoteCtaContent {
+    position: relative;
+    z-index: 3;
+    padding: 0 20px;
+    max-width: 800px;
+  }
+  
+  .quoteCtaTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .quoteCtaButton {
+    display: inline-block;
+    background-color: var(--color-water-blue);
+    color: var(--color-white);
+    padding: 18px 40px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 188, 212, 0.3);
+  }
+  
+  .quoteCtaButton:hover {
+    background-color: var(--color-marine-blue);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 71, 122, 0.4);
+  }
+  
+  .quoteCtaButton:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
+  }
+  
+  /* --- Accessibilité (pour sr-only) --- */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  /* --- Keyframe Animations --- */
+  @keyframes fadeInForm {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInInfo {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* --- Media Queries for Responsiveness --- */
+  @media (max-width: 1024px) {
+    .heroTitle {
+      font-size: 3rem;
+    }
+    .heroDescription {
+      font-size: 1.1rem;
+    }
+  
+    .mainContactSection {
+      flex-direction: column; /* Reviens en colonne sur les tablettes */
+      gap: 40px;
+      padding: 0 20px;
+      margin: 60px auto;
+    }
+  
+    .formContainer,
+    .infoContainer {
+      flex: none; /* Désactive le flex pour prendre toute la largeur */
+      width: 100%;
+      min-width: unset;
+      padding: 30px;
+      animation: none;
+      transform: none;
+      opacity: 1;
+    }
+  
+    .formTitle,
+    .infoIntroText {
+      text-align: center;
+    }
+  
+    .contactCardsGrid {
+      grid-template-columns: repeat(2, 1fr); /* Les cartes restent sur 2 colonnes sur tablette */
+      gap: 20px;
+    }
+  
+    .contactCard {
+      padding: 25px 15px;
+    }
+  
+    .mapContainer {
+      height: 300px; /* Hauteur fixe pour la carte sur les tablettes */
+      flex-grow: unset; /* Désactive flex-grow pour revenir à une hauteur fixe */
+    }
+  
+    .quoteCtaSection {
+      height: 280px;
+      margin-top: 60px;
+    }
+  
+    .quoteCtaTitle {
+      font-size: 2.5rem;
+    }
+  
+    .quoteCtaButton {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .heroSection {
+      height: 30vh;
+    }
+    .heroTitle {
+      font-size: 2.5rem;
+    }
+    .heroDescription {
+      font-size: 1rem;
+    }
+  
+    .mainContactSection {
+      margin: 40px auto;
+      padding: 0 15px;
+    }
+  
+    .formContainer {
+      padding: 25px;
+    }
+  
+    .formTitle {
+      font-size: 2rem;
+    }
+    .formIntroText {
+      font-size: 0.95rem;
+    }
+  
+    .inputField,
+    .textareaField {
+      padding: 12px 15px;
+      font-size: 0.95rem;
+    }
+  
+    .submitButton {
+      padding: 15px 25px;
+      font-size: 1rem;
+    }
+  
+    .infoIntroText {
+      font-size: 0.95rem;
+    }
+  
+    .contactCardsGrid {
+      grid-template-columns: 1fr; /* Une colonne pour les cartes sur les petits mobiles */
+      gap: 15px;
+    }
+  
+    .contactCard {
+      padding: 20px 10px;
+    }
+  
+    .contactIcon {
+      font-size: 2.5rem;
+    }
+  
+    .mapContainer {
+      height: 250px;
+    }
+  
+    .quoteCtaSection {
+      height: 250px;
+      margin-top: 40px;
+    }
+  
+    .quoteCtaTitle {
+      font-size: 2rem;
+    }
+  
+    .quoteCtaButton {
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .heroSection {
+      height: 25vh;
+    }
+    .heroTitle {
+      font-size: 1.8rem;
+    }
+    .heroDescription {
+      font-size: 0.85rem;
+    }
+  
+    .formContainer {
+      padding: 20px;
+    }
+    .formTitle {
+      font-size: 1.6rem;
+    }
+    .formIntroText {
+      font-size: 0.85rem;
+    }
+    .submitButton {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+    }
+  
+    .contactCardTitle {
+      font-size: 1.1rem;
+    }
+    .contactCardText {
+      font-size: 0.9rem;
+    }
+    .contactIcon {
+      font-size: 2.5rem;
+    }
+    .mapContainer {
+      height: 200px;
+    }
+    .quoteCtaSection {
+      height: 200px;
+    }
+    .quoteCtaTitle {
+      font-size: 1.6rem;
+    }
+    .quoteCtaButton {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+    }
+  }
