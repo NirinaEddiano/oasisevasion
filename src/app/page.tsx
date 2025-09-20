@@ -21,7 +21,6 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      <PoolTypesShowcase />
        {/* {lagonService && (
         <LagoonFeatureSection
           title={lagonService.title}
@@ -77,6 +76,7 @@ export default function Home() {
 
       
       <Services />
+      <PoolTypesShowcase />
       <Equipments />
       <Realisations />
       <Testimonials />
