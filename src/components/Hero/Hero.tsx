@@ -56,10 +56,10 @@ const Hero = () => {
           Nous ne concevons pas de simples piscines, mais des espaces de vie uniques qui transforment votre extérieur en une oasis de bien-être.
         </p>
         <div className={`${styles.actions} ${isMounted ? styles.animatedIn : ''}`}>
-          <button className={`${styles.button} ${styles.quoteButton}`}>
-            <FaEnvelope size={16} />
-            <span>Demander un devis</span>
-          </button>
+           <Link href="/demande-de-devis" className={`${styles.button} ${styles.quoteButton}`}>
+              <FaEnvelope size={16} />
+              <span>Demander un devis</span>
+            </Link>
           <a href="tel:+212687389435" className={`${styles.button} ${styles.callButton}`}>
             <FaPhoneAlt size={16} />
             <span>Appeler Maintenant</span>
