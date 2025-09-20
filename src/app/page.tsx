@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero/Hero"; // Import de la nouvelle CTA home
 import About from "@/components/About/About";
+import PoolTypesShowcase from "@/components/Home/PoolTypesShowcase"; 
 import LagoonFeatureSection from "@/components/LagoonFeatureSection/LagoonFeatureSection"; // Nouveau
 import FeatureSection from "@/components/FeatureSection/FeatureSection";
 import Services from "@/components/Services/Services";
@@ -20,7 +21,8 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      {lagonService && (
+      <PoolTypesShowcase />
+       {/* {lagonService && (
         <LagoonFeatureSection
           title={lagonService.title}
           description={lagonService.shortDescription}
@@ -71,7 +73,7 @@ export default function Home() {
           ctaText={hammamService.ctaText}
           layoutRight={true} // Image à droite pour alterner
         />
-      )}
+      )}*/}
 
       
       <Services />
