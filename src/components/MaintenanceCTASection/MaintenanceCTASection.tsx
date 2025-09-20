@@ -62,7 +62,7 @@ const MaintenanceCTASection = () => {
           <p className={styles.description}>
             Garantissez une eau saine et cristalline, prolongez la vie de vos équipements et profitez d&apos;une tranquillité d&apos;esprit totale. Découvrez nos solutions d&apos;entretien sur mesure, adaptées à vos besoins.
           </p>
-          <Link href="/services" className={styles.ctaButton}>
+          <Link href="/services/piscine-lagon" className={styles.ctaButton}>
             <FaInfoCircle size={16} /> {/* Icône correcte */}
             <span>Découvrir nos formules d&apos;entretien</span>
           </Link>
