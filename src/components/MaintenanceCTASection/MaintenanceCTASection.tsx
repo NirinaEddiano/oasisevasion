@@ -1,118 +1,129 @@
 'use client'; // Important pour utiliser les hooks React
 
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { FaWrench, FaCalendarAlt, FaStar, FaInfoCircle } from 'react-icons/fa';
+// Import des icônes nécessaires pour les listes et les boutons
+import { FaCheckCircle, FaPhoneAlt, FaEnvelope, FaInfoCircle } from 'react-icons/fa';
 import styles from './MaintenanceCTASection.module.css';
 
 const MaintenanceCTASection = () => {
-  const sectionRef = useRef(null);
-  const [isInView, setIsInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && entries[0].intersectionRatio >= 0.2) {
-          setIsInView(true);
-          observer.disconnect(); // Déconnecter l'observer une fois que la section est apparue
-        }
-      },
-      {
-        threshold: 0.2, // Déclencher quand 20% de l'élément est visible
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      };
-    };
-  }, []);
-
-  // Définir les éléments une seule fois pour faciliter la duplication et la gestion
-  const featureItemsData = [
+  // Les données de vos formules d'entretien
+  const pricingFormulas = [
     {
-      icon: FaWrench,
-      title: 'Durabilité Assurée',
-      description: 'Préservez la durée de vie et la performance de vos équipements.',
+      name: 'Essentielle',
+      price: '1 200 MAD/mois',
+      description: 'Idéale pour un entretien régulier et une eau impeccable.',
+      features: [
+        '1 passage par semaine',
+        'Contrôle et ajustement des paramètres de l’eau (pH, chlore/salt, TAC)',
+        'Nettoyage de la ligne d’eau, des skimmers et paniers',
+        'Contre-lavage du filtre',
+        'Vérification du bon fonctionnement du système de filtration',
+      ],
+      isHighlighted: false,
     },
     {
-      icon: FaStar,
-      title: 'Eau Impeccable',
-      description: 'Profitez d\'une eau saine, claire et équilibrée en permanence.',
+      name: 'Confort',
+      price: '1 800 MAD/mois',
+      description: 'La solution complète pour une piscine toujours propre et fonctionnelle.',
+      features: [
+        '1 passage par semaine',
+        'Toutes les prestations de la formule Essentielle',
+        'Aspiration du bassin / robot si nécessaire',
+        'Nettoyage complet de la piscine (fond, parois, ligne d’eau)',
+        'Petite maintenance (joints, graissage, colmatage mineur)',
+      ],
+      isHighlighted: true, // Cette formule sera mise en avant
     },
     {
-      icon: FaCalendarAlt,
-      title: 'Sérénité Quotidienne',
-      description: 'Nous nous occupons de tout, vous ne faites que profiter.',
+      name: 'Premium Sérénité',
+      price: '2 500 MAD/mois',
+      description: 'L\'entretien sans soucis, avec un service prioritaire et des produits inclus.',
+      features: [
+        '2 passages par semaine',
+        'Toutes les prestations de la formule Confort',
+        'Produits de traitement inclus (chlore, pH-, floculant de base)',
+        'Rapport digital mensuel (photos + suivi technique)',
+        'Assistance prioritaire en cas de panne',
+      ],
+      isHighlighted: false,
     },
   ];
 
+  const additionalServices = [
+    { name: 'Mise en hivernage', price: 'Dès 2 500 MAD (forfait)' },
+    { name: 'Réouverture / mise en service au printemps', price: 'Dès 2 500 MAD' },
+    { name: 'Intervention ponctuelle (nettoyage “choc”)', price: 'Sur devis' },
+  ];
+
   return (
-    <section className={styles.maintenanceCtaSection} ref={sectionRef}>
-      <div className={`${styles.contentWrapper} ${isInView ? styles.animatedIn : ''}`}>
-        <div className={styles.leftContent}>
-          <h2 className={styles.title}>
-            L&apos;éclat de votre piscine, une <span className={styles.highlight}>priorité</span> toute l&apos;année.
-          </h2>
-          <p className={styles.description}>
-            Garantissez une eau saine et cristalline, prolongez la vie de vos équipements et profitez d&apos;une tranquillité d&apos;esprit totale. Découvrez nos solutions d&apos;entretien sur mesure, adaptées à vos besoins.
-          </p>
-          <Link href="/services/piscine-lagon" className={styles.ctaButton}>
-            <FaInfoCircle size={16} /> {/* Icône correcte */}
-            <span>Découvrir nos formules d&apos;entretien</span>
-          </Link>
+    <section  id="entretien-section" className={styles.pricingSection}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Nos formules d&apos;entretien mensuel</h1>
+        <div className={styles.benefitsGrid}>
+            <div className={styles.benefitItem}>
+                <FaCheckCircle className={styles.benefitIcon} />
+                <p>Eau saine & claire</p>
+            </div>
+            <div className={styles.benefitItem}>
+                <FaCheckCircle className={styles.benefitIcon} />
+                <p>Durée de vie des équipements prolongée</p>
+            </div>
+            <div className={styles.benefitItem}>
+                <FaCheckCircle className={styles.benefitIcon} />
+                <p>Tranquillité d&apos;esprit</p>
+            </div>
+            <div className={styles.benefitItem}>
+                <FaCheckCircle className={styles.benefitIcon} />
+                <p>Réparations coûteuses évitées</p>
+            </div>
         </div>
-        <div className={styles.rightFeatures}>
-          <div className={styles.featureItemsWrapper}>
-            {/* Rendu des éléments originaux */}
-            {featureItemsData.map((item, index) => (
-              <div key={`original-${index}`} className={styles.featureItem}>
-                <item.icon className={styles.featureIcon} />
-                <div className={styles.featureTextContent}>
-                  <h3 className={styles.featureTitle}>{item.title}</h3>
-                  <p className={styles.featureDescription}>{item.description}</p>
-                </div>
-              </div>
-            ))}
-            {/* Rendu des éléments dupliqués pour la boucle fluide */}
-            {featureItemsData.slice(0, 2).map((item, index) => ( // Duplique les 2 premiers items pour un défilement continu
-              <div key={`clone-${index}`} className={styles.featureItem}>
-                <item.icon className={styles.featureIcon} />
-                <div className={styles.featureTextContent}>
-                  <h3 className={styles.featureTitle}>{item.title}</h3>
-                  <p className={styles.featureDescription}>{item.description}</p>
-                </div>
-              </div>
-            ))}
-             {featureItemsData.slice(0, 3).map((item, index) => ( // Duplique les 2 premiers items pour un défilement continu
-              <div key={`clone-${index}`} className={styles.featureItem}>
-                <item.icon className={styles.featureIcon} />
-                <div className={styles.featureTextContent}>
-                  <h3 className={styles.featureTitle}>{item.title}</h3>
-                  <p className={styles.featureDescription}>{item.description}</p>
-                </div>
-              </div>
-            ))}
-             {featureItemsData.slice(0, 4).map((item, index) => ( // Duplique les 2 premiers items pour un défilement continu
-              <div key={`clone-${index}`} className={styles.featureItem}>
-                <item.icon className={styles.featureIcon} />
-                <div className={styles.featureTextContent}>
-                  <h3 className={styles.featureTitle}>{item.title}</h3>
-                  <p className={styles.featureDescription}>{item.description}</p>
-                </div>
-              </div>
-            ))}
+      </div>
+
+      <div className={styles.pricingGrid}>
+        {pricingFormulas.map((formula, index) => (
+          <div
+            key={index}
+            className={`${styles.pricingCard} ${formula.isHighlighted ? styles.highlightedCard : ''}`}
+          >
+            <h2 className={styles.cardName}>{formula.name}</h2>
+            <p className={styles.cardPrice}>{formula.price}</p>
+            <p className={styles.cardDescription}>{formula.description}</p>
+            <ul className={styles.featureList}>
+              {formula.features.map((feature, idx) => (
+                <li key={idx} className={styles.featureItem}>
+                  <FaCheckCircle className={styles.checkIcon} />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <div className={styles.buttonGroup}>
+              <Link href="/contact" className={styles.contactButton}>
+                <FaEnvelope /> Contactez-nous
+              </Link>
+              <a href="tel:+212123456789" className={styles.callButton}>
+                <FaPhoneAlt /> Appelez-nous
+              </a>
+            </div>
           </div>
+        ))}
+      </div>
+
+      <div className={styles.additionalServices}>
+        <h2 className={styles.additionalTitle}>Services additionnels</h2>
+        <div className={styles.servicesList}>
+          {additionalServices.map((service, index) => (
+            <div key={index} className={styles.serviceItem}>
+              <FaInfoCircle className={styles.serviceIcon} />
+              <span className={styles.serviceName}>{service.name} :</span>
+              <span className={styles.servicePrice}>{service.price}</span>
+            </div>
+          ))}
         </div>
+        <p className={styles.customQuote}>Pour toute demande spécifique ou intervention ponctuelle, n&apos;hésitez pas à nous demander un <Link href="/demande-de-devis" className={styles.quoteLink}>devis personnalisé</Link>.</p>
       </div>
     </section>
   );
 };
 
 export default MaintenanceCTASection;
-
