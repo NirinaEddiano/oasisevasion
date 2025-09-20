@@ -150,7 +150,7 @@ const Navbar = () => {
               <FaEnvelope size={16} />
               <span>Demander un devis</span>
             </Link>
-            <a href="tel:+212123456789" className={`${styles.button} ${styles.callButton}`} onClick={closeMobileMenu}>
+            <a href="tel:+212687389435" className={`${styles.button} ${styles.callButton}`} onClick={closeMobileMenu}>
               <FaPhoneAlt size={16} />
               <span>Appeler Maintenant</span>
             </a>
