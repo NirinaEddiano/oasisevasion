@@ -24,7 +24,7 @@ const testimonialsData = [
     text: "Une approche d’architecte qui change tout : précision, créativité et élégance. Le résultat a dépassé toutes nos attentes.",
     author: "Karim A.",
     role: "Investisseur à Casablanca",
-    stars: 5,
+    stars: 4,
   },
   {
     text: "Aujourd’hui, nous avons une piscine qui ne ressemble à aucune autre. Merci à Oasis Évasion pour leur écoute et leur professionnalisme !",
@@ -42,7 +42,7 @@ const testimonialsData = [
     text: "De la conception à la réalisation, tout a été géré avec maîtrise et un sens du détail incroyable. Notre piscine est une œuvre d'art.",
     author: "Nadia D.",
     role: "Architecte d'intérieur, Agadir",
-    stars: 5,
+    stars: 4,
   },
   {
     text: "Ils ont su capter notre vision pour créer un espace aquatique unique. Un service client exceptionnel et un rendu magnifique.",
@@ -54,7 +54,7 @@ const testimonialsData = [
     text: "Une entreprise sérieuse et créative. Notre projet de rénovation a donné une nouvelle vie à notre piscine. Nous sommes enchantés !",
     author: "Amine S.",
     role: "Propriétaire à Tanger",
-    stars: 5,
+    stars: 4,
   },
   // Dupliquez les témoignages pour un effet de défilement continu
   // Ajoutez-en plus si vous voulez plus de variété avant la duplication
@@ -69,7 +69,7 @@ const testimonialsData = [
       text: "Un projet de piscine qui a été un véritable plaisir du début à la fin. L'équipe est passionnée et cela se voit dans le résultat.",
       author: "Omar G.",
       role: "Client heureux",
-      stars: 5,
+      stars: 4,
     }
   ],
 ];
