@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'; // Importez useState et useEffect
 import styles from './Hero.module.css';
+import Link from 'next/link';
 import { FaPhoneAlt, FaEnvelope, FaDraftingCompass, FaSyncAlt, FaPalette, FaUserTie } from 'react-icons/fa';
 
 // Données pour les cartes de service pour éviter la répétition
