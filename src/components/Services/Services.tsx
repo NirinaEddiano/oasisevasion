@@ -68,12 +68,13 @@ const Services = () => {
                   <span>Plus de détails</span>
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/demande-de-devis"
                   className={styles.quoteButtonBottom}
                 >
                   <FaEnvelope size={16} />
                   <span>Demander un devis</span>
                 </Link>
+                
               </div>
             </div>
           </div>
