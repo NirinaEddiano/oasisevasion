@@ -107,7 +107,7 @@
   }
   
   .serviceCardTitle {
-    font-size: 1.8rem; /* Plus petit car l'icône est dans l'image */
+    font-size: 1.5rem; /* Plus petit car l'icône est dans l'image */
     font-weight: 600;
     color: var(--color-marine-blue);
     margin-bottom: 1.5rem;
@@ -309,3 +309,65 @@
       font-size: 14px; /* Ajuste la taille de l'icône de coche */
     }
   }
+
+ 
+
+/* Assurez-vous que le lien interne est stylisé comme un bouton */
+.cardActions a[href="#entretien-section"] {
+  /* Assurez-vous que le style du bouton est cohérent */
+  background-color: var(--color-marine-blue); /* Exemple de couleur */
+  color: var(--color-white);
+  /* ... d'autres styles de bouton existants ... */
+}
+
+/* Quand le lien est le seul bouton, ajustez le flex-start/end si nécessaire */
+.maintenanceCard .cardActions {
+  justify-content: center; /* Centrer le bouton si un seul est présent */
+  /* Ou keep-start si vous préférez */
+}
+
+/* Ajustements pour les boutons d'action généraux dans le cas d'une seule action */
+/* Ces styles peuvent être déjà définis ou nécessiter un ajustement selon votre base */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap; /* Empêche le texte du bouton de se couper */
+}
+
+.callButton { /* Style pour le bouton "Plus de détails" */
+    background-color: var(--color-water-blue);
+    color: var(--color-white);
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 119, 190, 0.2);
+}
+
+.callButton:hover {
+    background-color: var(--color-marine-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+}
+
+.quoteButtonBottom { /* Style pour le bouton "Demander un devis" */
+    background-color: var(--color-grey-light);
+    color: var(--color-marine-blue);
+    border: 1px solid var(--color-marine-blue);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.quoteButtonBottom:hover {
+    background-color: var(--color-marine-blue);
+    color: var(--color-white);
+    border-color: var(--color-marine-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 51, 102, 0.2);
+}
+
+/* ... (fin de votre CSS existant) ... */
