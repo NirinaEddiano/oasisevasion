@@ -1,23 +1,12 @@
-// src/app/contact/page.tsx
-'use client'; // Indique que c'est un composant client pour gérer les états du formulaire
-
-// Supprimez cette ligne :
-// import type { Metadata } from 'next';
+'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-
-// Import des icônes nécessaires
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
-
-// Import des styles modulaires spécifiques à cette page
 import styles from './page.module.css';
 
-// --- Les composants HeroSection et QuoteCtaSection restent inchangés ici ---
-// (Ils peuvent rester dans le même fichier ou être déplacés dans des composants séparés si réutilisés ailleurs)
-
-// --- Composant Hero Section (réutilisable si tu veux, ici intégré pour l'exemple) ---
+// --- Composant Hero Section (inchangé) ---
 interface HeroSectionProps {
   title: string;
   description: string;
@@ -25,11 +14,6 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imageUrl }) => {
-  // Styles CSS pour l'overlay dynamique, utilisant les variables de couleur du thème
-  const overlayStyle = {
-    background: `linear-gradient(90deg, var(--color-water-blue)CC, var(--color-marine-blue)CC)`, // CC pour 80% d'opacité
-  };
-
   return (
     <section className={styles.heroSection}>
       <Image
@@ -37,7 +21,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imageUrl 
         alt={title}
         fill
         sizes="100vw"
-        priority // Pour un chargement rapide de l'image du hero
+        priority
         className={styles.heroImage}
       />
       <div className={styles.overlay}></div>
@@ -49,7 +33,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imageUrl 
   );
 };
 
-// --- Composant Call to Action (CTA) Section ---
+// --- Composant Call to Action (CTA) Section (inchangé) ---
 interface QuoteCtaSectionProps {
   title: string;
   imageUrl: string;
@@ -59,7 +43,7 @@ interface QuoteCtaSectionProps {
 
 const QuoteCtaSection: React.FC<QuoteCtaSectionProps> = ({ title, imageUrl, buttonText, buttonLink }) => {
   const overlayStyle = {
-    background: `linear-gradient(90deg, var(--color-marine-blue)CC, var(--color-water-blue)CC)`, // Inversé pour varier
+    background: `linear-gradient(90deg, var(--color-marine-blue)CC, var(--color-water-blue)CC)`,
   };
 
   return (
@@ -71,7 +55,7 @@ const QuoteCtaSection: React.FC<QuoteCtaSectionProps> = ({ title, imageUrl, butt
         sizes="100vw"
         className={styles.quoteCtaImage}
       />
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay} style={overlayStyle}></div>
       <div className={styles.quoteCtaContent}>
         <h2 className={styles.quoteCtaTitle}>{title}</h2>
         <Link href={buttonLink} className={styles.quoteCtaButton}>
@@ -91,25 +75,53 @@ const ContactPage = () => {
     subject: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Formulaire de contact soumis:', formData);
-    // Ici, tu intègrerais la logique d'envoi du formulaire.
-    // Par exemple, via une API Route de Next.js, ou un service tiers comme Formspree, Netlify Forms, etc.
-    alert('Votre message a été envoyé ! Nous vous répondrons dans les plus brefs délais.');
-    // Réinitialiser le formulaire
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setSubmitMessage(data.message || 'Votre message a été envoyé !');
+        // Réinitialiser le formulaire
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        setSubmitStatus('error');
+        setSubmitMessage(data.message || 'Échec de l\'envoi du message. Veuillez réessayer.');
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi du formulaire:', error);
+      setSubmitStatus('error');
+      setSubmitMessage('Une erreur inattendue est survenue. Veuillez vérifier votre connexion ou réessayer plus tard.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -118,7 +130,7 @@ const ContactPage = () => {
       <HeroSection
         title="Contactez-nous"
         description="Nous sommes là pour répondre à toutes vos questions. N'hésitez pas à nous laisser un message."
-        imageUrl="/images/contact-hero-bg.jpg" // Image à placer dans public/images
+        imageUrl="/images/contact-hero-bg.jpg"
       />
 
       {/* Section principale avec Formulaire et Informations de Contact */}
@@ -141,6 +153,7 @@ const ContactPage = () => {
                 onChange={handleChange}
                 required
                 className={styles.inputField}
+                disabled={isSubmitting}
               />
             </div>
             <div className={styles.formGroup}>
@@ -154,6 +167,7 @@ const ContactPage = () => {
                 onChange={handleChange}
                 required
                 className={styles.inputField}
+                disabled={isSubmitting}
               />
             </div>
             <div className={styles.formGroup}>
@@ -166,6 +180,7 @@ const ContactPage = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 className={styles.inputField}
+                disabled={isSubmitting}
               />
             </div>
             <div className={styles.formGroup}>
@@ -179,6 +194,7 @@ const ContactPage = () => {
                 onChange={handleChange}
                 required
                 className={styles.inputField}
+                disabled={isSubmitting}
               />
             </div>
             <div className={styles.formGroup}>
@@ -192,11 +208,17 @@ const ContactPage = () => {
                 onChange={handleChange}
                 required
                 className={styles.textareaField}
+                disabled={isSubmitting}
               ></textarea>
             </div>
-            <button type="submit" className={styles.submitButton}>
-              Envoyer le message <FaPaperPlane size={16} />
+            <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
+              {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'} <FaPaperPlane size={16} />
             </button>
+            {submitStatus && (
+              <p className={`${styles.submitFeedback} ${submitStatus === 'success' ? styles.success : styles.error}`}>
+                {submitMessage}
+              </p>
+            )}
           </form>
         </div>
 
@@ -234,7 +256,7 @@ const ContactPage = () => {
           <div className={styles.mapContainer}>
             {/* Remplacer 'YOUR_GOOGLE_MAPS_EMBED_URL' par l'URL d'intégration de votre carte Google Maps */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.003943034966!2d-7.61905818480112!3d33.59013008073573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2eb292d3f41%3A0xe10360a4f5b9d36e!2sCasablanca!5e0!3m2!1sen!2sma!4v1678912345678!5m2!1sen!2sma"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.003943034966!2d-7.61905818480112!3d33.59013008073573!2m3!1f0!2f0!0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2eb292d3f41%3A0xe10360a4f5b9d36e!2sCasablanca!5e0!3m2!1sen!2sma!4v1678912345678!5m2!1sen!2sma"
               width="100%"
               height="400"
               style={{ border: 0, borderRadius: '12px' }}
@@ -250,9 +272,9 @@ const ContactPage = () => {
       {/* Dernière section pour inciter à demander un devis */}
       <QuoteCtaSection
         title="Prêt à réaliser votre rêve aquatique ?"
-        imageUrl="/images/cta-quote-bg.jpg" // Image à placer dans public/images
+        imageUrl="/images/cta-quote-bg.jpg"
         buttonText="Commencer dès maintenant"
-        buttonLink="/demande-de-devis" // Assurez-vous que cette page existe ou redirige vers un formulaire de devis
+        buttonLink="/demande-de-devis"
       />
     </div>
   );
