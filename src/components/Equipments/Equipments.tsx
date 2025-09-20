@@ -1,49 +1,40 @@
 import React from 'react';
-import Image from 'next/image'; // Importation nécessaire pour Image
+import Image from 'next/image';
+import Link from 'next/link'; // Import de Link
 import styles from './Equipments.module.css';
 import {
   FaVectorSquare,    // Pour Structure & bassin
   FaFilter,          // Pour Hydraulique & filtration
   FaThermometerHalf, // Pour Chauffage & maintien en température
   FaRobot,           // Pour Automatisation & connectivité
-  FaHotTub,
-  FaInfoCircle,          // Pour Spa / Jacuzzi (catégorie Bien-être)
+  FaHotTub,          // Pour Spa / Jacuzzi (catégorie Bien-être)
+  FaArrowRight,      // Pour le bouton "En savoir plus"
   FaTools,           // Pour le bouton "Découvrir"
 } from 'react-icons/fa';
 
+// Importez les données complètes des équipements
+import { equipmentsData } from '@/data/equipmentsData';
+
 // Données des catégories d'équipement pour la page d'accueil (résumées)
-const equipmentsData = [
-  {
-    icon: <FaVectorSquare />,
-    title: 'Design Architectural',
-    description: 'Formes uniques, matériaux nobles et finitions sur mesure pour une intégration parfaite.',
-    image: '/images/equipment-design.jpg', // Nom d'image original
-  },
-  {
-    icon: <FaFilter />,
-    title: 'Pureté & Performance',
-    description: 'Filtration avancée et traitements écologiques pour une eau cristalline, toujours saine.',
-    image: '/images/equipment-filtration.jpg', // Nom d'image original
-  },
-  {
-    icon: <FaThermometerHalf />,
-    title: 'Confort Optimal',
-    description: 'Solutions de chauffage intelligentes et couvertures design pour une baignade prolongée.',
-    image: '/images/equipment-heating.jpg', // Nom d'image original
-  },
-  {
-    icon: <FaRobot />,
-    title: 'Intelligence Connectée',
-    description: 'Contrôle intuitif de votre piscine : nettoyage, éclairage, scénarios automatisés.',
-    image: '/images/equipment-automation.jpg', // Nom d'image original
-  },
-  {
-    icon: <FaHotTub />,
-    title: 'Oasis de Bien-être',
-    description: 'Spas, saunas et hammams intégrés, créés sur mesure pour une relaxation ultime.',
-    image: '/images/equipment-wellness.jpg', // Nom d'image original
-  },
-];
+// Utiliser les données importées directement et les adapter si nécessaire pour l'affichage de l'accueil
+const homePageEquipmentsData = equipmentsData.map(category => ({
+  slug: category.slug,
+  title: category.title,
+  description: category.description,
+  image: category.imageUrl,
+  // Assigner l'icône appropriée en fonction du slug
+  icon: (function() {
+    switch (category.slug) {
+      case 'structure-design': return <FaVectorSquare />;
+      case 'filtration-hydraulique': return <FaFilter />;
+      case 'traitement-chauffage': return <FaThermometerHalf />;
+      case 'automatisation-connectivite': return <FaRobot />;
+      case 'oasis-bien-etre': return <FaHotTub />;
+      default: return <FaTools />; // Icône par défaut
+    }
+  })()
+}));
+
 
 const Equipments = () => {
   return (
@@ -60,7 +51,7 @@ const Equipments = () => {
 
       {/* Grille des cartes d'équipement avec informations visibles */}
       <div className={styles.equipmentsGrid}>
-        {equipmentsData.map((item, index) => (
+        {homePageEquipmentsData.map((item, index) => (
           <div key={index} className={styles.equipmentCard}>
             {/* Image d'en-tête de la carte */}
             <div className={styles.cardImageHeader}>
@@ -77,29 +68,27 @@ const Equipments = () => {
               <div className={styles.cardIcon}>
                 {item.icon} {/* Icône principale du service */}
               </div>
-              {/* Le titre est maintenant dans le bloc de contenu pour une meilleure hiérarchie */}
             </div>
             {/* Contenu textuel de la carte */}
             <div className={styles.cardContent}>
               <h3 className={styles.cardTitle}>{item.title}</h3>
               <p className={styles.cardDescription}>{item.description}</p>
-              <div className={styles.aboutActions}>
-                        <a href="/equipement" className={`${styles.button} ${styles.primaryButton}`}>
-                          <FaInfoCircle size={16} />
-                          <span>En savoir plus</span>
-                        </a>
-                      </div>
+              {/* Le bouton "En savoir plus" redirige vers la page de la catégorie spécifique */}
+              <Link href={`/equipement/${item.slug}`} className={`${styles.button} ${styles.primaryButton}`}>
+                <span>En savoir plus</span>
+                <FaArrowRight size={16} />
+              </Link>
             </div>
           </div>
         ))}
 
         {/* Le bouton "Découvrir toutes nos solutions" est intégré comme une carte dans la grille */}
-        <a href="/equipements" className={styles.discoverGridButton}>
+        <Link href="/equipement" className={styles.discoverGridButton}> {/* Corriger le lien vers la page principale /equipement */}
           <div className={styles.discoverGridButtonIcon}>
             <FaTools />
           </div>
           <span className={styles.discoverGridButtonText}>Découvrir toutes nos solutions</span>
-        </a>
+        </Link>
       </div>
     </section>
   );
