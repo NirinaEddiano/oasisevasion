@@ -101,7 +101,7 @@ const MaintenanceCTASection = () => {
               <Link href="/contact" className={styles.contactButton}>
                 <FaEnvelope /> Contactez-nous
               </Link>
-              <a href="tel:+212123456789" className={styles.callButton}>
+              <a href="tel:+212687389435" className={styles.callButton}>
                 <FaPhoneAlt /> Appelez-nous
               </a>
             </div>
