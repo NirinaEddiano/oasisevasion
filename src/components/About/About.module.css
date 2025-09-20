@@ -7,13 +7,14 @@
 }
 
 .aboutSection {
+  margin-top:100px;
   display: flex;
   align-items: center; /* Centre les éléments verticalement */
   gap: 4rem; /* Espacement entre les deux colonnes (images et texte) */
   padding: 8rem 5%; /* Rembourrage autour de la section */
   background-color: var(--color-white); /* Fond blanc */
   max-width: 100%; /* Largeur maximale pour le contenu */
-  margin: 0 auto; /* Centre la section sur la page */
+   /* Centre la section sur la page */
 }
 
 /* Partie gauche : Images et infoBoxes */
@@ -23,7 +24,7 @@
   gap: 1.5rem; /* Espacement entre les deux groupes d'images/boîtes */
   align-items: flex-start; /* Aligne les groupes par le haut */
   position: relative;
-  min-height: 400px; /* Hauteur minimale pour les images */
+  min-height: 300px; /* Hauteur minimale pour les images */
 }
 
 .aboutImageWrapper {
