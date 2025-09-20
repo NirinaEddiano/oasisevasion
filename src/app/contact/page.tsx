@@ -232,23 +232,23 @@ const ContactPage = () => {
             <div className={styles.contactCard}>
               <FaPhoneAlt size={40} className={styles.contactIcon} />
               <h4 className={styles.contactCardTitle}>Téléphone</h4>
-              <p className={styles.contactCardText}><a href="tel:+212123456789">+212 1 23 45 67 89</a></p>
+              <p className={styles.contactCardText}><a href="tel:+2120687389435">+212 6 87 38 94 35</a></p>
             </div>
             <div className={styles.contactCard}>
               <FaWhatsapp size={40} className={styles.contactIcon} />
               <h4 className={styles.contactCardTitle}>WhatsApp</h4>
-              <p className={styles.contactCardText}><a href="https://wa.me/212123456789" target="_blank" rel="noopener noreferrer">+212 1 23 45 67 89</a></p>
+              <p className={styles.contactCardText}><a href="https://wa.me/212687389435" target="_blank" rel="noopener noreferrer">+212 6 87 38 94 35</a></p>
             </div>
             <div className={styles.contactCard}>
               <FaEnvelope size={40} className={styles.contactIcon} />
               <h4 className={styles.contactCardTitle}>Email</h4>
-              <p className={styles.contactCardText}><a href="mailto:contact@oasis-evasion.ma">contact@oasis-evasion.ma</a></p>
+              <p className={styles.contactCardText}><a href="mailto:Wf.groupe@gmail.com">Wf.groupe@gmail.com</a></p>
             </div>
             <div className={styles.contactCard}>
               <FaMapMarkerAlt size={40} className={styles.contactIcon} />
               <h4 className={styles.contactCardTitle}>Adresse</h4>
               <p className={styles.contactCardText}>
-                123 Rue de l'Oasis, <br /> Casablanca, Maroc
+                 Maroc
               </p>
             </div>
           </div>
