@@ -1,4 +1,3 @@
-// src/app/demande-de-devis/page.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -32,19 +31,19 @@ interface FormData {
   lagonLandscaping: string;
   spaPlaces: string;
   spaIndoorOutdoor: string;
-  spaOptions: string[]; // Explicitly typed as string[]
+  spaOptions: string[];
   jacuzziPlaces: string;
   jacuzziIndoorOutdoor: string;
-  jacuzziOptions: string[]; // Explicitly typed as string[]
+  jacuzziOptions: string[];
   hammamPlaces: string;
-  hammamOptions: string[]; // Explicitly typed as string[]
+  hammamOptions: string[];
   otherDescription: string;
 
   // Étape 2 Piscine
   piscineFiltration: string;
   piscineStairShape: string;
-  piscineSecurity: string[]; // Explicitly typed as string[]
-  piscineComfort: string[]; // Explicitly typed as string[]
+  piscineSecurity: string[];
+  piscineComfort: string[];
 
   // Étape 2 Lagon
   lagonSwimZone: string;
@@ -53,13 +52,13 @@ interface FormData {
 
   // Étape 2 Spa/Jacuzzi/Hammam
   spaJetType: string;
-  spaExtraFeatures: string[]; // Explicitly typed as string[]
-  spaMaterials: string[]; // Explicitly typed as string[]
+  spaExtraFeatures: string[];
+  spaMaterials: string[];
   jacuzziJetType: string;
-  jacuzziExtraFeatures: string[]; // Explicitly typed as string[]
-  jacuzziMaterials: string[]; // Explicitly typed as string[]
-  hammamFeatures: string[]; // Explicitly typed as string[]
-  hammamMaterials: string[]; // Explicitly typed as string[]
+  jacuzziExtraFeatures: string[];
+  jacuzziMaterials: string[];
+  hammamFeatures: string[];
+  hammamMaterials: string[];
 
   // Étape 3 Client Info
   lastName: string;
@@ -133,9 +132,6 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imageUrl }) => {
-  const overlayStyle = {
-    background: `linear-gradient(90deg, var(--color-water-blue)CC, var(--color-marine-blue)CC)`,
-  };
   return (
     <section className={styles.heroSection}>
       <Image
@@ -192,6 +188,9 @@ const QuoteCtaSection: React.FC<QuoteCtaSectionProps> = ({ title, imageUrl, butt
 const DemandeDeDevisPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const target = e.target;
@@ -204,12 +203,12 @@ const DemandeDeDevisPage = () => {
 
       // Handle checkboxes specifically
       if (target.type === 'checkbox') {
-        const isChecked = (target as HTMLInputElement).checked; // Safe to cast to HTMLInputElement here
-        if (Array.isArray(prevValue)) { // Handles arrays of checkboxes (e.g., piscineSecurity, piscineComfort)
+        const isChecked = (target as HTMLInputElement).checked;
+        if (Array.isArray(prevValue)) {
           newValue = isChecked
             ? [...prevValue, value]
             : prevValue.filter((item) => item !== value);
-        } else { // Handles single boolean checkboxes (e.g., acceptTerms)
+        } else {
           newValue = isChecked;
         }
       }
@@ -231,13 +230,15 @@ const DemandeDeDevisPage = () => {
 
 
   const handleNextStep = () => {
+    setSubmitStatus(null); // Réinitialiser le statut d'envoi à chaque nouvelle étape
+    setSubmitMessage('');
+
     // Basic validation for current step before moving
     if (currentStep === 1) {
       if (!formData.projectType) {
         alert('Veuillez sélectionner un type de projet.');
         return;
       }
-      // Add more specific validation here based on selected projectType
       if (formData.projectType === 'piscine' && (!formData.piscineStyle || !formData.piscineLength || !formData.piscineWidth || !formData.piscineShape)) {
         alert('Veuillez renseigner toutes les informations requises pour votre piscine (Style, Dimensions, Forme).');
         return;
@@ -270,27 +271,57 @@ const DemandeDeDevisPage = () => {
   };
 
   const handlePrevStep = () => {
+    setSubmitStatus(null); // Réinitialiser le statut d'envoi à chaque nouvelle étape
+    setSubmitMessage('');
     setCurrentStep((prev) => prev - 1);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setSubmitMessage('');
+
     if (!formData.acceptTerms) {
-      alert('Veuillez accepter les conditions d\'utilisation.');
+      setSubmitStatus('error');
+      setSubmitMessage('Veuillez accepter les conditions d\'utilisation.');
+      setIsSubmitting(false);
       return;
     }
-    // Basic final validation for contact info
     if (!formData.lastName || !formData.firstName || !formData.email || !formData.phone) {
-      alert('Veuillez renseigner toutes vos coordonnées requises.');
+      setSubmitStatus('error');
+      setSubmitMessage('Veuillez renseigner toutes vos coordonnées requises.');
+      setIsSubmitting(false);
       return;
     }
 
-    console.log('Demande de devis soumise:', formData);
-    alert('Votre demande de devis a été envoyée ! Nous vous contacterons rapidement.');
-    // Here, you would typically send the formData to your backend or an email service.
-    // Reset form after submission
-    setFormData(initialFormData); // Utilise l'objet initial pour réinitialiser
-    setCurrentStep(1); // Retour à la première étape
+    try {
+      const response = await fetch('/api/devis', { // Appel à la nouvelle API Route /api/devis
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setSubmitMessage(data.message || 'Votre demande de devis a été envoyée ! Nous vous contacterons rapidement.');
+        setFormData(initialFormData); // Réinitialise le formulaire
+        setCurrentStep(1); // Retour à la première étape
+      } else {
+        setSubmitStatus('error');
+        setSubmitMessage(data.message || 'Échec de l\'envoi de la demande de devis. Veuillez réessayer.');
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi du formulaire de devis:', error);
+      setSubmitStatus('error');
+      setSubmitMessage('Une erreur inattendue est survenue. Veuillez vérifier votre connexion ou réessayer plus tard.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Helper pour rendre les icônes de progression
@@ -307,7 +338,7 @@ const DemandeDeDevisPage = () => {
       <HeroSection
         title="Votre devis personnalisé en 3 étapes"
         description="Décrivez-nous votre projet de rêve et obtenez une estimation gratuite et sans engagement."
-        imageUrl="/images/demande-de-devis-hero-bg.jpg" // Image à ajouter
+        imageUrl="/images/demande-de-devis-hero-bg.jpg"
       />
 
       <section className={styles.quoteFormSection}>
@@ -373,7 +404,7 @@ const DemandeDeDevisPage = () => {
                       type="radio"
                       name="projectType"
                       value="jacuzzi"
-                      checked={formData.jacuzziPlaces === 'jacuzzi'} // Changed here for consistency, but consider if this should be projectType === 'jacuzzi'
+                      checked={formData.projectType === 'jacuzzi'} // <--- CORRECTION ICI
                       onChange={handleChange}
                       hidden
                     />
@@ -446,6 +477,7 @@ const DemandeDeDevisPage = () => {
                         required
                         className={styles.inputField}
                         min="1"
+                        disabled={isSubmitting}
                       />
                       <input
                         type="number"
@@ -456,6 +488,7 @@ const DemandeDeDevisPage = () => {
                         required
                         className={styles.inputField}
                         min="1"
+                        disabled={isSubmitting}
                       />
                       <input
                         type="number"
@@ -465,6 +498,7 @@ const DemandeDeDevisPage = () => {
                         onChange={handleChange}
                         className={styles.inputField}
                         min="0.5"
+                        disabled={isSubmitting}
                       />
                       <input
                         type="number"
@@ -474,6 +508,7 @@ const DemandeDeDevisPage = () => {
                         onChange={handleChange}
                         className={styles.inputField}
                         min="0.5"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -482,19 +517,19 @@ const DemandeDeDevisPage = () => {
                     <label className={styles.formLabel}>Forme <span className={styles.required}>*</span></label>
                     <div className={styles.radioGridSmall}>
                       <label className={styles.radioCardSmall}>
-                        <input type="radio" name="piscineShape" value="rectangle" checked={formData.piscineShape === 'rectangle'} onChange={handleChange} hidden />
+                        <input type="radio" name="piscineShape" value="rectangle" checked={formData.piscineShape === 'rectangle'} onChange={handleChange} hidden disabled={isSubmitting} />
                         <div className={styles.radioCardContentSmall}><FaRegSquare /> Rectangulaire</div>
                       </label>
                       <label className={styles.radioCardSmall}>
-                        <input type="radio" name="piscineShape" value="carree" checked={formData.piscineShape === 'carree'} onChange={handleChange} hidden />
+                        <input type="radio" name="piscineShape" value="carree" checked={formData.piscineShape === 'carree'} onChange={handleChange} hidden disabled={isSubmitting} />
                         <div className={styles.radioCardContentSmall}><FaSquareParking /> Carrée</div>
                       </label>
                       <label className={styles.radioCardSmall}>
-                        <input type="radio" name="piscineShape" value="enL" checked={formData.piscineShape === 'enL'} onChange={handleChange} hidden />
+                        <input type="radio" name="piscineShape" value="enL" checked={formData.piscineShape === 'enL'} onChange={handleChange} hidden disabled={isSubmitting} />
                         <div className={styles.radioCardContentSmall}><FaBezierCurve /> En L</div>
                       </label>
                       <label className={styles.radioCardSmall}>
-                        <input type="radio" name="piscineShape" value="surMesure" checked={formData.piscineShape === 'surMesure'} onChange={handleChange} hidden />
+                        <input type="radio" name="piscineShape" value="surMesure" checked={formData.piscineShape === 'surMesure'} onChange={handleChange} hidden disabled={isSubmitting} />
                         <div className={styles.radioCardContentSmall}><FaCircle /> Sur mesure</div>
                       </label>
                     </div>
@@ -502,7 +537,7 @@ const DemandeDeDevisPage = () => {
 
                   <div className={styles.formGroup}>
                     <label className={styles.formLabel}>Type de fond</label>
-                    <select name="piscineBottomType" value={formData.piscineBottomType} onChange={handleChange} className={styles.selectField}>
+                    <select name="piscineBottomType" value={formData.piscineBottomType} onChange={handleChange} className={styles.selectField} disabled={isSubmitting}>
                       <option value="">Sélectionnez un type de fond</option>
                       <option value="plat">Fond plat</option>
                       <option value="penteDouce">Pente douce</option>
@@ -513,7 +548,7 @@ const DemandeDeDevisPage = () => {
 
                   <div className={styles.formGroup}>
                     <label className={styles.formLabel}>Couleur de l'eau souhaitée</label>
-                    <select name="piscineWaterColor" value={formData.piscineWaterColor} onChange={handleChange} className={styles.selectField}>
+                    <select name="piscineWaterColor" value={formData.piscineWaterColor} onChange={handleChange} className={styles.selectField} disabled={isSubmitting}>
                       <option value="">Sélectionnez une couleur</option>
                       <option value="bleuClair">Bleu clair (liner blanc)</option>
                       <option value="bleuProfond">Bleu profond (liner gris/noir)</option>
@@ -530,7 +565,7 @@ const DemandeDeDevisPage = () => {
                 <>
                   <div className={styles.formGroup}>
                     <label className={styles.formLabel}>Taille estimée du Lagon</label>
-                    <select name="lagonSize" value={formData.lagonSize} onChange={handleChange} className={styles.selectField}>
+                    <select name="lagonSize" value={formData.lagonSize} onChange={handleChange} className={styles.selectField} disabled={isSubmitting}>
                       <option value="">Sélectionnez une taille</option>
                       <option value="petit">Petit (moins de 50m²)</option>
                       <option value="moyen">Moyen (50-150m²)</option>
@@ -546,6 +581,7 @@ const DemandeDeDevisPage = () => {
                       value={formData.lagonLandscaping}
                       onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                 </>
@@ -564,11 +600,12 @@ const DemandeDeDevisPage = () => {
                       onChange={handleChange}
                       className={styles.inputField}
                       min="1"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className={styles.formGroup}>
                     <label className={styles.formLabel}>Emplacement</label>
-                    <select name="spaIndoorOutdoor" value={formData.spaIndoorOutdoor} onChange={handleChange} className={styles.selectField}>
+                    <select name="spaIndoorOutdoor" value={formData.spaIndoorOutdoor} onChange={handleChange} className={styles.selectField} disabled={isSubmitting}>
                       <option value="">Intérieur ou Extérieur ?</option>
                       <option value="interieur">Intérieur</option>
                       <option value="exterieur">Extérieur</option>
@@ -580,9 +617,10 @@ const DemandeDeDevisPage = () => {
                       name="spaOptions"
                       placeholder="Décrivez les options de jets, chromothérapie, aromathérapie, etc."
                       rows={3}
-                      value={formData.spaOptions.join(', ')} // Afficher le tableau comme une string pour la textarea
-                      onChange={handleChange} // handleChange convertira en string[]
+                      value={formData.spaOptions.join(', ')}
+                      onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                 </>
@@ -601,11 +639,12 @@ const DemandeDeDevisPage = () => {
                       onChange={handleChange}
                       className={styles.inputField}
                       min="1"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className={styles.formGroup}>
                     <label className={styles.formLabel}>Emplacement</label>
-                    <select name="jacuzziIndoorOutdoor" value={formData.jacuzziIndoorOutdoor} onChange={handleChange} className={styles.selectField}>
+                    <select name="jacuzziIndoorOutdoor" value={formData.jacuzziIndoorOutdoor} onChange={handleChange} className={styles.selectField} disabled={isSubmitting}>
                       <option value="">Intérieur ou Extérieur ?</option>
                       <option value="interieur">Intérieur</option>
                       <option value="exterieur">Extérieur</option>
@@ -620,6 +659,7 @@ const DemandeDeDevisPage = () => {
                       value={formData.jacuzziOptions.join(', ')}
                       onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                 </>
@@ -638,6 +678,7 @@ const DemandeDeDevisPage = () => {
                       onChange={handleChange}
                       className={styles.inputField}
                       min="1"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className={styles.formGroup}>
@@ -649,6 +690,7 @@ const DemandeDeDevisPage = () => {
                       value={formData.hammamOptions.join(', ')}
                       onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                 </>
@@ -666,12 +708,13 @@ const DemandeDeDevisPage = () => {
                     onChange={handleChange}
                     required
                     className={styles.textareaField}
+                    disabled={isSubmitting}
                   ></textarea>
                 </div>
               )}
 
               <div className={styles.buttonGroup}>
-                <button type="button" onClick={handleNextStep} className={styles.nextButton}>
+                <button type="button" onClick={handleNextStep} className={styles.nextButton} disabled={isSubmitting}>
                   Étape Suivante <FaArrowRight size={16} />
                 </button>
               </div>
@@ -689,7 +732,7 @@ const DemandeDeDevisPage = () => {
                 <>
                   <div className={styles.formGroup}>
                     <label className={styles.formLabel}>Système de Filtration <span className={styles.required}>*</span></label>
-                    <select name="piscineFiltration" value={formData.piscineFiltration} onChange={handleChange} className={styles.selectField} required>
+                    <select name="piscineFiltration" value={formData.piscineFiltration} onChange={handleChange} className={styles.selectField} required disabled={isSubmitting}>
                       <option value="">Sélectionnez un système de filtration</option>
                       <option value="sable">À sable</option>
                       <option value="cartouche">À cartouche</option>
@@ -701,7 +744,7 @@ const DemandeDeDevisPage = () => {
 
                   <div className={styles.formGroup}>
                     <label className={styles.formLabel}>Forme de l'escalier</label>
-                    <select name="piscineStairShape" value={formData.piscineStairShape} onChange={handleChange} className={styles.selectField}>
+                    <select name="piscineStairShape" value={formData.piscineStairShape} onChange={handleChange} className={styles.selectField} disabled={isSubmitting}>
                       <option value="">Sélectionnez une forme d'escalier</option>
                       <option value="droit">Droit</option>
                       <option value="roman">Roman (arrondi)</option>
@@ -715,27 +758,27 @@ const DemandeDeDevisPage = () => {
                     <label className={styles.formLabel}>Sécurité (plusieurs choix possibles)</label>
                     <div className={styles.checkboxGrid}>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineSecurity" value="couvertureBarres" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('couvertureBarres')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineSecurity" value="couvertureBarres" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('couvertureBarres')} onChange={handleChange} disabled={isSubmitting} />
                         <FaShieldAlt size={20} /> Couverture à barres
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineSecurity" value="voletImmerge" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('voletImmerge')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineSecurity" value="voletImmerge" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('voletImmerge')} onChange={handleChange} disabled={isSubmitting} />
                         <FaRegSquare /> Volet roulant immergé
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineSecurity" value="voletHorsSol" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('voletHorsSol')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineSecurity" value="voletHorsSol" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('voletHorsSol')} onChange={handleChange} disabled={isSubmitting} />
                         <FaRegSquare /> Volet roulant hors-sol
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineSecurity" value="alarme" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('alarme')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineSecurity" value="alarme" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('alarme')} onChange={handleChange} disabled={isSubmitting} />
                         <FaShieldAlt size={20} /> Alarme immergée
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineSecurity" value="barriere" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('barriere')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineSecurity" value="barriere" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('barriere')} onChange={handleChange} disabled={isSubmitting} />
                         <FaShieldAlt size={20} /> Barrière de protection
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineSecurity" value="abri" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('abri')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineSecurity" value="abri" checked={Array.isArray(formData.piscineSecurity) && formData.piscineSecurity.includes('abri')} onChange={handleChange} disabled={isSubmitting} />
                         <FaRegSquare /> Abri de piscine
                       </label>
                     </div>
@@ -745,31 +788,31 @@ const DemandeDeDevisPage = () => {
                     <label className={styles.formLabel}>Confort & Équipements (plusieurs choix possibles)</label>
                     <div className={styles.checkboxGrid}>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineComfort" value="pompeChaleur" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('pompeChaleur')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineComfort" value="pompeChaleur" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('pompeChaleur')} onChange={handleChange} disabled={isSubmitting} />
                         <FaThermometerHalf size={20} /> Pompe à chaleur
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineComfort" value="nageContreCourant" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('nageContreCourant')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineComfort" value="nageContreCourant" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('nageContreCourant')} onChange={handleChange} disabled={isSubmitting} />
                         <FaWater size={20} /> Nage à contre-courant
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineComfort" value="busesMassage" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('busesMassage')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineComfort" value="busesMassage" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('busesMassage')} onChange={handleChange} disabled={isSubmitting} />
                         <FaSpa size={20} /> Buses de massage
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineComfort" value="traitementAutomatique" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('traitementAutomatique')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineComfort" value="traitementAutomatique" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('traitementAutomatique')} onChange={handleChange} disabled={isSubmitting} />
                         <FaFilter size={20} /> Traitement automatique (sel/UV)
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineComfort" value="doucheExterieure" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('doucheExterieure')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineComfort" value="doucheExterieure" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('doucheExterieure')} onChange={handleChange} disabled={isSubmitting} />
                         <FaShower size={20} /> Douche extérieure
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineComfort" value="eclairageLED" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('eclairageLED')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineComfort" value="eclairageLED" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('eclairageLED')} onChange={handleChange} disabled={isSubmitting} />
                         <FaLightbulb /> Éclairage LED RGB
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name="piscineComfort" value="poolHouse" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('poolHouse')} onChange={handleChange} />
+                        <input type="checkbox" name="piscineComfort" value="poolHouse" checked={Array.isArray(formData.piscineComfort) && formData.piscineComfort.includes('poolHouse')} onChange={handleChange} disabled={isSubmitting} />
                         <FaHome /> Pool house
                       </label>
                     </div>
@@ -789,6 +832,7 @@ const DemandeDeDevisPage = () => {
                       value={formData.lagonSwimZone}
                       onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                   <div className={styles.formGroup}>
@@ -800,6 +844,7 @@ const DemandeDeDevisPage = () => {
                       value={formData.lagonBeach}
                       onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                   {/* Plus d'options pour les lagons ici si nécessaire */}
@@ -818,25 +863,26 @@ const DemandeDeDevisPage = () => {
                       value={formData[`${formData.projectType}JetType` as keyof FormData] as string}
                       onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                   <div className={styles.formGroup}>
                     <label className={styles.formLabel}>Fonctionnalités supplémentaires <br/><small>(Séparées par des virgules)</small></label>
                     <div className={styles.checkboxGrid}>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name={`${formData.projectType}ExtraFeatures`} value="chromotherapie" checked={Array.isArray(formData[`${formData.projectType}ExtraFeatures` as keyof FormData]) && (formData[`${formData.projectType}ExtraFeatures` as keyof FormData] as string[]).includes('chromotherapie')} onChange={handleChange} />
+                        <input type="checkbox" name={`${formData.projectType}ExtraFeatures`} value="chromotherapie" checked={Array.isArray(formData[`${formData.projectType}ExtraFeatures` as keyof FormData]) && (formData[`${formData.projectType}ExtraFeatures` as keyof FormData] as string[]).includes('chromotherapie')} onChange={handleChange} disabled={isSubmitting} />
                         <FaLightbulb /> Chromothérapie
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name={`${formData.projectType}ExtraFeatures`} value="aromatherapie" checked={Array.isArray(formData[`${formData.projectType}ExtraFeatures` as keyof FormData]) && (formData[`${formData.projectType}ExtraFeatures` as keyof FormData] as string[]).includes('aromatherapie')} onChange={handleChange} />
+                        <input type="checkbox" name={`${formData.projectType}ExtraFeatures`} value="aromatherapie" checked={Array.isArray(formData[`${formData.projectType}ExtraFeatures` as keyof FormData]) && (formData[`${formData.projectType}ExtraFeatures` as keyof FormData] as string[]).includes('aromatherapie')} onChange={handleChange} disabled={isSubmitting} />
                         <FaLeaf /> Aromathérapie
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name={`${formData.projectType}ExtraFeatures`} value="musique" checked={Array.isArray(formData[`${formData.projectType}ExtraFeatures` as keyof FormData]) && (formData[`${formData.projectType}ExtraFeatures` as keyof FormData] as string[]).includes('musique')} onChange={handleChange} />
+                        <input type="checkbox" name={`${formData.projectType}ExtraFeatures`} value="musique" checked={Array.isArray(formData[`${formData.projectType}ExtraFeatures` as keyof FormData]) && (formData[`${formData.projectType}ExtraFeatures` as keyof FormData] as string[]).includes('musique')} onChange={handleChange} disabled={isSubmitting} />
                         <FaMusic /> Système audio
                       </label>
                       <label className={styles.checkboxCard}>
-                        <input type="checkbox" name={`${formData.projectType}ExtraFeatures`} value="chauffage" checked={Array.isArray(formData[`${formData.projectType}ExtraFeatures` as keyof FormData]) && (formData[`${formData.projectType}ExtraFeatures` as keyof FormData] as string[]).includes('chauffage')} onChange={handleChange} />
+                        <input type="checkbox" name={`${formData.projectType}ExtraFeatures`} value="chauffage" checked={Array.isArray(formData[`${formData.projectType}ExtraFeatures` as keyof FormData]) && (formData[`${formData.projectType}ExtraFeatures` as keyof FormData] as string[]).includes('chauffage')} onChange={handleChange} disabled={isSubmitting} />
                         <FaThermometerHalf /> Chauffage additionnel
                       </label>
                     </div>
@@ -850,6 +896,7 @@ const DemandeDeDevisPage = () => {
                       value={(formData[`${formData.projectType}Materials` as keyof FormData] as string[]).join(', ')}
                       onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                 </>
@@ -866,6 +913,7 @@ const DemandeDeDevisPage = () => {
                       value={formData.hammamFeatures.join(', ')}
                       onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                   <div className={styles.formGroup}>
@@ -877,6 +925,7 @@ const DemandeDeDevisPage = () => {
                       value={formData.hammamMaterials.join(', ')}
                       onChange={handleChange}
                       className={styles.textareaField}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                 </>
@@ -884,10 +933,10 @@ const DemandeDeDevisPage = () => {
 
 
               <div className={styles.buttonGroup}>
-                <button type="button" onClick={handlePrevStep} className={styles.prevButton}>
+                <button type="button" onClick={handlePrevStep} className={styles.prevButton} disabled={isSubmitting}>
                   <FaArrowLeft size={16} /> Étape Précédente
                 </button>
-                <button type="button" onClick={handleNextStep} className={styles.nextButton}>
+                <button type="button" onClick={handleNextStep} className={styles.nextButton} disabled={isSubmitting}>
                   Étape Suivante <FaArrowRight size={16} />
                 </button>
               </div>
@@ -911,6 +960,7 @@ const DemandeDeDevisPage = () => {
                   onChange={handleChange}
                   required
                   className={styles.inputField}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -924,6 +974,7 @@ const DemandeDeDevisPage = () => {
                   onChange={handleChange}
                   required
                   className={styles.inputField}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -937,6 +988,7 @@ const DemandeDeDevisPage = () => {
                   onChange={handleChange}
                   required
                   className={styles.inputField}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -950,6 +1002,7 @@ const DemandeDeDevisPage = () => {
                   onChange={handleChange}
                   required
                   className={styles.inputField}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -962,6 +1015,7 @@ const DemandeDeDevisPage = () => {
                   value={formData.address}
                   onChange={handleChange}
                   className={styles.inputField}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -974,6 +1028,7 @@ const DemandeDeDevisPage = () => {
                   value={formData.city}
                   onChange={handleChange}
                   className={styles.inputField}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -986,11 +1041,12 @@ const DemandeDeDevisPage = () => {
                   value={formData.zipCode}
                   onChange={handleChange}
                   className={styles.inputField}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="country" className="sr-only">Pays</label>
-                <select name="country" id="country" value={formData.country} onChange={handleChange} className={styles.selectField}>
+                <select name="country" id="country" value={formData.country} onChange={handleChange} className={styles.selectField} disabled={isSubmitting}>
                   <option value="Maroc">Maroc</option>
                   {/* Ajouter d'autres pays si nécessaire */}
                 </select>
@@ -1004,6 +1060,7 @@ const DemandeDeDevisPage = () => {
                     checked={formData.acceptTerms}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                   />
                   <span className={styles.checkmark}></span>
                   J'accepte les conditions d'utilisation de mes informations. <Link href="/conditions" className={styles.termsLink} target="_blank">(Lire les conditions)</Link>
@@ -1011,20 +1068,24 @@ const DemandeDeDevisPage = () => {
               </div>
 
               <div className={styles.buttonGroup}>
-                <button type="button" onClick={handlePrevStep} className={styles.prevButton}>
+                <button type="button" onClick={handlePrevStep} className={styles.prevButton} disabled={isSubmitting}>
                   <FaArrowLeft size={16} /> Étape Précédente
                 </button>
-                <button type="submit" className={styles.submitButton}>
-                  Envoyer ma demande <FaPaperPlane size={16} />
+                <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
+                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'} <FaPaperPlane size={16} />
                 </button>
               </div>
+              {submitStatus && (
+                <p className={`${styles.submitFeedback} ${submitStatus === 'success' ? styles.success : styles.error}`}>
+                  {submitMessage}
+                </p>
+              )}
             </div>
           )}
         </form>
       </section>
 
       {/* Dernière section pour inciter à demander un devis (si on veut un autre CTA) */}
-      
     </div>
   );
 };
