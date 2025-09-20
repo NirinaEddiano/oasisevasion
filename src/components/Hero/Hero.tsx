@@ -60,7 +60,7 @@ const Hero = () => {
             <FaEnvelope size={16} />
             <span>Demander un devis</span>
           </button>
-          <a href="tel:+212123456789" className={`${styles.button} ${styles.callButton}`}>
+          <a href="tel:+212687389435" className={`${styles.button} ${styles.callButton}`}>
             <FaPhoneAlt size={16} />
             <span>Appeler Maintenant</span>
           </a>
