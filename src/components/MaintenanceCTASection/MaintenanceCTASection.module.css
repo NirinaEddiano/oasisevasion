@@ -1,312 +1,449 @@
+/* src/components/MaintenanceCTASection/MaintenanceCTASection.module.css */
 
-.maintenanceCtaSection {
-    background-color: var(--color-white);
-    padding: 8rem 0;
-    margin-top: -100px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    min-height: 60vh; /* S'assure qu'il y a assez de hauteur pour l'intersection */
-  }
-  
-  /* Motif subtil en arrière-plan */
-  .maintenanceCtaSection::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230077be' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 54v-4H4v4H0v2h4v4h2v-4h4v-2H6zM36 4v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 4v-4H4v4H0v2h4v4h2v-4h4v-2H6zM56 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM26 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM56 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM26 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM56 54v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM26 54v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM46 4v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: repeat;
-    z-index: 0;
-  }
-  
-  
-  .contentWrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+.pricingSection {
+  background-color: var(--color-grey-light); /* Couleur de fond légèrement grise */
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: var(--color-grey-dark);
+}
+
+/* Motif subtil en arrière-plan */
+.pricingSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230077be' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 54v-4H4v4H0v2h4v4h2v-4h4v-2H6zM36 4v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 4v-4H4v4H0v2h4v4h2v-4h4v-2H6zM56 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM26 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM56 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM26 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM56 54v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM26 54v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM46 4v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  z-index: 0;
+  opacity: 0.3; /* Rendre le motif plus subtil */
+}
+
+.header {
+  max-width: 900px;
+  margin: 0 auto 4rem auto;
+  padding: 0 1rem;
+  position: relative; /* Pour que le texte soit au-dessus du motif */
+  z-index: 1;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-marine-blue);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: var(--color-marine-blue);
+  margin-bottom: 2rem;
+}
+
+.benefitsGrid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.benefitItem {
     display: flex;
     align-items: center;
-    gap: 4rem;
-    text-align: left;
-    position: relative;
-    z-index: 1;
-  
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  
-  .contentWrapper.animatedIn {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .leftContent {
-    flex: 2;
-    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
-  }
-  
-  .contentWrapper:not(.animatedIn) .leftContent {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  
-  .title {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--color-marine-blue);
-    margin-bottom: 1.2rem;
-    line-height: 1.3;
-  }
-  
-  .highlight {
-    color: var(--color-water-blue);
-  }
-  
-  .description {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: #555;
-    margin-bottom: 2.5rem;
-    max-width: 550px;
-  }
-  
-  .ctaButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 1.1rem 2.8rem;
-    background-color: var(--color-marine-blue);
-    color: var(--color-white);
-    border: none;
-    border-radius: 7px;
+    gap: 0.8rem;
     font-size: 1.1rem;
     font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 51, 102, 0.2);
-  }
-  
-  .ctaButton:hover {
-    background-color: var(--color-water-blue);
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 51, 102, 0.3);
-  }
-  
-  /* Conteneur des fonctionnalités de droite - la "fenêtre" du carrousel */
-  .rightFeatures {
-    flex: 1;
-    padding: 2rem;
-    background-color: var(--color-water-blue);
-    color: var(--color-white);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 71, 122, 0.15);
-    position: relative;
-    z-index: 1;
-    overflow: hidden; /* **Très important** pour cacher les éléments hors de vue */
-  
-    /* Définition des variables pour le calcul de hauteur et d'animation */
-    --feature-gap: 1.5rem; /* Espace entre les items */
-    --feature-item-min-height: 100px; /* Hauteur minimale pour le contenu texte de l'item */
-    --item-vertical-padding: 1rem; /* Padding vertical total de .featureItem (0.5rem haut + 0.5rem bas) */
-  
-    /* Hauteur d'une "slot" d'item, incluant son contenu, son padding et le gap en dessous */
-    --item-slot-height: calc(var(--feature-item-min-height) + var(--item-vertical-padding) + var(--feature-gap));
-  
-    /* Hauteur du conteneur .rightFeatures pour afficher exactement 3 items et 2 gaps */
-    height: calc(3 * var(--item-slot-height) - var(--feature-gap)); /* Enlève le dernier gap */
-  
-    /* Assurez-vous que le padding du parent est pris en compte dans le calcul de la hauteur si box-sizing n'est pas border-box */
-    box-sizing: border-box; /* S'assure que le padding s'ajoute à la largeur/hauteur */
-  
-    /* Animation des enfants du rightFeatures */
-    transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
-  }
-  
-  .contentWrapper:not(.animatedIn) .rightFeatures {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  
-  
-  /* Wrapper des items de la fonctionnalité - c'est lui qui va bouger */
-  .featureItemsWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--feature-gap);
-    /* Animation: Durée (ex: 5s par item * 3 items = 15s), linéaire pour une vitesse constante, infinie */
-    animation: slideUpLoop 15s linear infinite;
-    animation-play-state: running; /* L'animation démarre automatiquement */
-  }
-  
-  /* Pause de l'animation au survol de .rightFeatures */
-  .rightFeatures:hover .featureItemsWrapper {
-    animation-play-state: paused;
-  }
-  
-  /* Keyframes pour l'animation de défilement */
-  @keyframes slideUpLoop {
-    0% {
-      transform: translateY(0);
-    }
-    /* On défile d'une hauteur correspondant à 3 items.
-       Comme il y a 3 items originaux + 2 clones,
-       le défilement de 3 items ramène l'affichage à la 1ère "vraie" carte dupliquée, créant une boucle.
-    */
-    100% {
-      transform: translateY(calc(-3 * var(--item-slot-height)));
-    }
-  }
-  
-  .featureItem {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    text-align: left;
-    width: 100%; /* Prend toute la largeur disponible */
-    min-height: var(--feature-item-min-height); /* Assure une hauteur minimale pour le contenu */
-    padding: 0.5rem 0; /* Padding vertical à l'intérieur de chaque item */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Séparateur subtil */
-    box-sizing: border-box; /* S'assure que le padding est inclus dans la hauteur/largeur */
-  }
-  
-  .featureItem:last-of-type {
-    border-bottom: none; /* Pas de bordure pour le dernier élément du wrapper */
-  }
-  
-  .featureIcon {
-    font-size: 2.5rem;
-    color: var(--color-mustard-yellow);
-    flex-shrink: 0;
-  }
-  
+    color: var(--color-marine-blue);
+}
 
-  
-  .featureTitle {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-    line-height: 1.2;
+.benefitIcon {
+    color: var(--color-water-blue);
+    font-size: 1.5rem;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center; /* Pour aligner les cartes même si une est plus haute */
+  position: relative;
+  z-index: 1;
+}
+
+.pricingCard {
+  background-color: var(--color-white);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  transition: all 0.3s ease;
+  min-height: 550px; /* Hauteur minimale pour que les cartes aient une taille similaire */
+  border: 2px solid transparent;
+}
+
+.pricingCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 45px rgba(0, 51, 102, 0.15);
+}
+
+.highlightedCard {
+  border-color: var(--color-water-blue);
+  transform: translateY(-20px) scale(1.03); /* Met la carte en avant */
+  box-shadow: 0 20px 50px rgba(0, 119, 190, 0.3);
+  background: linear-gradient(135deg, var(--color-white) 60%, var(--color-water-blue)05); /* Petit dégradé subtil */
+  min-height: 580px; /* Légèrement plus grande */
+}
+
+.highlightedCard:hover {
+    transform: translateY(-25px) scale(1.05); /* Encore plus en avant au hover */
+    box-shadow: 0 25px 60px rgba(0, 119, 190, 0.4);
+}
+
+.cardName {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-marine-blue);
+  margin-bottom: 1rem;
+}
+
+.cardPrice {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-water-blue);
+  margin-bottom: 1.5rem;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  flex-grow: 1; /* Permet à la liste de prendre l'espace disponible */
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start; /* Alignement en haut pour les textes longs */
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-marine-blue);
+}
+
+.checkIcon {
+  color: var(--color-water-blue);
+  font-size: 1.2rem;
+  flex-shrink: 0; /* Empêche l'icône de rétrécir */
+  margin-top: 0.1rem; /* Ajustement visuel */
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: auto; /* Pousse les boutons vers le bas de la carte */
+}
+
+.contactButton,
+.callButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.contactButton {
+  background-color: var(--color-marine-blue);
+  color: var(--color-white);
+  box-shadow: 0 5px 15px rgba(0, 51, 102, 0.2);
+}
+
+.contactButton:hover {
+  background-color: var(--color-water-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 119, 190, 0.3);
+}
+
+.callButton {
+  background-color: var(--color-grey-light);
+  color: var(--color-marine-blue);
+  border: 1px solid var(--color-marine-blue);
+  box-shadow: 0 5px 15px rgba(0, 51, 102, 0.1);
+}
+
+.callButton:hover {
+  background-color: var(--color-marine-blue);
+  color: var(--color-white);
+  border-color: var(--color-marine-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+}
+
+.additionalServices {
+  max-width: 900px;
+  margin: 6rem auto 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.additionalTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-marine-blue);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.additionalTitle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-water-blue);
+    border-radius: 2px;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  background-color: var(--color-white);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 51, 102, 0.08);
+  text-align: left;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: var(--color-marine-blue);
+  border-bottom: 1px dashed rgba(0, 51, 102, 0.1);
+  padding-bottom: 1rem;
+}
+
+.serviceItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.serviceIcon {
+  color: var(--color-water-blue);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.serviceName {
+  font-weight: 600;
+  color: var(--color-marine-blue);
+}
+
+.servicePrice {
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--color-water-blue);
+  font-size: 1.15rem;
+}
+
+.customQuote {
+  font-size: 1.1rem;
+  color: var(--color-marine-blue);
+  line-height: 1.6;
+}
+
+.quoteLink {
+  color: var(--color-water-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.quoteLink:hover {
+  text-decoration: underline;
+}
+
+/* --- Media Queries --- */
+@media (max-width: 1024px) {
+  .pricingSection {
+    padding: 5rem 0;
   }
-  
-  .featureDescription {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    opacity: 0.9;
+  .title {
+    font-size: 2.8rem;
   }
-  
-  
-  /* Media Queries */
-  @media (max-width: 992px) {
-    .contentWrapper {
-      flex-direction: column;
+  .subtitle {
+    font-size: 1.15rem;
+  }
+  .pricingGrid {
+    grid-template-columns: 1fr; /* Une seule colonne sur tablette */
+    max-width: 500px; /* Limite la largeur pour une meilleure lecture */
+    padding: 0 1.5rem;
+  }
+  .pricingCard {
+    min-height: auto; /* Laisser la hauteur s'adapter */
+    padding: 2rem;
+  }
+  .highlightedCard {
+    transform: translateY(0) scale(1.0); /* Retirer la surélévation */
+    margin-top: 1.5rem; /* Ajouter de la marge pour la distinction */
+    margin-bottom: 1.5rem;
+  }
+  .highlightedCard:hover {
+    transform: translateY(-5px) scale(1.0); /* Animation de base au hover */
+  }
+  .cardName {
+    font-size: 2rem;
+  }
+  .cardPrice {
+    font-size: 2.5rem;
+  }
+  .additionalServices {
+    margin-top: 4rem;
+  }
+  .additionalTitle {
+    font-size: 2.2rem;
+  }
+  .servicesList {
+    padding: 2rem;
+  }
+  .serviceItem {
+    font-size: 1rem;
+  }
+  .servicePrice {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricingSection {
+    padding: 4rem 0;
+  }
+  .title {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  .benefitItem {
+      font-size: 0.9rem;
+      flex-direction: column; /* Empiler l'icône et le texte */
       text-align: center;
-      gap: 3rem;
-    }
-    .leftContent {
-      flex: none;
-      max-width: 700px;
-    }
-    .title {
-      font-size: 2.4rem;
-    }
-    .description {
-      font-size: 1rem;
-      max-width: none;
-    }
-    .ctaButton {
-      font-size: 1rem;
-      padding: 1rem 2.5rem;
-    }
-    .rightFeatures {
-      flex: none;
-      width: 100%;
-      max-width: 500px;
-      margin-top: 2rem;
-      padding: 1.5rem;
-      height: auto; /* Laisser la hauteur s'adapter sur mobile */
-      overflow: visible; /* Afficher tous les éléments sur mobile */
-    }
-    .featureItemsWrapper {
-      animation: none; /* Désactiver l'animation sur mobile */
-      animation-play-state: initial;
-      transform: none !important;
-    }
-    .featureItem {
-      min-height: auto;
-    }
-    .featureIcon {
-      font-size: 2rem;
-    }
-    .featureTitle {
-      font-size: 1.1rem;
-    }
-    .featureDescription {
-      font-size: 0.9rem;
-    }
   }
-  
-  @media (max-width: 768px) {
-    .maintenanceCtaSection {
-      margin-top: 0px;
-      padding: 6rem 0;
-    }
-    
-    .title {
-      font-size: 2rem;
-    }
-    .description {
-      font-size: 0.95rem;
-    }
-    .ctaButton {
-      padding: 0.9rem 2rem;
-      font-size: 0.95rem;
-    }
-    .rightFeatures {
-      display: none;
-      padding: 1.2rem;
-    }
-    .featureIcon {
-      font-size: 1.8rem;
-    }
-    .featureTitle {
-      font-size: 1rem;
-    }
-    .featureDescription {
-      font-size: 0.85rem;
-    }
+  .benefitIcon {
+      font-size: 1.3rem;
   }
-  
-  @media (max-width: 576px) {
-    .maintenanceCtaSection {
-      padding: 4rem 0;
-    }
-    .title {
-      font-size: 1.8rem;
-    }
-    .description {
-      font-size: 0.85rem;
-    }
-    .ctaButton {
-      width: 90%;
-      max-width: 280px;
-      font-size: 0.9rem;
-      padding: 0.8rem 1.5rem;
-    }
-    .featureItem {
-      gap: 0.8rem;
-    }
-    .featureIcon {
-      font-size: 1.6rem;
-    }
-    .featureTitle {
-      font-size: 0.95rem;
-    }
-    .featureDescription {
-      font-size: 0.8rem;
-    }
+  .pricingGrid {
+    gap: 1.5rem;
+    padding: 0 1rem;
   }
+  .pricingCard {
+    padding: 1.8rem;
+  }
+  .cardName {
+    font-size: 1.8rem;
+  }
+  .cardPrice {
+    font-size: 2.2rem;
+  }
+  .cardDescription {
+    font-size: 0.9rem;
+  }
+  .featureItem {
+    font-size: 0.85rem;
+    gap: 0.6rem;
+  }
+  .checkIcon {
+    font-size: 1.1rem;
+  }
+  .contactButton,
+  .callButton {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  .additionalServices {
+    margin-top: 3rem;
+  }
+  .additionalTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .servicesList {
+    padding: 1.5rem;
+  }
+  .serviceItem {
+    font-size: 0.95rem;
+  }
+  .serviceIcon {
+    font-size: 1.2rem;
+  }
+  .servicePrice {
+    font-size: 1rem;
+  }
+  .customQuote {
+      font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.8rem;
+    }
+    .subtitle {
+        font-size: 0.85rem;
+    }
+    .benefitItem {
+        font-size: 0.8rem;
+    }
+    .cardName {
+        font-size: 1.5rem;
+    }
+    .cardPrice {
+        font-size: 2rem;
+    }
+    .additionalTitle {
+        font-size: 1.6rem;
+    }
+    .serviceItem {
+        flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+        justify-content: center;
+        text-align: center;
+    }
+    .serviceName, .servicePrice {
+        width: 100%; /* Prend toute la largeur si ça passe à la ligne */
+        margin: 0;
+    }
+    .serviceName {
+        margin-bottom: 0.5rem;
+    }
+}
