@@ -78,15 +78,15 @@ const Footer = () => {
           <ul className={styles.contactInfo}>
             <li>
               <FaEnvelope />
-              <a href="mailto:contact@oasisevasion.ma">contact@oasisevasion.ma</a>
+              <a href="mailto:Wf.groupe@gmail.com">Wf.groupe@gmail.com</a>
             </li>
             <li>
               <FaPhoneAlt />
-              <a href="tel:+212661234567">+212 661 234567</a>
+              <a href="tel:+2120687389435"></a>
             </li>
             <li>
               <FaMapMarkerAlt />
-              <span>Essaouira, Maroc</span>
+              <span> Maroc</span>
             </li>
           </ul>
         </div>
