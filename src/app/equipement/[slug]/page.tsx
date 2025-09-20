@@ -51,7 +51,7 @@ export default function EquipmentCategoryPage({ params }: { params: { slug: stri
               <div className={styles.equipmentTextContent}>
                 <h2 className={styles.equipmentItemTitle}>{item.title}</h2>
                 <p className={styles.equipmentItemDescription}>{item.description}</p>
-                <Link href="/contact" className={styles.quoteButton}>
+                <Link href="/demande-de-devis" className={styles.quoteButton}>
                   <FaEnvelope size={16} /> Demander un devis
                 </Link>
               </div>
