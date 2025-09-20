@@ -29,7 +29,7 @@ const ServiceCTA: React.FC<ServiceCTAProps> = ({ ctaText, backgroundImage, title
         <p className={styles.ctaSubtitle}>
           Contactez-nous pour une étude personnalisée et un devis gratuit.
         </p>
-        <Link href="/contact" className={styles.ctaButton}>
+        <Link href="/demande-de-devis" className={styles.ctaButton}>
           <FaEnvelope size={18} />
           <span>Demander un devis</span>
         </Link>
