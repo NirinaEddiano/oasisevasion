@@ -13,10 +13,11 @@ const AboutCTASection = () => {
         <p className={styles.description}>
           Discutons de votre projet unique. Notre expertise en architecture et design transformera votre vision en une réalité aquatique d&apos;exception.
         </p>
-        <Link href="/contact" className={styles.ctaButton}>
+        <Link href="/demande-de-devis" className={styles.ctaButton}>
           <FaPaperPlane size={18} />
           <span>Demander un devis personnalisé</span>
         </Link>
+        
       </div>
     </section>
   );
