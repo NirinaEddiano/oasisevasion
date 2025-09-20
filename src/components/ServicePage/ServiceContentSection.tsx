@@ -25,7 +25,7 @@ const ServiceContentSection: React.FC<ServiceContentSectionProps> = ({
           <div className={styles.textColumn}>
             <h2 className={styles.subtitle}>{subtitle}</h2>
             <p className={styles.description}>{text}</p>
-            <Link href="/contact" className={styles.quoteButton}>
+            <Link href="/demande-de-devis" className={styles.quoteButton}>
               <FaEnvelope size={16} />
               <span>Demander un devis</span>
             </Link>
