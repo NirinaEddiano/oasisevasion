@@ -1,0 +1,345 @@
+
+:root {
+    --color-white: #FFFFFF;
+    --color-marine-blue: #003366;
+    --color-water-blue: #0077be;
+    --color-grey-light: #f4f7f6;
+    --text-color: #333;
+  }
+  
+  .poolTypesSection {
+    padding: 20px; /* Padding vertical, padding horizontal géré par le container */
+    background-color: var(--color-white);
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%; /* Padding horizontal pour le contenu */
+  }
+  
+  .sectionTitle {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--color-marine-blue);
+    margin-bottom: 1rem;
+  }
+  
+  .sectionTitle .highlight {
+    color: var(--color-water-blue);
+  }
+  
+  .sectionDescription {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto 4rem auto; /* Marge en bas pour séparer du carousel */
+  }
+  
+  /* --- Grille des types de piscines (avec scroll horizontal sur mobile) --- */
+  .scrollWrapper {
+    position: relative;
+    margin-bottom: 4rem;
+  }
+  
+  .typesGrid {
+    display: flex; /* Utilise flexbox pour le scroll horizontal */
+    overflow-x: auto; /* Active le défilement horizontal */
+    -webkit-overflow-scrolling: touch; /* Améliore le défilement sur iOS */
+    scroll-snap-type: x mandatory; /* Rend le défilement plus agréable */
+    padding-bottom: 15px; /* Espace pour la barre de défilement native si elle apparaît */
+    scrollbar-width: none; /* Cache la barre de défilement pour Firefox */
+    gap: 2rem; /* Espacement entre les cartes */
+    margin: 0 -5%; /* Étend le conteneur jusqu'aux bords du container parent */
+    padding-left: 5%; /* Remet un padding interne pour les premières/dernières cartes */
+    padding-right: 5%;
+  }
+  
+  .typesGrid::-webkit-scrollbar {
+    display: none; /* Cache la barre de défilement pour Webkit */
+  }
+  
+  .typeCard {
+    flex: 0 0 350px; /* Largeur fixe pour chaque carte sur desktop */
+    scroll-snap-align: start; /* S'aligne au début de la carte lors du snap */
+    background-color: var(--color-white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .typeCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+  }
+  
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 220px; /* Hauteur fixe pour l'image */
+    overflow: hidden;
+  }
+  
+  .typeImage {
+    object-fit: cover;
+    filter: brightness(0.85); /* Assombrir légèrement l'image */
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .typeCard:hover .typeImage {
+    transform: scale(1.05);
+    filter: brightness(1);
+  }
+  
+  .overlayText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 51, 102, 0.7), rgba(0, 119, 190, 0.3)); /* Dégradé pour le texte */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .overlayText svg {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .cardTitle {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  .cardContent {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .cardDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .cardLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-water-blue);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    margin-top: auto; /* Pousse le lien en bas */
+  }
+  
+  .cardLink svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .typeCard:hover .cardLink {
+    color: var(--color-marine-blue);
+  }
+  
+  .typeCard:hover .cardLink svg {
+    transform: translateX(5px);
+  }
+  
+  /* Indicateur de défilement */
+  .scrollHint {
+    position: absolute;
+    right: 5%; /* Alignement avec le padding du container */
+    bottom: 0;
+    transform: translateY(50%); /* Décale vers le bas */
+    background-color: var(--color-marine-blue);
+    color: var(--color-white);
+    padding: 0.8rem 1.2rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(0, 51, 102, 0.2);
+    pointer-events: none; /* N'interfère pas avec les interactions */
+    opacity: 0; /* Caché par défaut, géré par JS */
+    animation: pulseScrollHint 2s infinite ease-in-out;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+  }
+  
+  .scrollHint.show {
+    opacity: 1;
+  }
+  
+  .scrollArrow {
+    animation: bounceRight 1.5s infinite;
+  }
+  
+  @keyframes bounceRight {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(0);
+    }
+    40% {
+      transform: translateX(5px);
+    }
+    60% {
+      transform: translateX(2px);
+    }
+  }
+  
+  @keyframes pulseScrollHint {
+    0% {
+      transform: translateY(50%) scale(1);
+      box-shadow: 0 5px 15px rgba(0, 51, 102, 0.2);
+    }
+    50% {
+      transform: translateY(50%) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+    }
+    100% {
+      transform: translateY(50%) scale(1);
+      box-shadow: 0 5px 15px rgba(0, 51, 102, 0.2);
+    }
+  }
+  
+  
+  /* -------------------------------------------------------------------------- */
+  /*                           Media Queries (Responsive)                       */
+  /* -------------------------------------------------------------------------- */
+  
+  /* Tablette (max-width: 1024px) */
+  @media (max-width: 1024px) {
+    .poolTypesSection {
+      padding: 6rem 0;
+    }
+    .sectionTitle {
+      font-size: 2.2rem;
+    }
+    .sectionDescription {
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+    .typesGrid {
+      gap: 1.5rem;
+      padding-left: 3%; /* Ajuster le padding */
+      padding-right: 3%;
+    }
+    .typeCard {
+      flex: 0 0 300px; /* Largeur ajustée pour tablette */
+    }
+    .imageWrapper {
+      height: 180px;
+    }
+    .overlayText svg {
+      font-size: 2.5rem;
+    }
+    .cardTitle {
+      font-size: 1.4rem;
+    }
+    .cardDescription {
+      font-size: 0.9rem;
+    }
+    .cardLink {
+      font-size: 0.85rem;
+    }
+    .scrollHint {
+      right: 3%; /* Aligner avec le nouveau padding */
+    }
+  }
+  
+  /* Mobile (max-width: 767px) */
+  @media (max-width: 767px) {
+    .poolTypesSection {
+      padding: 4rem 0;
+    }
+    .sectionTitle {
+      font-size: 1.8rem;
+    }
+    .sectionDescription {
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+    }
+    .typesGrid {
+      gap: 1rem;
+      padding-left: 1rem; /* Padding pour mobile */
+      padding-right: 1rem;
+    }
+    .typeCard {
+      flex: 0 0 250px; /* Largeur ajustée pour mobile */
+      border-radius: 12px;
+    }
+    .imageWrapper {
+      height: 160px;
+    }
+    .overlayText svg {
+      font-size: 2rem;
+    }
+    .cardTitle {
+      font-size: 1.2rem;
+    }
+    .cardContent {
+      padding: 1.2rem;
+    }
+    .cardDescription {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+    .cardLink {
+      font-size: 0.8rem;
+    }
+    .scrollHint {
+      right: 1rem; /* Aligner avec le padding mobile */
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+    }
+  
+    .mainCtaButton {
+      width: 90%;
+      max-width: 300px;
+      padding: 15px 25px;
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Bouton principal CTA */
+  .mainCtaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--color-water-blue);
+    color: var(--color-white);
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 119, 190, 0.3);
+    text-decoration: none; /* Marge pour séparer de la grille */
+  }
+  
+  .mainCtaButton:hover {
+    background-color: var(--color-marine-blue);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.4);
+  }
