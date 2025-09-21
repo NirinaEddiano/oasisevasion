@@ -24,101 +24,102 @@ export interface RealisationStep {
   
   export const realisationsData: Realisation[] = [
     {
-      id: '1',
-      slug: 'piscine-miroir-marrakech',
-      title: 'Piscine Miroir & Terrasse Bois',
-      subtitle: 'Design contemporain à Marrakech, une fusion parfaite entre luxe et nature.',
-      cardImage: '/realisations/piscine-moderne-01.jpg',
-      heroImage: '/realisations/piscine-moderne-01-hero.jpg', // Image spécifique pour le hero de la page de détail
-      pageTitle: 'Piscine Miroir : L\'Élégance Contemporaine',
-      pageDescription: 'Découvrez notre projet à Marrakech, où l\'eau et le bois se rencontrent pour créer une oasis de tranquillité. Ce design intemporel offre une expérience de baignade unique et une esthétique raffinée.',
-      shortDescription: 'Cette réalisation emblématique à Marrakech est le fruit d\'une collaboration étroite avec nos clients, souhaitant un espace aquatique qui s\'intègre harmonieusement dans un environnement luxueux. La piscine miroir, avec son débordement subtil, crée un effet visuel saisissant, reflétant le ciel azur et le paysage environnant. Le choix des matériaux, notamment le bois exotique pour la terrasse, a été crucial pour garantir une ambiance chaleureuse et naturelle, tout en assurant une durabilité exceptionnelle face aux conditions climatiques locales.',
-      mainDescription: [
-        "Le concept de piscine miroir a été choisi pour son esthétique épurée et sa capacité à se fondre dans le décor. L'eau affleure le niveau de la plage, créant une surface sans fin qui maximise le sentiment d'ouverture et d'espace. Ce type de conception est particulièrement apprécié pour les propriétés de luxe, où chaque détail compte pour l'expérience globale. Nous avons mis un point d'honneur à ce que les finitions soient impeccables, de la sélection des margelles à l'intégration discrète des systèmes de filtration. L'éclairage subaquatique a également été pensé pour sublimer la piscine la nuit, transformant le jardin en un lieu magique et invitant à la détente sous les étoiles.",
-        "La terrasse en bois IPE, réputée pour sa résistance et sa beauté naturelle, a été installée avec une précision méticuleuse. Elle encercle élégamment la piscine, offrant des espaces de détente et de convivialité. La chaleur du bois contraste magnifiquement avec la fraîcheur de l'eau, créant un équilibre visuel parfait. Ce matériau noble nécessite un entretien régulier, mais ses avantages en termes d'esthétique et de longévité en font un choix privilégié pour nos réalisations haut de gamme. L'intégration de jardinières discrètes avec des plantes locales ajoute une touche de verdure, renforçant l'aspect naturel et apaisant de l'ensemble du projet.",
-        "L'un des défis majeurs a été l'optimisation de l'espace pour créer différentes zones fonctionnelles autour de la piscine. Nous avons conçu un coin salon ombragé, idéal pour se protéger du soleil ardent, ainsi qu'une zone de repas en plein air. Chaque espace a été pensé pour maximiser le confort et l'intimité des occupants. La circulation autour de la piscine a été fluidifiée pour permettre un accès facile à toutes les commodités. La sécurité a également été une priorité absolue, avec l'installation de systèmes discrets mais efficaces pour prévenir les accidents, notamment pour les jeunes enfants. L'ensemble architectural se veut à la fois fonctionnel et esthétiquement plaisant, répondant aux attentes les plus exigeantes.",
-        "Les systèmes de filtration et de traitement de l'eau sont à la pointe de la technologie, assurant une eau cristalline et saine en permanence. Nous avons opté pour un système de filtration à sable avec un traitement automatique au sel, minimisant l'utilisation de produits chimiques et facilitant l'entretien pour les propriétaires. Cette approche garantit une eau douce et agréable pour la peau, tout en respectant l'environnement. Le local technique a été conçu pour être facilement accessible mais entièrement dissimulé, préservant l'esthétique générale de l'aménagement. La pompe à chaleur intégrée permet de prolonger la saison de baignade, offrant un confort optimal même lors des journées plus fraîches. Notre engagement envers l'innovation technologique se reflète dans chaque aspect de cette réalisation.",
-        "La phase de conception a été particulièrement intense, avec de nombreuses esquisses et modélisations 3D pour visualiser le projet avant sa construction. Nous avons travaillé en étroite collaboration avec un architecte paysagiste pour intégrer la piscine dans le jardin existant, en respectant la topographie et la végétation locale. Cette synergie entre les différents corps de métier est essentielle pour la réussite d'un tel projet. Les plans détaillés ont permis de minimiser les imprévus et d'assurer une exécution fluide et efficace. Chaque ligne, chaque courbe a été pensée pour s'harmoniser avec l'environnement et créer une œuvre d'art fonctionnelle. Le rendu final a largement dépassé les attentes, confirmant la pertinence de cette approche intégrée et collaborative.",
-        "Enfin, l'expérience client a été au cœur de notre démarche. De la première rencontre à la livraison du projet, nous avons maintenu une communication transparente et régulière. Nous avons veillé à ce que toutes les interrogations soient répondues et que les propriétaires se sentent pleinement impliqués dans chaque étape. Leur satisfaction est notre plus grande récompense, et cette piscine miroir à Marrakech en est le témoignage éclatant. C'est un espace où les souvenirs se créent, où la détente est reine et où la beauté architecturale s'épanouit jour après jour. Nous sommes fiers d'avoir contribué à la réalisation de ce rêve aquatique, offrant une véritable évasion au quotidien."
+      "id": "1",
+      "slug": "lagon-oasis-marrakech",
+      "title": "Lagon d'Oasis & Plage de Sable",
+      "subtitle": "Une évasion naturelle à Marrakech, où l'eau turquoise rencontre le désert.",
+      "cardImage": "/realisations/piscine-lagon-01.jpg",
+      "heroImage": "/realisations/piscine-lagon-01-hero.jpg",
+      "pageTitle": "Lagon d'Oasis : L'Évasion Naturelle",
+      "pageDescription": "Découvrez notre projet à Marrakech, une piscine lagon qui recrée une oasis naturelle avec sa plage de sable fin, ses rochers et sa végétation luxuriante. Une invitation au voyage au cœur de votre jardin.",
+      "shortDescription": "Cette réalisation emblématique à Marrakech est une véritable oasis artificielle, conçue pour offrir une expérience de baignade unique et dépaysante. Le concept de lagon avec une entrée en plage progressive et des formes organiques permet une intégration parfaite dans le paysage. L'objectif était de créer un espace de détente qui semble avoir toujours été là, en utilisant des matériaux naturels comme la pierre de l'Atlas et un revêtement à effet sable pour une eau cristalline.",
+      "mainDescription": [
+        "Le concept de piscine lagon a été choisi pour son esthétique naturelle et sa capacité à se fondre dans le décor. L'entrée en pente douce, ou plage immergée, permet de s'allonger au bord de l'eau et offre un espace de jeu sécurisé pour les enfants. Des enrochements naturels ont été intégrés pour créer des cascades douces, dont le murmure apaisant contribue à l'atmosphère relaxante de cette oasis. L'éclairage subaquatique a été pensé pour mettre en valeur les courbes du lagon et les textures des roches la nuit, transformant le jardin en un lieu féerique.",
+        "La plage et les abords du lagon sont réalisés avec un revêtement spécial à base de résine et de quartz, offrant une texture douce et antidérapante qui rappelle le sable fin. Ce choix de matériau est crucial pour garantir une ambiance naturelle et un confort optimal. La végétation environnante a été soigneusement sélectionnée pour recréer un écosystème d'oasis, avec des palmiers, des bananiers et des plantes grasses qui demandent peu d'entretien tout en offrant un dépaysement total. L'intégration de ces éléments naturels renforce l'impression d'être dans un véritable lagon.",
+        "Un des défis de ce projet a été de concevoir un système de filtration capable de gérer les particularités d'une piscine aux formes libres et avec une plage. Nous avons opté pour un système de filtration biologique assisté, qui utilise des plantes et des minéraux pour purifier l'eau, réduisant ainsi le besoin en produits chimiques. Ce système écologique garantit une eau d'une clarté exceptionnelle, douce pour la peau et respectueuse de l'environnement. Le local technique, entièrement dissimulé sous un faux rocher, préserve l'esthétique naturelle du lagon.",
+        "L'espace de vie autour du lagon a été pensé pour la convivialité. Une paillote en bois abrite un bar extérieur et une cuisine d'été, idéale pour les réceptions. Des zones de détente ombragées sont dispersées autour du lagon, offrant des points de vue variés sur ce paysage aquatique. La nuit, l'éclairage paysager met en valeur la végétation et les contours du lagon, créant une ambiance magique et intime. Chaque détail a été pensé pour faire de ce lieu un véritable havre de paix et de convivialité.",
+        "La conception de ce lagon a nécessité une étude paysagère approfondie pour s'assurer de son intégration parfaite dans le terrain existant. Des modélisations 3D ont permis au client de visualiser le projet dans son ensemble, de la forme du bassin à l'emplacement de chaque rocher et de chaque plante. Cette phase de planification a été essentielle pour anticiper les défis techniques et garantir un résultat à la hauteur des attentes, créant une œuvre d'art vivante qui évolue au fil des saisons.",
+        "L'expérience client a été au cœur de notre démarche. Nous avons accompagné les propriétaires à chaque étape, de la conception à la réalisation, en assurant une communication transparente et une écoute attentive de leurs désirs. Leur satisfaction est notre plus grande fierté, et ce lagon à Marrakech en est la preuve. C'est un espace unique où le rêve d'une oasis privée est devenu réalité, offrant un lieu de ressourcement et de bonheur au quotidien."
       ],
-      imagesWithinDescription: [
-        { src: '/realisations/piscine-moderne-01-desc1.png', alt: 'Détail de la terrasse en bois', position: 1 },
-        { src: '/realisations/piscine-moderne-01-desc2.jpg', alt: 'Vue de nuit de la piscine éclairée', position: 3 },
-        { src: '/realisations/piscine-moderne-01-desc3.jpg', alt: 'Coin salon extérieur aménagé', position: 5 },
+      "imagesWithinDescription": [
+        { "src": "/realisations/piscine-lagon-01-desc1.jpg", "alt": "Plage de sable immergée", "position": 1 },
+        { "src": "/realisations/piscine-lagon-01-desc2.jpg", "alt": "Cascade en rochers naturels", "position": 3 },
+        { "src": "/realisations/piscine-lagon-01-desc3.jpg", "alt": "Paillote et bar extérieur", "position": 5 }
       ],
-      steps: [
-        { title: 'Conception et Planification', description: 'Élaboration des plans 3D, choix des matériaux et obtention des permis nécessaires. Une phase cruciale pour définir la vision du projet.' },
-        { title: 'Terrassement et Gros Œuvre', description: 'Excavation, mise en place des fondations et construction de la structure en béton armé. La solidité est notre priorité.' },
-        { title: 'Étanchéité et Revêtement', description: 'Application des couches d\'étanchéité et pose du revêtement intérieur (liner, carrelage, enduit). Précision et qualité sont de mise.' },
-        { title: 'Installation Technique', description: 'Mise en place des systèmes de filtration, chauffage, éclairage et traitement de l\'eau. L\'innovation au service du confort.' },
-        { title: 'Aménagements Paysagers', description: 'Création de la terrasse en bois, plantation et finitions autour de la piscine. L\'intégration harmonieuse dans le jardin.' },
-        { title: 'Mise en Service et Formation', description: 'Remplissage de la piscine, tests des équipements et formation des propriétaires à l\'entretien. Votre piscine prête à l\'emploi.' },
+      "steps": [
+        { "title": "Conception Paysagère et Modélisation 3D", "description": "Création d'un design organique sur-mesure, choix des roches et de la végétation. La vision prend forme." },
+        { "title": "Terrassement et Modelage des Formes", "description": "Excavation du terrain pour créer les différentes profondeurs et l'entrée en plage. La base du lagon est sculptée." },
+        { "title": "Étanchéité et Revêtement Sable", "description": "Pose d'une membrane d'étanchéité souple et application du revêtement en résine et quartz pour un effet sable naturel." },
+        { "title": "Installation Hydraulique et Filtration Écologique", "description": "Mise en place d'un système de circulation d'eau adapté aux formes libres et d'une filtration biologique." },
+        { "title": "Enrochement et Aménagement Paysager", "description": "Positionnement des rochers, création des cascades et plantation de la végétation exotique. L'oasis prend vie." },
+        { "title": "Mise en Eau et Équilibrage Biologique", "description": "Remplissage du lagon et démarrage du cycle de filtration biologique. La nature commence son œuvre." }
       ],
-      equipmentsUsed: [
-        'Pompe de filtration à vitesse variable',
-        'Filtre à sable haute performance',
-        'Électrolyseur au sel dernière génération',
-        'Pompe à chaleur réversible',
-        'Projecteurs LED subaquatiques',
-        'Skimmers miroirs discrets',
-        'Bois IPE pour terrasse',
-        'Système de débordement périphérique'
+      "equipmentsUsed": [
+        "Système de filtration biologique",
+        "Pompe à vitesse variable silencieuse",
+        "Revêtement en résine et quartz (effet sable)",
+        "Rochers naturels de l'Atlas",
+        "Projecteurs LED couleur ambre",
+        "Système de cascade en circuit fermé",
+        "Végétation luxuriante (palmiers, bananiers)",
+        "Paillote en bois exotique"
       ],
-      galleryImages: [
-        '/realisations/piscine-moderne-01.jpg',
-        '/realisations/piscine-moderne-01-hero.jpg',
-        '/realisations/piscine-moderne-01-desc1.jpg',
-        '/realisations/piscine-moderne-01-desc2.jpg',
-        '/realisations/piscine-moderne-01-desc3.jpg',
-        // ... autres images si tu en as plus pour une galerie complète
+      "galleryImages": [
+        "/realisations/piscine-lagon-01.jpg",
+        "/realisations/piscine-lagon-01-hero.jpg",
+        "/realisations/piscine-lagon-01-desc1.jpg",
+        "/realisations/piscine-lagon-01-desc2.jpg",
+        "/realisations/piscine-lagon-01-desc3.jpg"
       ]
     },
     {
-      id: '2',
-      slug: 'couloir-nage-essaouira',
-      title: 'Couloir de Nage Ciel Ouvert',
-      subtitle: 'Intégration paysagère à Essaouira, un défi relevé avec brio.',
-      cardImage: '/realisations/piscine-debordement-02.jpg',
-      heroImage: '/realisations/piscine-debordement-02-hero.jpg',
-      pageTitle: 'Couloir de Nage : Sport et Détente en Plein Air',
-      pageDescription: 'Découvrez notre projet audacieux à Essaouira, un couloir de nage qui se fond parfaitement dans le paysage côtier, offrant une expérience aquatique unique et ressourçante.',
-      shortDescription: 'À Essaouira, nous avons relevé le défi de créer un couloir de nage qui ne soit pas seulement fonctionnel pour l\'exercice, mais aussi une pièce maîtresse du jardin, en parfaite harmonie avec l\'environnement venteux et l\'architecture locale. La longueur du bassin a été optimisée pour la nage sportive, tandis que la profondeur constante garantit un confort maximal. L\'intégration paysagère a été une priorité, avec des matériaux qui résistent aux intempéries marines et une végétation endémique qui sublime les lignes épurées de la piscine. Le résultat est un espace où l\'on peut se dépenser et se détendre, tout en profitant de la beauté naturelle d\'Essaouira.',
-      mainDescription: [
-        "Le choix d'un couloir de nage a été dicté par le souhait du client d'avoir un espace dédié à l'activité physique sans compromettre l'esthétique du jardin. Sa forme rectiligne et allongée s'intègre naturellement le long de la propriété, créant une perspective visuelle intéressante. L'orientation a été étudiée pour maximiser l'ensoleillement et minimiser l'impact du vent, caractéristique d'Essaouira. Les margelles en pierre locale ont été sélectionnées pour leur résistance et leur couleur, s'harmonisant avec l'environnement. Nous avons également intégré un système de nage à contre-courant, offrant une expérience de natation plus intense pour les sportifs, tout en restant discret lorsqu'il n'est pas utilisé. L'aspect minimaliste du design contribue à une ambiance de sérénité absolue, loin de l'agitation quotidienne.",
-        "La robustesse de la structure a été une considération primordiale, étant donné la proximité de la mer et les variations climatiques. Nous avons utilisé des techniques de construction spécifiques pour garantir la longévité de l'ouvrage, y compris un renforcement de l'armature en béton et l'application de revêtements résistants au sel et aux UV. La qualité de l'eau est assurée par un système de filtration avancé, comprenant un filtre à diatomées pour une finesse de filtration exceptionnelle. Un système de régulation automatique du pH et du chlore maintient l'équilibre chimique de l'eau, réduisant ainsi les besoins en intervention manuelle. La durabilité et la facilité d'entretien ont été les maîtres mots de cette conception, assurant une tranquillité d'esprit aux propriétaires pour de nombreuses années.",
-        "L'aménagement paysager autour du couloir de nage a été conçu pour créer une continuité visuelle et fonctionnelle. Des plantations résistantes au vent et à la sécheresse ont été choisies, comme des oliviers et des plantes grasses, qui ne nécessitent que peu d'entretien. Des chemins en pas japonais mènent aux différentes zones de détente, incluant un petit espace salon et une douche extérieure. L'éclairage de jardin a été pensé pour mettre en valeur les lignes du bassin la nuit, créant une atmosphère douce et accueillante. Les matériaux naturels prédominent, du bois flotté aux galets, renforçant l'impression d'une intégration parfaite dans le site. Cette attention aux détails transforme l'ensemble en un véritable havre de paix, propice à la relaxation et à la contemplation des paysages marocains.",
-        "La conception des plages immergées à l'extrémité du couloir offre un espace idéal pour la relaxation et la baignade des plus jeunes. Ces zones peu profondes permettent de se rafraîchir en toute sécurité, ajoutant une dimension ludique au bassin. Elles sont particulièrement appréciées lors des chaudes journées d'été, offrant un lieu de repos confortable sans quitter l'eau. Leur intégration discrète ne rompt pas la ligne épurée du couloir de nage, prouvant qu'il est possible de concilier fonctionnalité et esthétique. Les matériaux antidérapants ont été utilisés pour la sécurité, assurant une adhérence optimale même pieds mouillés. Ce souci du détail se retrouve dans toutes nos réalisations, car le confort et la sécurité de nos clients sont nos priorités absolues à chaque étape de la réalisation de votre projet.",
-        "Le suivi du projet, de l'idée initiale à la livraison finale, a été mené avec la plus grande rigueur. Des réunions régulières avec le client et les différents corps de métier ont permis d'assurer une coordination parfaite et de respecter les délais impartis. Les imprévus, inhérents à tout projet de cette envergure, ont été gérés avec flexibilité et professionnalisme, garantissant la fluidité du chantier. La communication transparente a été essentielle pour la satisfaction du client, qui a pu suivre l'avancement des travaux pas à pas. Nous avons également proposé des solutions innovantes pour surmonter les contraintes techniques liées au terrain, démontrant notre expertise et notre capacité à nous adapter. L'objectif était de livrer un ouvrage d'exception, parfaitement conforme aux attentes.",
-        "En somme, ce couloir de nage à Essaouira est un exemple parfait de notre savoir-faire en matière de conception de piscines sur mesure. Il incarne l'alliance réussie entre le design contemporain, la performance technique et l'intégration paysagère. Chaque élément a été pensé pour créer un espace de vie extérieur unique, où la beauté de la nature rencontre le luxe de l'eau. C'est un lieu qui invite à l'évasion, à la pratique sportive et à la contemplation, offrant une qualité de vie incomparable. Les retours positifs de nos clients témoignent de la réussite de ce projet, qui s'inscrit fièrement dans notre portefeuille de réalisations d'exception. Nous sommes honorés d'avoir pu transformer une vision en une réalité aussi magnifique."
+    "id": "2",
+      "slug": "lagon-oasis-rabat",
+      "title": "Lagon d'Oasis Familiale",
+      "subtitle": "Une aventure rafraîchissante à Rabat, inspirée des wadis marocains.",
+      "cardImage": "/realisations/piscine-oasis-02.jpg",
+      "heroImage": "/realisations/piscine-oasis-02-hero.jpg",
+      "pageTitle": "Lagon d'Oasis : L'Aventure Marocaine",
+      "pageDescription": "Découvrez notre réalisation à Rabat, un lagon familial inspiré des oasis du Maroc, avec son îlot à l'olivier, sa cascade de roche naturelle et sa végétation méditerranéenne.",
+      "shortDescription": "À Rabat, nous avons imaginé une piscine familiale comme une véritable oasis marocaine. Le concept s'éloigne des tropiques pour puiser son inspiration dans la beauté des wadis et des sources cachées du Maroc. Avec un îlot central planté d'un olivier, une cascade en roches de l'Atlas et une eau couleur émeraude, cette piscine est une invitation à l'évasion au cœur d'un paysage local authentique. La sécurité et le plaisir familial restent les piliers de ce projet unique, conçu pour créer des souvenirs inoubliables.",
+      "mainDescription": [
+        "La conception de ce lagon s'articule autour d'un îlot central où trône un magnifique olivier, symbole de la terre marocaine. Il sert de point de mire et d'aire de jeu naturelle. L'entrée dans l'eau se fait par une plage en pente douce, idéale pour les jeunes enfants, tandis que la profondeur évolue pour satisfaire nageurs et plongeurs. Une cascade, construite avec des roches naturelles locales, crée un mouvement d'eau apaisant et dissimule une petite alcôve, offrant un recoin de fraîcheur et d'intimité. L'ensemble évoque un point d'eau secret que l'on découvrirait au détour d'une randonnée dans l'Atlas.",
+        "Les matériaux ont été rigoureusement sélectionnés pour leur authenticité et leur résistance. Le revêtement du lagon, à base de quartz et de pigments naturels, donne à l'eau une teinte émeraude profonde, rappelant celle des lacs de montagne. Les plages et margelles sont réalisées en pierre naturelle de la région, offrant une texture agréable et antidérapante. L'intégration d'éléments comme des poteries de Tamegroute et des touches de zellige autour des espaces de repos renforce l'identité marocaine du projet, alliant tradition et nature.",
+        "L'espace paysager a été conçu comme un jardin méditerranéen luxuriant. Des palmiers, des bougainvilliers aux couleurs vives, des lauriers-roses et des massifs de lavande entourent le lagon, créant un cocon d'intimité parfumé. Un petit pont en bois d'eucalyptus permet d'enjamber une partie du bassin pour rejoindre un salon extérieur ombragé par une pergola recouverte de canisses. L'éclairage, avec des lanternes en fer forgé et des spots dissimulés, crée une ambiance féerique dès le crépuscule.",
+        "Le système de filtration et de traitement de l'eau est à la fois performant et respectueux de l'environnement. Un filtre à sable de grande capacité assure une eau cristalline, et un système d'électrolyse au sel garantit un traitement doux pour la peau, sans produits chimiques agressifs. Une pompe à chaleur discrète permet de chauffer l'eau et de prolonger la saison des baignades du printemps à l'automne, pour que la famille puisse profiter de son oasis le plus longtemps possible.",
+        "La construction fut un exercice de style visant à recréer un paysage naturel marocain. La structure en béton projeté nous a permis de sculpter des formes organiques et d'intégrer les enrochements de manière harmonieuse. Chaque pierre a été choisie et positionnée pour son aspect naturel. Ce projet est le fruit d'une collaboration étroite avec les propriétaires, qui souhaitaient un espace de vie extérieur unique et profondément ancré dans la culture et l'esthétique de leur pays.",
+        "En conclusion, ce lagon d'oasis à Rabat est bien plus qu'une piscine ; c'est un fragment de nature marocaine recréé dans un jardin familial. Il allie l'aventure et le jeu à la sérénité d'un paysage authentique. Nous sommes fiers d'avoir su traduire le désir de nos clients en un lieu de vie exceptionnel, qui célèbre la beauté du Maroc et invite chaque jour à la détente et au bonheur partagé."
       ],
-      imagesWithinDescription: [
-        { src: '/realisations/piscine-debordement-02-desc1.jpg', alt: 'Vue aérienne du couloir de nage', position: 1 },
-        { src: '/realisations/piscine-debordement-02-desc2.jpeg', alt: 'Détail de la pierre locale', position: 3 },
-        { src: '/realisations/piscine-debordement-02-desc3.jpg', alt: 'Zone de détente avec végétation', position: 5 },
+      "imagesWithinDescription": [
+        { "src": "/realisations/piscine-oasis-02-desc1.jpg", "alt": "Îlot central avec un olivier", "position": 1 },
+        { "src": "/realisations/piscine-oasis-02-desc2.jpg", "alt": "Cascade construite en roches naturelles du Maroc", "position": 3 },
+        { "src": "/realisations/piscine-oasis-02-desc3.jpg", "alt": "Salon extérieur avec pergola marocaine", "position": 5 }
       ],
-      steps: [
-        { title: 'Analyse du Site et Conception', description: 'Étude topographique, analyse des vents dominants et création des plans personnalisés. La clé d\'une intégration réussie.' },
-        { title: 'Fondations et Structure', description: 'Excavation précise, pose du ferraillage et coulage du béton armé, avec un focus sur la résistance marine.' },
-        { title: 'Liner et Systèmes Hydrauliques', description: 'Installation d\'un liner armé spécifique pour l\'environnement salin et mise en place du réseau hydraulique optimisé.' },
-        { title: 'Local Technique et Traitement', description: 'Aménagement du local technique avec filtre à diatomées et système de régulation automatique pour une eau parfaite.' },
-        { title: 'Aménagements Paysagers Côte Ouest', description: 'Plantation de végétaux adaptés au climat côtier et installation de plages et chemins en pierre naturelle.' },
-        { title: 'Tests et Livraison', description: 'Vérification de tous les systèmes, équilibrage de l\'eau et remise des clés avec conseils d\'entretien. Prêt à nager !' },
+      "steps": [
+        { "title": "Conception Thématique 'Oasis Marocaine'", "description": "Création des plans sur-mesure inspirés des wadis, avec îlot, cascade et choix de la végétation locale." },
+        { "title": "Terrassement et Modelage des Reliefs", "description": "Sculpture du terrain pour créer les formes naturelles du lagon, la plage progressive et l'emplacement des rochers." },
+        { "title": "Structure, Étanchéité et Enrochement", "description": "Construction en béton projeté, application de l'étanchéité et intégration des roches naturelles de l'Atlas." },
+        { "title": "Pose du Revêtement et des Margelles", "description": "Application du revêtement couleur émeraude et pose des margelles en pierre naturelle locale." },
+        { "title": "Aménagements Paysagers Méditerranéens", "description": "Plantation des espèces locales, installation de la pergola et de l'éclairage d'ambiance." },
+        { "title": "Mise en Service et Finitions", "description": "Remplissage, équilibrage de l'eau et intégration des derniers détails de décoration artisanale. L'oasis est prête." }
       ],
-      equipmentsUsed: [
-        'Pompe de filtration multi-vitesses',
-        'Filtre à diatomées',
-        'Système de nage à contre-courant',
-        'Régulateur automatique pH/chlore',
-        'Liner armé résistant au sel',
-        'Éclairage LED RGB',
-        'Margelles en pierre naturelle d\'Essaouira'
+      "equipmentsUsed": [
+        "Filtre à sable haute capacité",
+        "Électrolyseur au sel pour un traitement doux",
+        "Pompe à chaleur toutes saisons",
+        "Revêtement effet wadi (quartz et pigments naturels)",
+        "Cascade en circuit fermé",
+        "Rochers naturels du Maroc",
+        "Végétation méditerranéenne (Olivier, Bougainvillier)",
+        "Éclairage d'ambiance avec lanternes marocaines",
+        "Margelles en pierre naturelle locale"
       ],
-      galleryImages: [
-        '/realisations/piscine-debordement-02.jpg',
-        '/realisations/piscine-debordement-02-hero.jpg',
-        '/realisations/piscine-debordement-02-desc1.jpg',
-        '/realisations/piscine-debordement-02-desc2.jpg',
-        '/realisations/piscine-debordement-02-desc3.jpg',
+      "galleryImages": [
+        "/realisations/piscine-oasis-02.jpg",
+        "/realisations/piscine-oasis-02-hero.jpg",
+        "/realisations/piscine-oasis-02-desc1.jpg",
+        "/realisations/piscine-oasis-02-desc2.jpg",
+        "/realisations/piscine-oasis-02-desc3.jpg"
       ]
     },
     {
@@ -140,7 +141,7 @@ export interface RealisationStep {
         "Ce projet à Agadir est plus qu'un simple bassin ; c'est une philosophie de vie, une invitation à ralentir et à se reconnecter avec les éléments. Il représente notre engagement à créer des espaces aquatiques uniques, qui respectent l'environnement et répondent aux aspirations profondes de nos clients. La réaction des propriétaires, émerveillés par la transformation de leur jardin en ce havre de paix, est notre plus grande satisfaction. C'est un espace où la baignade devient une expérience méditative, où la nature se révèle dans toute sa splendeur. Nous sommes fiers d'avoir réalisé ce bassin naturel, qui témoigne de notre expertise et de notre passion pour l'innovation écologique dans le domaine de la piscine et du bien-être aquatique."
       ],
       imagesWithinDescription: [
-        { src: '/realisations/piscine-zen-03-desc1.jpg', alt: 'Vue rapprochée des plantes aquatiques', position: 1 },
+        { src: '/realisations/piscine-zen-03-desc1.jpg', alt: 'lagon', position: 1 },
         { src: '/realisations/piscine-zen-03-desc2.jpg', alt: 'Chemin zen menant au bassin', position: 3 },
         { src: '/realisations/piscine-zen-03-desc3.jpg', alt: 'Détail de la zone de régénération', position: 5 },
       ],
@@ -268,53 +269,52 @@ export interface RealisationStep {
       ]
     },
     {
-      id: '6',
-      slug: 'bassin-interieur-fes',
-      title: 'Bassin Intérieur Élégant',
-      subtitle: 'Luxe et bien-être à Fès, une expérience intime.',
-      cardImage: '/realisations/piscine-interieur-06.jpg',
-      heroImage: '/realisations/piscine-interieur-06-hero.jpg',
-      pageTitle: 'Piscine Intérieure : Confort et Raffinement',
-      pageDescription: 'Découvrez notre réalisation à Fès, un bassin intérieur élégant conçu pour le luxe et le bien-être, offrant une expérience de baignade intime et sophistiquée, accessible toute l\'année.',
-      shortDescription: 'À Fès, nous avons créé une piscine intérieure qui incarne le luxe et le bien-être, offrant une expérience de baignade exclusive et intime, accessible en toute saison. Le design a été pensé pour s\'intégrer parfaitement à l\'architecture raffinée de la résidence, en utilisant des matériaux nobles et un éclairage sophistiqué. Au-delà de l\'aspect esthétique, le confort et la qualité de l\'air ont été des priorités absolues, avec des systèmes de déshumidification et de chauffage avancés. Cette réalisation est un véritable havre de paix, une pièce maîtresse dédiée à la relaxation et à la sérénité. C\'est un espace de vie supplémentaire, synonyme de raffinement et de moments privilégiés, loin des regards extérieurs et des caprices de la météo.',
-      mainDescription: [
-        "La conception d'un bassin intérieur est un art qui exige une maîtrise technique et esthétique. Ce projet à Fès met en lumière l'élégance intemporelle des piscines intérieures, offrant un espace de détente et de nage à l'abri des intempéries. Le défi réside dans la gestion de l'humidité et de la température, pour lesquelles nous avons intégré des systèmes de déshumidification et de chauffage de l'air de dernière génération. Ces technologies garantissent un climat intérieur agréable et préviennent la condensation, assurant la pérennité de la structure du bâtiment. L'éclairage, qu'il soit naturel ou artificiel, est soigneusement étudié pour créer une ambiance lumineuse et apaisante, rehaussant la beauté de l'eau et des matériaux. Chaque détail est pensé pour le confort absolu et l'expérience sensorielle de l'utilisateur. La vision est de créer un sanctuaire personnel, un lieu de retraite et de ressourcement, où l'on peut se déconnecter du monde extérieur et profiter d'un luxe discret et intemporel.",
-        "Les matériaux utilisés pour cette piscine intérieure sont choisis pour leur résistance à l'humidité et leur esthétique haut de gamme. Un revêtement en carrelage de verre de Murano donne à l'eau des reflets scintillants et une profondeur inégalée, tandis que les murs et le plafond sont habillés de bois précieux et de pierre naturelle. L'acoustique de la pièce a été optimisée pour réduire l'écho et créer une atmosphère de sérénité. De grandes baies vitrées coulissantes ouvrent sur un patio intérieur ou un jardin, permettant de moduler l'espace et de profiter d'une connexion visuelle avec l'extérieur, même en restant à l'intérieur. Le solarium intérieur, avec ses transats confortables et son système de chauffage par le sol, invite à la relaxation après la baignade. L'ensemble architectural se veut une ode au luxe et au bien-être, où chaque texture et chaque couleur contribuent à l'harmonie générale. C'est un espace qui éveille les sens et nourrit l'âme.",
-        "Le système de filtration et de traitement de l'eau est ultra-performant, assurant une qualité d'eau irréprochable. Un filtre à verre, réputé pour sa finesse de filtration, associé à un traitement automatique à l'ozone ou aux UV, garantit une eau cristalline sans odeur de chlore. La température de l'eau est maintenue à un niveau constant et agréable grâce à un système de chauffage de l'eau indépendant. Des buses de massage et un système de nage à contre-courant sont intégrés pour agrémenter l'expérience de baignade et offrir des possibilités d'exercice ou de relaxation. La domotique permet de contrôler l'ensemble des paramètres (lumière, température, filtration) à distance, offrant un confort d'utilisation maximal. Cette technologie de pointe assure une gestion facile et efficace de la piscine, permettant aux propriétaires de profiter pleinement de leur investissement sans contrainte technique. C'est le summum de l'innovation au service du confort et de la tranquillité d'esprit.",
-        "L'ambiance lumineuse joue un rôle crucial dans une piscine intérieure. Un éclairage LED subtil, avec des variations de couleurs, permet de créer différentes atmosphères, du matin au soir. Des puits de lumière ou des verrières peuvent être intégrés au plafond pour maximiser l'apport de lumière naturelle et créer un lien avec le ciel. Les luminaires sont choisis pour leur design élégant et leur résistance à l'humidité. La nuit, l'éclairage subaquatique met en valeur la profondeur de l'eau et les reflets du carrelage, transformant la pièce en un espace magique et envoûtant. L'utilisation de variateurs permet de moduler l'intensité lumineuse selon les envies, créant une ambiance personnalisée pour chaque occasion. Cette maîtrise de la lumière est essentielle pour sublimer l'architecture et créer une expérience immersive et mémorable, captivant l'attention et nourrissant l'imagination des utilisateurs.",
-        "La construction d'une piscine intérieure requiert une expertise technique spécifique, notamment en matière d'étanchéité, d'isolation et de ventilation. Notre équipe possède l'expérience nécessaire pour relever ces défis, garantissant une construction durable et sans problème. Nous travaillons en étroite collaboration avec les architectes et les designers d'intérieur pour que la piscine s'intègre harmonieusement dans l'ensemble de la résidence. Le chantier est géré avec une grande rigueur, minimisant les nuisances et respectant les délais. La qualité des finitions est notre priorité, car chaque détail contribue au sentiment de luxe et de perfection. La satisfaction du client est au cœur de notre démarche, et nous mettons tout en œuvre pour que le résultat final dépasse leurs attentes. Cette approche globale et intégrée est la garantie d'une réussite totale, transformant une vision en une réalité tangible et éclatante de beauté.",
-        "En conclusion, cette piscine intérieure à Fès est une ode au raffinement et au bien-être, offrant une expérience de baignade exclusive dans un cadre somptueux. Elle représente l'excellence de notre savoir-faire en matière de conception et de construction de piscines haut de gamme. C'est un espace où le luxe rencontre la fonctionnalité, où la technologie sert le confort et où l'esthétique crée une atmosphère de sérénité absolue. Nous sommes fiers d'avoir pu transformer le rêve de nos clients en une réalité aussi magnifique, un lieu où ils peuvent se ressourcer, se détendre et profiter de moments précieux en toute intimité. Cette réalisation s'inscrit comme une référence dans le domaine des piscines intérieures de prestige, témoignant de notre passion pour l'innovation et la création d'espaces aquatiques exceptionnels. Elle est le symbole d'un art de vivre raffiné et intemporel."
+      "id": "6",
+      "slug": "lagon-interieur-fes",
+      "title": "Lagon Intérieur & Jardin Zen",
+      "subtitle": "Sérénité et bien-être à Fès, une source de relaxation.",
+      "cardImage": "/realisations/piscine-lagon-03.jpg",
+      "heroImage": "/realisations/piscine-lagon-03-hero.jpg",
+      "pageTitle": "Lagon Intérieur : L'Harmonie Zen",
+      "pageDescription": "Découvrez notre réalisation à Fès, un lagon intérieur chauffé qui allie le plaisir de la baignade à la sérénité d'un jardin japonais, accessible en toute saison pour une expérience de bien-être unique.",
+      "shortDescription": "À Fès, nous avons relevé le défi de créer un lagon à l'intérieur d'une résidence, pour une utilisation tout au long de l'année. Cet espace a été conçu comme un jardin d'eau zen, avec des roches volcaniques, une végétation intérieure luxuriante et une eau maintenue à température idéale. La maîtrise de l'hygrométrie et la qualité de l'air ont été des priorités pour garantir un confort absolu. C'est un havre de paix qui invite à la méditation et à la détente, à l'abri des regards et des aléas climatiques.",
+      "mainDescription": [
+        "La conception de ce lagon intérieur s'inspire des jardins japonais, où l'eau, la roche et le végétal sont en parfaite harmonie. Des formes organiques et des courbes douces caractérisent le bassin. Une plage immergée permet de s'asseoir dans l'eau, tandis que des jets de massage ont été intégrés discrètement dans les parois rocheuses. Le défi majeur a été de gérer l'humidité ambiante, ce qui a été résolu par l'installation d'une centrale de traitement de l'air avec déshumidificateur, assurant un environnement sain et confortable en permanence.",
+        "Les matériaux ont été choisis pour leur beauté et leur résistance en milieu humide. Le revêtement du lagon est une mosaïque de verre aux tons émeraude, qui donne à l'eau une profondeur et des reflets exceptionnels. Les rochers sont des pierres volcaniques sombres, qui contrastent magnifiquement avec la clarté de l'eau. Une grande baie vitrée s'ouvre sur un patio intérieur, permettant de faire entrer la lumière naturelle et de créer une connexion avec l'extérieur. Le sol autour du lagon est un caillebotis en bois imputrescible.",
+        "Le système de filtration est à la pointe de la technologie pour garantir une qualité d'eau irréprochable dans un espace clos. Nous avons opté pour un filtre à diatomées, pour une finesse de filtration extrême, couplé à un système de désinfection par UV, qui élimine les bactéries sans les inconvénients du chlore. La température de l'eau est maintenue à 30°C toute l'année par une pompe à chaleur performante et silencieuse. La gestion de l'ensemble des équipements est centralisée via un système domotique, pour un contrôle simple et intuitif.",
+        "L'ambiance lumineuse a été particulièrement soignée. Un puits de lumière zénithal apporte une lumière naturelle douce pendant la journée. Le soir, un éclairage par fibre optique au plafond recrée un ciel étoilé, tandis que des spots LED immergés illuminent l'eau de l'intérieur. Cette combinaison d'éclairages permet de créer différentes ambiances, de la plus vivifiante à la plus relaxante, selon les moments de la journée et les envies des utilisateurs.",
+        "La construction d'un lagon intérieur est une opération technique complexe qui requiert une expertise spécifique. L'étanchéité, l'isolation et la ventilation du local ont fait l'objet d'une étude approfondie. Nous avons travaillé en étroite collaboration avec l'architecte de la maison pour que le lagon s'intègre parfaitement à la structure existante. La qualité des finitions a été notre obsession, pour que chaque détail contribue à l'atmosphère de luxe et de sérénité de ce lieu unique.",
+        "En conclusion, ce lagon intérieur à Fès est une véritable prouesse technique et esthétique. C'est un espace de bien-être absolu, où l'on peut se ressourcer en toute saison. Nous sommes fiers d'avoir réalisé ce projet d'exception, qui démontre notre capacité à créer des piscines sur-mesure qui repoussent les limites de la créativité. Ce jardin d'eau secret est la plus belle récompense pour nos clients, qui peuvent profiter chaque jour d'une expérience de relaxation inégalée."
       ],
-      imagesWithinDescription: [
-        { src: '/realisations/piscine-interieur-06-desc1.jpg', alt: 'Détail du carrelage en verre de Murano', position: 1 },
-        { src: '/realisations/piscine-interieur-06-desc2.jpg', alt: 'Vue de l\'éclairage LED et des baies vitrées', position: 3 },
-        { src: '/realisations/piscine-interieur-06-desc3.jpg', alt: 'Coin relaxation avec fauteuils', position: 5 },
+      "imagesWithinDescription": [
+        { "src": "/realisations/piscine-lagon-03-desc1.jpg", "alt": "Mosaïque de verre et roches volcaniques", "position": 1 },
+        { "src": "/realisations/piscine-lagon-03-desc2.jpg", "alt": "Puits de lumière zénithal", "position": 3 },
+        { "src": "/realisations/piscine-lagon-03-desc3.jpg", "alt": "Ciel étoilé en fibre optique", "position": 5 }
       ],
-      steps: [
-        { title: 'Étude Architecturale et Climatisation', description: 'Analyse de l\'intégration dans le bâtiment, étude de l\'humidité et conception du système de déshumidification. La technique au service du confort.' },
-        { title: 'Structure et Étanchéité Spécifique', description: 'Construction de la coque en béton armé et application de systèmes d\'étanchéité avancés pour l\'intérieur. Sécurité et durabilité.' },
-        { title: 'Revêtement et Finitions Luxueuses', description: 'Pose du carrelage de verre, installation des margelles et des finitions intérieures. Le luxe dans chaque détail.' },
-        { title: 'Systèmes CVC et Filtration', description: 'Mise en place des centrales de traitement d\'air, chauffage de l\'eau et filtration haute performance. Une maîtrise technologique complète.' },
-        { title: 'Aménagements Intérieurs et Luminaires', description: 'Installation des éclairages, mobilier de relaxation et éléments décoratifs. Création d\'une ambiance exclusive.' },
-        { title: 'Mise en Service et Contrôle', description: 'Tests rigoureux de tous les équipements, équilibrage parfait de l\'eau et démonstration complète de la domotique. Votre espace bien-être est prêt.' },
+      "steps": [
+        { "title": "Étude Technique et Gestion de l'Hygrométrie", "description": "Conception du système de ventilation et de déshumidification. La maîtrise de l'environnement intérieur est la clé." },
+        { "title": "Structure et Étanchéité en Milieu Clos", "description": "Création de la coque en béton et application d'un système d'étanchéité multicouche spécifique pour l'intérieur." },
+        { "title": "Pose des Revêtements et des Roches", "description": "Installation de la mosaïque de verre et positionnement des roches volcaniques. Le décor prend forme." },
+        { "title": "Installation de la Filtration UV et du Chauffage", "description": "Mise en place des systèmes de traitement d'eau haute performance et de la pompe à chaleur." },
+        { "title": "Création des Ambiances Lumineuses", "description": "Installation du puits de lumière, de la fibre optique et des éclairages subaquatiques. La magie opère." },
+        { "title": "Mise en Service et Contrôles Techniques", "description": "Remplissage, chauffage de l'eau et tests de tous les systèmes (filtration, ventilation, domotique). Votre sanctuaire est prêt." }
       ],
-      equipmentsUsed: [
-        'Centrale de traitement d\'air et déshumidification',
-        'Pompe à chaleur pour l\'eau et l\'air',
-        'Filtre à verre haute performance',
-        'Traitement automatique à l\'ozone ou UV',
-        'Carrelage de verre de Murano',
-        'Système de nage à contre-courant',
-        'Buses de massage hydromassantes',
-        'Projecteurs LED subaquatiques RGB',
-        'Système de domotique pour gestion centralisée'
+      "equipmentsUsed": [
+        "Centrale de traitement de l'air avec déshumidificateur",
+        "Filtre à diatomées",
+        "Stérilisateur UV",
+        "Pompe à chaleur haute performance",
+        "Mosaïque de verre",
+        "Jets de massage intégrés",
+        "Éclairage par fibre optique (ciel étoilé)",
+        "Système de gestion domotique"
       ],
-      galleryImages: [
-        '/realisations/piscine-interieur-06.jpg',
-        '/realisations/piscine-interieur-06-hero.jpg',
-        '/realisations/piscine-interieur-06-desc1.jpg',
-        '/realisations/piscine-interieur-06-desc2.jpg',
-        '/realisations/piscine-interieur-06-desc3.jpg',
+      "galleryImages": [
+        "/realisations/piscine-lagon-03.jpg",
+        "/realisations/piscine-lagon-03-hero.jpg",
+        "/realisations/piscine-lagon-03-desc1.jpg",
+        "/realisations/piscine-lagon-03-desc2.jpg",
+        "/realisations/piscine-lagon-03-desc3.jpg"
       ]
     },
   ];
