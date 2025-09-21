@@ -7,12 +7,8 @@
   justify-content: center; /* Centre le contenu verticalement */
   padding: 0 5%;
   color: var(--color-white);
+  z-index: 1;
 
-  /* Configuration de l'image de fond */
-  background-image: url('/hero-background.jpg'); /* MODIFIEZ CECI */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Effet de parallaxe simple */
 }
 
 /* Superposition de couleur pour la lisibilité */
@@ -23,8 +19,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 71, 122, 0.6); /* Bleu semi-transparent */
-  z-index: 1;
+  background-image: url('/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 71, 122, 0.8);
+  background-blend-mode: multiply;
 }
 
 /* Contenu principal (textes et boutons) */
@@ -138,7 +137,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
   gap: 1.5rem;
-  z-index: 3;
+  z-index: 4;
   padding-bottom: 2rem;
 }
 
